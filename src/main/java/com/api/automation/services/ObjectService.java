@@ -120,4 +120,31 @@ public class ObjectService {
     public ApiObject[] getAllObjectsAsArray() {
         return getAllObjects().as(ApiObject[].class);
     }
+
+    /**
+     * Get objects by multiple IDs
+     * @param ids Variable number of object IDs
+     * @return Response object
+     */
+    public Response getObjectsByIds(String... ids) {
+        io.restassured.specification.RequestSpecification spec = given()
+                .log().method().log().uri()
+                .baseUri(BASE_URI)
+                .basePath(OBJECTS_PATH);
+
+        for (String id : ids) {
+            spec = spec.queryParam("id", id);
+        }
+
+        return spec.when().get();
+    }
+
+    /**
+     * Get objects by multiple IDs and deserialize to ApiObject array
+     * @param ids Variable number of object IDs
+     * @return ApiObject array
+     */
+    public ApiObject[] getObjectsByIdsAsArray(String... ids) {
+        return getObjectsByIds(ids).as(ApiObject[].class);
+    }
 }

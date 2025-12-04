@@ -19,6 +19,12 @@
         </classes>
     </test>
     
+    <test name="Object API GET by IDs Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetByIdsTests"/>
+        </classes>
+    </test>
+    
     <test name="Object API POST Tests">
         <classes>
             <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPostTests"/>
