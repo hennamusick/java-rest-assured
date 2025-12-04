@@ -48,4 +48,10 @@
             <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPatchTests"/>
         </classes>
     </test>
+    
+    <test name="Object API DELETE Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectDeleteTests"/>
+        </classes>
+    </test>
 </suite>
