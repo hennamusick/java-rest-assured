@@ -17,6 +17,7 @@ public abstract class BaseService {
 
     protected Response get(String endpoint) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .when()
@@ -25,6 +26,7 @@ public abstract class BaseService {
 
     protected Response get() {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .when()
@@ -33,6 +35,7 @@ public abstract class BaseService {
 
     protected Response post(Object body, String endpoint) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .body(body)
@@ -42,6 +45,7 @@ public abstract class BaseService {
 
     protected Response post(Object body) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .body(body)
@@ -51,6 +55,7 @@ public abstract class BaseService {
 
     protected Response put(Object body, String endpoint) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .body(body)
@@ -60,6 +65,7 @@ public abstract class BaseService {
 
     protected Response patch(Object body, String endpoint) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .body(body)
@@ -69,6 +75,7 @@ public abstract class BaseService {
 
     protected Response delete(String endpoint) {
         return given()
+                .log().method().log().uri()
                 .spec(RestClient.getRequestSpec())
                 .basePath(basePath)
                 .when()

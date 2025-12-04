@@ -12,4 +12,10 @@
             <class name="com.api.automation.tests.PostTests"/>
         </classes>
     </test>
+    
+    <test name="Object API Tests">
+        <classes>
+            <class name="com.api.automation.tests.ObjectTests"/>
+        </classes>
+    </test>
 </suite>
