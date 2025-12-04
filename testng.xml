@@ -42,4 +42,10 @@
             <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPutTests"/>
         </classes>
     </test>
+    
+    <test name="Object API PATCH Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPatchTests"/>
+        </classes>
+    </test>
 </suite>
