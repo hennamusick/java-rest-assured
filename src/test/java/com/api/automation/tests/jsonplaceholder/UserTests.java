@@ -1,7 +1,8 @@
-package com.api.automation.tests;
+package com.api.automation.tests.jsonplaceholder;
 
 import com.api.automation.models.User;
 import com.api.automation.services.UserService;
+import com.api.automation.tests.utils.BaseTest;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

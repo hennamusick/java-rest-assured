@@ -1,7 +1,8 @@
-package com.api.automation.tests;
+package com.api.automation.tests.endpoints.restfulapi;
 
 import com.api.automation.models.ApiObject;
 import com.api.automation.services.ObjectService;
+import com.api.automation.tests.utils.BaseTest;
 import com.api.automation.utils.JsonUtils;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
@@ -17,17 +18,17 @@ import java.util.Map;
 import static org.hamcrest.Matchers.*;
 
 /**
- * Test class for Object API endpoints from restful-api.dev
+ * Test class for Object API POST endpoints from restful-api.dev
  * Demonstrates Page Object Model pattern with REST Assured
  */
-public class ObjectTests extends BaseTest {
-    private static final Logger logger = LoggerFactory.getLogger(ObjectTests.class);
+public class ObjectPostTests extends BaseTest {
+    private static final Logger logger = LoggerFactory.getLogger(ObjectPostTests.class);
     private ObjectService objectService;
     private SoftAssert softAssert;
 
     @BeforeClass
-    public void setUpObjectTests() {
-        logger.info("Setting up ObjectTests - initializing ObjectService");
+    public void setUpObjectPostTests() {
+        logger.info("Setting up ObjectPostTests - initializing ObjectService");
         objectService = new ObjectService();
         logger.info("ObjectService initialized successfully");
     }
@@ -37,152 +38,7 @@ public class ObjectTests extends BaseTest {
         softAssert = new SoftAssert();
     }
 
-    @Test(priority = 1, description = "Verify getting a single object by ID - Apple MacBook Pro 16")
-    public void testGetObjectById() {
-        logger.info("Starting test: testGetObjectById");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {}", objectId);
-        
-        Response response = objectService.getObjectById(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating response body fields");
-        response.then().log().status().log().body()
-                .statusCode(200)
-                .body("id", equalTo(objectId))
-                .body("name", equalTo("Apple MacBook Pro 16"))
-                .body("data.year", equalTo(2019))
-                .body("data.price", equalTo(1849.99f))
-                .body("data.'CPU model'", equalTo("Intel Core i9"))
-                .body("data.'Hard disk size'", equalTo("1 TB"));
-        
-        logger.info("Test testGetObjectById completed successfully");
-    }
-
-    @Test(priority = 2, description = "Verify getting object as ApiObject POJO")
-    public void testGetObjectAsObject() {
-        logger.info("Starting test: testGetObjectAsObject");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {} and deserializing to ApiObject", objectId);
-        
-        ApiObject apiObject = objectService.getObjectByIdAsObject(objectId);
-        logger.info("ApiObject received: {}", apiObject);
-        
-        logger.info("Validating ApiObject fields using SoftAssert");
-        softAssert.assertNotNull(apiObject, "ApiObject should not be null");
-        softAssert.assertEquals(apiObject.getId(), objectId, "Object ID should match");
-        softAssert.assertEquals(apiObject.getName(), "Apple MacBook Pro 16", "Object name should match");
-        softAssert.assertNotNull(apiObject.getData(), "Data should not be null");
-        softAssert.assertEquals(apiObject.getData().get("year"), 2019, "Year should be 2019");
-        softAssert.assertEquals(apiObject.getData().get("price"), 1849.99, "Price should match");
-        softAssert.assertEquals(apiObject.getData().get("CPU model"), "Intel Core i9", "CPU model should match");
-        softAssert.assertEquals(apiObject.getData().get("Hard disk size"), "1 TB", "Hard disk size should match");
-        
-        softAssert.assertAll();
-        logger.info("Test testGetObjectAsObject completed successfully");
-    }
-
-    @Test(priority = 3, description = "Verify response contains all required fields")
-    public void testObjectResponseStructure() {
-        logger.info("Starting test: testObjectResponseStructure");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {}", objectId);
-        
-        Response response = objectService.getObjectById(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating response structure - checking for required fields");
-        response.then().log().status().log().body()
-                .statusCode(200)
-                .body("$", hasKey("id"))
-                .body("$", hasKey("name"))
-                .body("$", hasKey("data"))
-                .body("data", hasKey("year"))
-                .body("data", hasKey("price"))
-                .body("data", hasKey("CPU model"))
-                .body("data", hasKey("Hard disk size"));
-        
-        logger.info("Test testObjectResponseStructure completed successfully - all required fields present");
-    }
-
-    @Test(priority = 4, description = "Verify data types in response")
-    public void testObjectDataTypes() {
-        logger.info("Starting test: testObjectDataTypes");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {}", objectId);
-        
-        Response response = objectService.getObjectById(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating data types of response fields");
-        response.then().log().status().log().body()
-                .statusCode(200)
-                .body("id", isA(String.class))
-                .body("name", isA(String.class))
-                .body("data.year", isA(Integer.class))
-                .body("data.price", isA(Float.class))
-                .body("data.'CPU model'", isA(String.class))
-                .body("data.'Hard disk size'", isA(String.class));
-        
-        logger.info("Test testObjectDataTypes completed successfully - all data types are correct");
-    }
-
-    @Test(priority = 5, description = "Verify response time is acceptable")
-    public void testObjectResponseTime() {
-        logger.info("Starting test: testObjectResponseTime");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {}", objectId);
-        
-        Response response = objectService.getObjectById(objectId);
-        long responseTime = response.getTime();
-        logger.info("Response received in {} ms", responseTime);
-        
-        logger.info("Validating response time is less than 3000ms");
-        response.then().log().status()
-                .statusCode(200)
-                .time(lessThan(3000L));
-        
-        logger.info("Test testObjectResponseTime completed successfully - response time: {} ms", responseTime);
-    }
-
-    @Test(priority = 6, description = "Verify content type is application/json")
-    public void testObjectContentType() {
-        logger.info("Starting test: testObjectContentType");
-        String objectId = "7";
-        logger.info("Fetching object with ID: {}", objectId);
-        
-        Response response = objectService.getObjectById(objectId);
-        logger.info("Response received with content type: {}", response.getContentType());
-        
-        logger.info("Validating content type is application/json");
-        response.then().log().status()
-                .statusCode(200)
-                .contentType("application/json");
-        
-        logger.info("Test testObjectContentType completed successfully");
-    }
-
-    @Test(priority = 7, description = "Verify getting all objects")
-    public void testGetAllObjects() {
-        logger.info("Starting test: testGetAllObjects");
-        logger.info("Fetching all objects from API");
-        
-        Response response = objectService.getAllObjects();
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating response contains multiple objects");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        softAssert.assertTrue(response.jsonPath().getList("$").size() > 0, "Response should contain at least one object");
-        
-        response.then().log().status()
-                .body("id", everyItem(notNullValue()))
-                .body("name", everyItem(notNullValue()));
-        
-        softAssert.assertAll();
-        logger.info("Test testGetAllObjects completed successfully");
-    }
-
-    @Test(priority = 8, description = "Verify creating a new object with complete data")
+    @Test(priority = 1, description = "Verify creating a new object with complete data")
     public void testCreateObject() {
         logger.info("Starting test: testCreateObject");
         logger.info("Preparing test data for new object creation");
@@ -215,7 +71,7 @@ public class ObjectTests extends BaseTest {
         logger.info("Test testCreateObject completed successfully - object created");
     }
 
-    @Test(priority = 11, description = "Verify creating Apple MacBook Pro 16 as specified in API documentation")
+    @Test(priority = 2, description = "Verify creating Apple MacBook Pro 16 as specified in API documentation")
     public void testCreateAppleMacBookPro16() {
         logger.info("Starting test: testCreateAppleMacBookPro16");
         logger.info("Preparing test data matching API documentation example");
@@ -249,7 +105,7 @@ public class ObjectTests extends BaseTest {
         logger.info("Test testCreateAppleMacBookPro16 completed successfully");
     }
 
-    @Test(priority = 12, description = "Verify created object contains ID and createdAt fields")
+    @Test(priority = 3, description = "Verify created object contains ID and createdAt fields")
     public void testCreateObjectResponseStructure() {
         logger.info("Starting test: testCreateObjectResponseStructure");
         logger.info("Preparing test data for object creation");
@@ -284,7 +140,7 @@ public class ObjectTests extends BaseTest {
         logger.info("Test testCreateObjectResponseStructure completed successfully");
     }
 
-    @Test(priority = 13, description = "Verify creating object with minimum required fields")
+    @Test(priority = 4, description = "Verify creating object with minimum required fields")
     public void testCreateObjectWithMinimalData() {
         logger.info("Starting test: testCreateObjectWithMinimalData");
         logger.info("Creating object with only name field");
@@ -312,7 +168,7 @@ public class ObjectTests extends BaseTest {
         logger.info("Test testCreateObjectWithMinimalData completed successfully");
     }
 
-    @Test(priority = 14, description = "Verify creating multiple objects with different data")
+    @Test(priority = 5, description = "Verify creating multiple objects with different data")
     public void testCreateMultipleObjects() {
         logger.info("Starting test: testCreateMultipleObjects");
         logger.info("Creating multiple objects to verify API consistency");
@@ -362,7 +218,7 @@ public class ObjectTests extends BaseTest {
         logger.info("Test testCreateMultipleObjects completed successfully");
     }
 
-    @Test(priority = 15, description = "Verify POST request content type and response time")
+    @Test(priority = 6, description = "Verify POST request content type and response time")
     public void testCreateObjectPerformance() {
         logger.info("Starting test: testCreateObjectPerformance");
         logger.info("Testing POST request performance and content type");
@@ -389,51 +245,5 @@ public class ObjectTests extends BaseTest {
                 .time(lessThan(3000L));
         
         logger.info("Test testCreateObjectPerformance completed - response time: {} ms", responseTime);
-    }
-
-    @Test(priority = 9, description = "Verify updating an object")
-    public void testUpdateObject() {
-        logger.info("Starting test: testUpdateObject");
-        String objectId = "7";
-        logger.info("Preparing updated data for object ID: {}", objectId);
-        
-        Map<String, Object> updatedData = new HashMap<>();
-        updatedData.put("year", 2024);
-        updatedData.put("price", 2999.99);
-        updatedData.put("CPU model", "M3 Max");
-        updatedData.put("Hard disk size", "4 TB");
-
-        ApiObject updatedObject = ApiObject.builder()
-                .name("Apple MacBook Pro 16 Updated")
-                .data(updatedData)
-                .build();
-
-        logger.info("Request JSON body for update: \n{}", JsonUtils.serialize(updatedObject));
-        logger.info("Updating object ID: {} with new data", objectId);
-        Response response = objectService.updateObject(objectId, updatedObject);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating updated object data");
-        response.then().log().status().log().body()
-                .statusCode(200)
-                .body("name", equalTo(updatedObject.getName()));
-        
-        logger.info("Test testUpdateObject completed successfully - object updated");
-    }
-
-    @Test(priority = 10, description = "Verify deleting an object")
-    public void testDeleteObject() {
-        logger.info("Starting test: testDeleteObject");
-        String objectId = "7";
-        logger.info("Deleting object with ID: {}", objectId);
-        
-        Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating delete operation");
-        response.then().log().status()
-                .statusCode(200);
-        
-        logger.info("Test testDeleteObject completed successfully - object deleted");
     }
 }

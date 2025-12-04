@@ -3,19 +3,31 @@
 <suite name="REST API Test Suite" verbose="1">
     <test name="User API Tests">
         <classes>
-            <class name="com.api.automation.tests.UserTests"/>
+            <class name="com.api.automation.tests.jsonplaceholder.UserTests"/>
         </classes>
     </test>
     
     <test name="Post API Tests">
         <classes>
-            <class name="com.api.automation.tests.PostTests"/>
+            <class name="com.api.automation.tests.jsonplaceholder.PostTests"/>
         </classes>
     </test>
     
-    <test name="Object API Tests">
+    <test name="Object API GET Tests">
         <classes>
-            <class name="com.api.automation.tests.ObjectTests"/>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetTests"/>
+        </classes>
+    </test>
+    
+    <test name="Object API POST Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPostTests"/>
+        </classes>
+    </test>
+    
+    <test name="Object API PUT Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPutTests"/>
         </classes>
     </test>
 </suite>

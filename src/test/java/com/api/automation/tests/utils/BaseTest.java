@@ -1,4 +1,4 @@
-package com.api.automation.tests;
+package com.api.automation.tests.utils;
 
 import com.api.automation.utils.RestClient;
 import org.testng.annotations.AfterClass;
