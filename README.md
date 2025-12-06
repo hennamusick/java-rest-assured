@@ -11,7 +11,7 @@ A comprehensive REST API automation testing framework using REST Assured with Pa
 - **Lombok 1.18.30**: Reduced boilerplate code with annotations
 - **Jackson 2.16.1**: JSON serialization/deserialization with formatted output
 - **SLF4J + Logback**: Comprehensive logging with console and file output
-- **Soft Assertions**: Better test failure reporting with TestNG SoftAssert
+- **Comprehensive Soft Assertions**: Non-blocking assertions across all test methods using TestNG SoftAssert for better test failure visibility and detailed validation reports
 - **Request/Response Logging**: Detailed API call logging (method, URI, status, body)
 
 ## 📁 Project Structure
@@ -71,11 +71,17 @@ This framework implements POM pattern for API testing:
    - `Post.java`: Post entity
    - `ApiObject.java`: ApiObject entity with dynamic data map
 
-3. **Test Layer** (`tests/`): Test classes that use service layer
+3. **Test Layer** (`tests/`): Test classes with comprehensive soft assertions
    - `BaseTest.java`: Base test setup and teardown
-   - `UserTests.java`: 8 comprehensive User API tests
-   - `PostTests.java`: 9 comprehensive Post API tests
-   - `ObjectTests.java`: 16 comprehensive Object API tests (including POST request tests)
+   - `UserTests.java`: 8 comprehensive User API tests with soft assertions
+   - `PostTests.java`: 9 comprehensive Post API tests with soft assertions
+   - `ObjectDeleteTests.java`: DELETE endpoint tests with 6 test methods using soft assertions
+   - `ObjectGetTests.java`: GET single object tests with 5 test methods using soft assertions
+   - `ObjectGetAllTests.java`: GET all objects tests with 3 test methods using soft assertions
+   - `ObjectGetByIdsTests.java`: GET by IDs query param tests with 4 test methods using soft assertions
+   - `ObjectPostTests.java`: POST create tests with 2 test methods using soft assertions
+   - `ObjectPutTests.java`: PUT update tests with 2 test methods using soft assertions
+   - `ObjectPatchTests.java`: PATCH partial update tests with 1 test method using soft assertions
    - `TestUtils.java`: Test utility helper methods
 
 4. **Configuration Layer** (`config/` & `utils/`):
@@ -168,22 +174,25 @@ public void testGetUserById() {
     logger.info("Starting test: testGetUserById");
     logger.info("Fetching user with ID: 1");
     
+    SoftAssert softAssert = new SoftAssert();
     Response response = userService.getUserById(1);
     logger.info("Response received with status code: {}", response.getStatusCode());
     
     logger.info("Validating response body fields");
-    response.then().log().status().log().body()
-            .statusCode(200)
-            .body("id", equalTo(1))
-            .body("name", notNullValue());
+    softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+    softAssert.assertNotNull(response.body(), "Response body should not be null");
+    softAssert.assertEquals(response.jsonPath().getInt("id"), 1, "User ID should be 1");
+    softAssert.assertNotNull(response.jsonPath().getString("name"), "User name should not be null");
     
-    logger.info("Test completed successfully");
+    logger.info("Test completed - asserting all soft assertions");
+    softAssert.assertAll();
 }
 
 @Test
 public void testCreateObject() {
     logger.info("Starting test: testCreateObject");
     
+    SoftAssert softAssert = new SoftAssert();
     Map<String, Object> data = new HashMap<>();
     data.put("year", 2023);
     data.put("price", 2499.99);
@@ -194,21 +203,33 @@ public void testCreateObject() {
             .build();
     
     logger.info("Request JSON body: \n{}", JsonUtils.serialize(newObject));
+    long startTime = System.currentTimeMillis();
     
     Response response = objectService.createObject(newObject);
-    logger.info("Response received with status code: {}", response.getStatusCode());
+    long responseTime = System.currentTimeMillis() - startTime;
+    logger.info("Response received with status code: {} in {}ms", response.getStatusCode(), responseTime);
     
-    softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-    softAssert.assertEquals(response.jsonPath().getString("name"), "Apple MacBook Pro 14");
+    // Multiple soft assertions for comprehensive validation
+    softAssert.assertEquals(response.getStatusCode(), 201, "Status code should be 201 (Created)");
+    softAssert.assertNotNull(response.body(), "Response body should not be null");
+    softAssert.assertNotNull(response.jsonPath().getString("id"), "Created object ID should not be null");
+    softAssert.assertEquals(response.jsonPath().getString("name"), "Apple MacBook Pro 14", "Object name should match");
+    softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+    
+    logger.info("Test completed - asserting all soft assertions");
     softAssert.assertAll();
-    
-    logger.info("Test completed successfully");
 }
 ```
 
+**Key Benefits of Soft Assertions:**
+- ✅ **Non-blocking**: Continues executing all assertions even when one fails
+- ✅ **Comprehensive Reports**: Collects all failures in single test report
+- ✅ **Better Debugging**: Shows all issues at once instead of stopping at first failure
+- ✅ **Descriptive Messages**: Each assertion includes clear failure message for easy diagnosis
+
 ## 🧪 Test Coverage
 
-The framework includes **33 comprehensive test cases** across 3 test suites:
+The framework includes **48 comprehensive test cases** with comprehensive soft assertions across 9 test suites:
 
 ### User API Tests (8 tests)
 - ✅ GET all users
@@ -231,23 +252,44 @@ The framework includes **33 comprehensive test cases** across 3 test suites:
 - ✅ DELETE post
 - ✅ GET all posts as array
 
-### Object API Tests (16 tests)
-- ✅ GET object by ID (Apple MacBook Pro 16)
-- ✅ GET object as POJO
-- ✅ Verify response structure
-- ✅ Verify data types
-- ✅ Verify response time
-- ✅ Verify content type
-- ✅ GET all objects
-- ✅ POST create object with complete data
-- ✅ POST create Apple MacBook Pro 16 (API doc example)
-- ✅ POST validate response structure (id, createdAt)
-- ✅ POST create with minimal data
-- ✅ POST create multiple objects
-- ✅ POST verify performance and content type
-- ✅ PUT update object
-- ✅ PATCH partial update object
-- ✅ DELETE object
+### Object API Tests (23 tests distributed across specialized test classes)
+
+#### Object DELETE Tests (6 tests)
+- ✅ DELETE object - validate status code
+- ✅ DELETE object - validate response message
+- ✅ DELETE object - response contains ID
+- ✅ DELETE object - validate content type
+- ✅ DELETE object - validate response time
+- ✅ DELETE object - validate response structure
+
+#### Object GET Tests (5 tests)
+- ✅ GET object by ID with soft assertions
+- ✅ GET object - verify response structure
+- ✅ GET object - verify data types
+- ✅ GET object - verify response time
+- ✅ GET object - verify content type
+
+#### Object GET All Tests (3 tests)
+- ✅ GET all objects - validate status code
+- ✅ GET all objects - validate content type
+- ✅ GET all objects - validate response time
+
+#### Object GET by IDs Tests (4 tests)
+- ✅ GET objects by multiple IDs with soft assertions
+- ✅ GET single object by ID query parameter
+- ✅ GET by IDs - validate content type
+- ✅ GET by IDs - validate response time
+
+#### Object POST Tests (2 tests)
+- ✅ POST create object with comprehensive soft assertions
+- ✅ POST create object - performance and content type validation
+
+#### Object PUT Tests (2 tests)
+- ✅ PUT update object with soft assertions
+- ✅ PUT update object - performance and content type validation
+
+#### Object PATCH Tests (1 test)
+- ✅ PATCH partial update object - response time and content type validation
 
 ### Test Features
 - 📝 **Step-by-step logging** with SLF4J for every test action
