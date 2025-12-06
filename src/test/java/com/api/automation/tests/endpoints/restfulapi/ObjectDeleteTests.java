@@ -1,6 +1,7 @@
 package com.api.automation.tests.endpoints.restfulapi;
 
 import com.api.automation.services.ObjectService;
+import com.api.automation.tests.utils.AssertionHelper;
 import com.api.automation.tests.utils.BaseTest;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ public class ObjectDeleteTests extends BaseTest {
     private static final Logger logger = LoggerFactory.getLogger(ObjectDeleteTests.class);
     private ObjectService objectService;
     private SoftAssert softAssert;
+    private AssertionHelper assertionHelper;
 
     @BeforeClass
     public void setUpObjectDeleteTests() {
@@ -31,46 +33,38 @@ public class ObjectDeleteTests extends BaseTest {
     @BeforeMethod
     public void setUpSoftAssert() {
         softAssert = new SoftAssert();
+        assertionHelper = new AssertionHelper(softAssert, logger);
     }
 
     @Test(priority = 1, description = "Verify deleting an existing object returns 200 status")
     public void testDeleteObjectStatusCode() {
-        logger.info("Starting test: testDeleteObjectStatusCode");
-        logger.info("Test will delete object with ID: 6");
+        assertionHelper.logTestStart("testDeleteObjectStatusCode");
         
         String objectId = "6";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
-        
-        logger.info("Validating status code is 200 (OK)");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        softAssert.assertNotNull(response, "Response should not be null");
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
         response.then().log().status().log().body()
                 .statusCode(200);
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectStatusCode completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectStatusCode");
     }
 
     @Test(priority = 2, description = "Verify delete response contains success message")
     public void testDeleteObjectResponseMessage() {
-        logger.info("Starting test: testDeleteObjectResponseMessage");
-        logger.info("Test will delete object with ID: 7");
+        assertionHelper.logTestStart("testDeleteObjectResponseMessage");
         
         String objectId = "7";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response message format");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        
+        assertionHelper.logValidation("response message format");
         String message = response.jsonPath().getString("message");
-        softAssert.assertNotNull(message, "Message should not be null");
-        softAssert.assertFalse(message.isEmpty(), "Message should not be empty");
-        softAssert.assertTrue(message.contains("deleted"), "Message should contain 'deleted'");
+        assertionHelper.assertFieldNotEmpty(response, "message", "Message");
+        assertionHelper.assertFieldContains(response, "message", "deleted", "Message");
         logger.info("Delete message received: {}", message);
         
         response.then().log().status().log().body()
@@ -78,25 +72,22 @@ public class ObjectDeleteTests extends BaseTest {
                 .body("message", notNullValue())
                 .body("message", containsString("deleted"));
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectResponseMessage completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectResponseMessage");
     }
 
     @Test(priority = 3, description = "Verify delete response contains object ID in message")
     public void testDeleteObjectResponseContainsId() {
-        logger.info("Starting test: testDeleteObjectResponseContainsId");
-        logger.info("Test will delete object with ID: 8");
+        assertionHelper.logTestStart("testDeleteObjectResponseContainsId");
         
         String objectId = "8";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response message contains the deleted object ID");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        
+        assertionHelper.logValidation("response message contains the deleted object ID");
         String message = response.jsonPath().getString("message");
-        softAssert.assertNotNull(message, "Message should not be null");
+        assertionHelper.assertFieldNotNull(response, "message", "Message");
         softAssert.assertTrue(message.contains(objectId), "Message should contain ID: " + objectId);
         softAssert.assertTrue(message.contains("deleted"), "Message should contain 'deleted'");
         logger.info("Verified message contains ID {}: {}", objectId, message);
@@ -105,76 +96,63 @@ public class ObjectDeleteTests extends BaseTest {
                 .statusCode(200)
                 .body("message", containsString(objectId));
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectResponseContainsId completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectResponseContainsId");
     }
 
     @Test(priority = 4, description = "Verify content type of delete response is JSON")
     public void testDeleteObjectContentType() {
-        logger.info("Starting test: testDeleteObjectContentType");
-        logger.info("Test will delete object with ID: 9");
+        assertionHelper.logTestStart("testDeleteObjectContentType");
         
         String objectId = "9";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response content type");
-        String contentType = response.getContentType();
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        softAssert.assertNotNull(contentType, "Content-Type should not be null");
-        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
-        logger.info("Content type verified as: {}", contentType);
+        assertionHelper.logValidation("response content type");
+        assertionHelper.assertContentType(response, "application/json");
         
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json");
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectContentType completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectContentType");
     }
 
     @Test(priority = 5, description = "Verify response time of delete operation")
     public void testDeleteObjectResponseTime() {
-        logger.info("Starting test: testDeleteObjectResponseTime");
-        logger.info("Test will delete object with ID: 10");
+        assertionHelper.logTestStart("testDeleteObjectResponseTime");
         
         String objectId = "10";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
         long responseTime = response.getTime();
-        logger.info("Response received in {} ms", responseTime);
         
-        logger.info("Validating response time is acceptable (less than 3000 ms)");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
-        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0 ms");
+        assertionHelper.logValidation("response time is acceptable (less than 3000 ms)");
+        assertionHelper.assertStatusCode(response, 200, "DELETE object response");
+        assertionHelper.assertResponseTime(response, 3000, "DELETE operation");
         
         response.then().log().status()
                 .statusCode(200)
                 .time(lessThan(3000L));
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectResponseTime completed successfully - response time: {} ms", responseTime);
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectResponseTime", "response time: " + responseTime + " ms");
     }
 
     @Test(priority = 6, description = "Verify delete response has only message field")
     public void testDeleteObjectResponseStructure() {
-        logger.info("Starting test: testDeleteObjectResponseStructure");
-        logger.info("Test will delete object with ID: 11");
+        assertionHelper.logTestStart("testDeleteObjectResponseStructure");
         
         String objectId = "11";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response structure contains message field");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
-        
-        String message = response.jsonPath().getString("message");
-        softAssert.assertNotNull(message, "Message should not be null");
-        softAssert.assertFalse(message.isEmpty(), "Message should not be empty");
-        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("message"), "Response should contain message key");
+        assertionHelper.logValidation("response structure contains message field");
+        assertionHelper.assertFieldNotEmpty(response, "message", "Message");
+        assertionHelper.assertResponseHasKey(response, "message");
         
         response.then().log().status().log().body()
                 .statusCode(200)
@@ -182,90 +160,82 @@ public class ObjectDeleteTests extends BaseTest {
                 .body("message", notNullValue())
                 .body("message", not(emptyString()));
         
-        softAssert.assertAll();
+        assertionHelper.assertAll();
         logger.info("Response structure validated successfully");
-        logger.info("Test testDeleteObjectResponseStructure completed successfully");
+        assertionHelper.logTestCompletion("testDeleteObjectResponseStructure");
     }
 
     @Test(priority = 7, description = "Verify deleting multiple objects sequentially")
     public void testDeleteMultipleObjectsSequentially() {
-        logger.info("Starting test: testDeleteMultipleObjectsSequentially");
+        assertionHelper.logTestStart("testDeleteMultipleObjectsSequentially");
         logger.info("Deleting multiple objects sequentially to verify API consistency");
         
         String[] objectIds = {"12", "13", "14"};
         
         for (String objectId : objectIds) {
-            logger.info("Deleting object with ID: {}", objectId);
+            assertionHelper.logRequest("DELETE", objectId);
             Response response = objectService.deleteObject(objectId);
-            logger.info("Response received with status code: {}", response.getStatusCode());
-            
-            softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200 for object " + objectId);
-            softAssert.assertNotNull(response.jsonPath().getString("message"), 
-                                    "Message should not be null for object " + objectId);
+            assertionHelper.assertStatusCode(response, 200, "object " + objectId);
+            assertionHelper.assertFieldNotNull(response, "message", "Message for object " + objectId);
             
             String message = response.jsonPath().getString("message");
             logger.info("Object {} deleted with message: {}", objectId, message);
         }
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteMultipleObjectsSequentially completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteMultipleObjectsSequentially");
     }
 
     @Test(priority = 8, description = "Verify message format matches pattern: Object with id = X, has been deleted")
     public void testDeleteObjectMessageFormat() {
-        logger.info("Starting test: testDeleteObjectMessageFormat");
-        logger.info("Test will delete object with ID: 15");
+        assertionHelper.logTestStart("testDeleteObjectMessageFormat");
         
         String objectId = "15";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
         
         String message = response.jsonPath().getString("message");
-        logger.info("Validating message format against pattern");
+        assertionHelper.logValidation("message format against pattern");
         
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("message", matchesPattern("Object with id = \\d+, has been deleted\\."));
         
         logger.info("Message format verified: {}", message);
-        logger.info("Test testDeleteObjectMessageFormat completed successfully");
+        assertionHelper.logTestCompletion("testDeleteObjectMessageFormat");
     }
 
     @Test(priority = 9, description = "Verify delete object with specific ID contains correct ID in response")
     public void testDeleteObjectIdInResponseMessage() {
-        logger.info("Starting test: testDeleteObjectIdInResponseMessage");
-        logger.info("Test will delete object with ID: 16");
+        assertionHelper.logTestStart("testDeleteObjectIdInResponseMessage");
         
         String objectId = "16";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
         
         String message = response.jsonPath().getString("message");
         logger.info("Response message: {}", message);
         
-        logger.info("Extracting ID from message and comparing with request ID");
-        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        assertionHelper.logExtraction("ID from message and comparing with request ID");
+        assertionHelper.assertStatusCode(response, 200, "DELETE operation");
         softAssert.assertTrue(message.contains(objectId), "Message should contain the deleted object ID: " + objectId);
         softAssert.assertTrue(message.endsWith("deleted."), "Message should end with 'deleted.'");
         
         response.then().log().status().log().body();
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectIdInResponseMessage completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectIdInResponseMessage");
     }
 
     @Test(priority = 10, description = "Verify delete operation does not return object data")
     public void testDeleteObjectResponseDoesNotContainObjectData() {
-        logger.info("Starting test: testDeleteObjectResponseDoesNotContainObjectData");
-        logger.info("Test will delete object with ID: 17");
+        assertionHelper.logTestStart("testDeleteObjectResponseDoesNotContainObjectData");
         
         String objectId = "17";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response does not contain object fields (name, data, createdAt)");
+        assertionHelper.logValidation("response does not contain object fields (name, data, createdAt)");
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("$", not(hasKey("name")))
@@ -274,20 +244,19 @@ public class ObjectDeleteTests extends BaseTest {
                 .body("$", not(hasKey("createdAt")));
         
         logger.info("Verified response contains only message field");
-        logger.info("Test testDeleteObjectResponseDoesNotContainObjectData completed successfully");
+        assertionHelper.logTestCompletion("testDeleteObjectResponseDoesNotContainObjectData");
     }
 
     @Test(priority = 11, description = "Verify delete response has only one JSON key (message)")
     public void testDeleteObjectResponseHasOnlyMessageKey() {
-        logger.info("Starting test: testDeleteObjectResponseHasOnlyMessageKey");
-        logger.info("Test will delete object with ID: 18");
+        assertionHelper.logTestStart("testDeleteObjectResponseHasOnlyMessageKey");
         
         String objectId = "18";
-        logger.info("Sending DELETE request for object ID: {}", objectId);
+        assertionHelper.logRequest("DELETE", objectId);
         Response response = objectService.deleteObject(objectId);
-        logger.info("Response received with status code: {}", response.getStatusCode());
+        assertionHelper.assertStatusCodeAndLogging(response, 200);
         
-        logger.info("Validating response has only message key");
+        assertionHelper.logValidation("response has only message key");
         int keyCount = response.jsonPath().getMap("$").size();
         logger.info("Number of keys in response: {}", keyCount);
         
@@ -296,10 +265,9 @@ public class ObjectDeleteTests extends BaseTest {
                 .body("$", hasKey("message"));
         
         softAssert.assertEquals(keyCount, 1, "Response should contain exactly one key (message)");
-        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("message"), 
-                            "Response should contain message key");
+        assertionHelper.assertResponseHasKey(response, "message");
         
-        softAssert.assertAll();
-        logger.info("Test testDeleteObjectResponseHasOnlyMessageKey completed successfully");
+        assertionHelper.assertAll();
+        assertionHelper.logTestCompletion("testDeleteObjectResponseHasOnlyMessageKey");
     }
 }
