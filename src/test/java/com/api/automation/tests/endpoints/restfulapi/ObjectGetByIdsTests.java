@@ -44,12 +44,17 @@ public class ObjectGetByIdsTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response contains all requested objects");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertEquals(response.jsonPath().getList("$").size(), 3, "Should have 3 objects");
+        softAssert.assertNotNull(response, "Response should not be null");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("size()", equalTo(3))
                 .body("id", hasItems("3", "5", "10"))
                 .body("name", everyItem(notNullValue()));
         
+        softAssert.assertAll();
         logger.info("Test testGetObjectsByIds completed successfully");
     }
 
@@ -116,6 +121,10 @@ public class ObjectGetByIdsTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response contains the requested object");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertEquals(response.jsonPath().getList("$").size(), 1, "Should have 1 object");
+        softAssert.assertNotNull(response, "Response should not be null");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("size()", equalTo(1))
@@ -123,6 +132,7 @@ public class ObjectGetByIdsTests extends BaseTest {
                 .body("[0].name", equalTo("Apple iPhone 12 Pro Max"))
                 .body("[0].data.color", equalTo("Cloudy White"));
         
+        softAssert.assertAll();
         logger.info("Test testGetSingleObjectByIdQueryParam completed successfully");
     }
 
@@ -159,13 +169,19 @@ public class ObjectGetByIdsTests extends BaseTest {
         
         Response response = objectService.getObjectsByIds(objectIds);
         logger.info("Response received with status code: {}", response.getStatusCode());
-        logger.info("Response content type: {}", response.getContentType());
+        String contentType = response.getContentType();
+        logger.info("Response content type: {}", contentType);
         
         logger.info("Validating content type is application/json");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json");
         
+        softAssert.assertAll();
         logger.info("Test testObjectsByIdsContentType completed successfully");
     }
 
@@ -180,10 +196,15 @@ public class ObjectGetByIdsTests extends BaseTest {
         logger.info("Response received in {} ms", responseTime);
         
         logger.info("Validating response time is acceptable");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0");
+        
         response.then().log().status()
                 .statusCode(200)
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testObjectsByIdsResponseTime completed - response time: {} ms", responseTime);
     }
 

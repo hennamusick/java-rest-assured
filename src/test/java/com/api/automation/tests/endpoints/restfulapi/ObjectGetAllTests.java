@@ -45,9 +45,13 @@ public class ObjectGetAllTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating status code is 200");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(response, "Response should not be null");
+        
         response.then().log().status()
                 .statusCode(200);
         
+        softAssert.assertAll();
         logger.info("Test testGetAllObjectsStatusCode completed successfully");
     }
 
@@ -217,13 +221,19 @@ public class ObjectGetAllTests extends BaseTest {
         
         Response response = objectService.getAllObjects();
         logger.info("Response received with status code: {}", response.getStatusCode());
-        logger.info("Response content type: {}", response.getContentType());
+        String contentType = response.getContentType();
+        logger.info("Response content type: {}", contentType);
         
         logger.info("Validating content type is application/json");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json");
         
+        softAssert.assertAll();
         logger.info("Test testGetAllObjectsContentType completed successfully");
     }
 
@@ -237,10 +247,15 @@ public class ObjectGetAllTests extends BaseTest {
         logger.info("Response received in {} ms", responseTime);
         
         logger.info("Validating response time is acceptable");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0");
+        
         response.then().log().status()
                 .statusCode(200)
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testGetAllObjectsResponseTime completed - response time: {} ms", responseTime);
     }
 

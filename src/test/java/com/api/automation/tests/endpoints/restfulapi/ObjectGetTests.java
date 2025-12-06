@@ -44,6 +44,13 @@ public class ObjectGetTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response body fields");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(response, "Response should not be null");
+        softAssert.assertEquals(response.jsonPath().getString("id"), objectId, "ID should match");
+        softAssert.assertEquals(response.jsonPath().getString("name"), "Apple MacBook Pro 16", "Name should match");
+        softAssert.assertEquals(response.jsonPath().getInt("data.year"), 2019, "Year should be 2019");
+        softAssert.assertEquals(response.jsonPath().getFloat("data.price"), 1849.99f, "Price should be 1849.99");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("id", equalTo(objectId))
@@ -53,6 +60,7 @@ public class ObjectGetTests extends BaseTest {
                 .body("data.'CPU model'", equalTo("Intel Core i9"))
                 .body("data.'Hard disk size'", equalTo("1 TB"));
         
+        softAssert.assertAll();
         logger.info("Test testGetObjectById completed successfully");
     }
 
@@ -89,6 +97,12 @@ public class ObjectGetTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response structure - checking for required fields");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("id"), "Response should contain id");
+        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("name"), "Response should contain name");
+        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("data"), "Response should contain data");
+        softAssert.assertNotNull(response.jsonPath().getMap("data"), "Data should not be null");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("$", hasKey("id"))
@@ -99,6 +113,7 @@ public class ObjectGetTests extends BaseTest {
                 .body("data", hasKey("CPU model"))
                 .body("data", hasKey("Hard disk size"));
         
+        softAssert.assertAll();
         logger.info("Test testObjectResponseStructure completed successfully - all required fields present");
     }
 
@@ -112,6 +127,11 @@ public class ObjectGetTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating data types of response fields");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(response.jsonPath().getString("id"), "ID should not be null");
+        softAssert.assertTrue(response.jsonPath().getString("id") instanceof String, "ID should be String");
+        softAssert.assertNotNull(response.jsonPath().getInt("data.year"), "Year should not be null");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("id", isA(String.class))
@@ -121,6 +141,7 @@ public class ObjectGetTests extends BaseTest {
                 .body("data.'CPU model'", isA(String.class))
                 .body("data.'Hard disk size'", isA(String.class));
         
+        softAssert.assertAll();
         logger.info("Test testObjectDataTypes completed successfully - all data types are correct");
     }
 
@@ -135,10 +156,15 @@ public class ObjectGetTests extends BaseTest {
         logger.info("Response received in {} ms", responseTime);
         
         logger.info("Validating response time is less than 3000ms");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0");
+        
         response.then().log().status()
                 .statusCode(200)
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testObjectResponseTime completed successfully - response time: {} ms", responseTime);
     }
 
@@ -149,13 +175,19 @@ public class ObjectGetTests extends BaseTest {
         logger.info("Fetching object with ID: {}", objectId);
         
         Response response = objectService.getObjectById(objectId);
-        logger.info("Response received with content type: {}", response.getContentType());
+        String contentType = response.getContentType();
+        logger.info("Response received with content type: {}", contentType);
         
         logger.info("Validating content type is application/json");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json");
         
+        softAssert.assertAll();
         logger.info("Test testObjectContentType completed successfully");
     }
 

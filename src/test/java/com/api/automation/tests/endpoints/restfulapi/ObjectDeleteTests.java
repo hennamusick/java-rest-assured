@@ -44,9 +44,13 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating status code is 200 (OK)");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(response, "Response should not be null");
+        
         response.then().log().status().log().body()
                 .statusCode(200);
         
+        softAssert.assertAll();
         logger.info("Test testDeleteObjectStatusCode completed successfully");
     }
 
@@ -61,13 +65,20 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response message format");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        
+        String message = response.jsonPath().getString("message");
+        softAssert.assertNotNull(message, "Message should not be null");
+        softAssert.assertFalse(message.isEmpty(), "Message should not be empty");
+        softAssert.assertTrue(message.contains("deleted"), "Message should contain 'deleted'");
+        logger.info("Delete message received: {}", message);
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("message", notNullValue())
                 .body("message", containsString("deleted"));
         
-        String message = response.jsonPath().getString("message");
-        logger.info("Delete message received: {}", message);
+        softAssert.assertAll();
         logger.info("Test testDeleteObjectResponseMessage completed successfully");
     }
 
@@ -82,12 +93,19 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response message contains the deleted object ID");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        
+        String message = response.jsonPath().getString("message");
+        softAssert.assertNotNull(message, "Message should not be null");
+        softAssert.assertTrue(message.contains(objectId), "Message should contain ID: " + objectId);
+        softAssert.assertTrue(message.contains("deleted"), "Message should contain 'deleted'");
+        logger.info("Verified message contains ID {}: {}", objectId, message);
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("message", containsString(objectId));
         
-        String message = response.jsonPath().getString("message");
-        logger.info("Verified message contains ID {}: {}", objectId, message);
+        softAssert.assertAll();
         logger.info("Test testDeleteObjectResponseContainsId completed successfully");
     }
 
@@ -102,11 +120,17 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response content type");
+        String contentType = response.getContentType();
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        logger.info("Content type verified as: {}", contentType);
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json");
         
-        logger.info("Content type verified as application/json");
+        softAssert.assertAll();
         logger.info("Test testDeleteObjectContentType completed successfully");
     }
 
@@ -122,10 +146,15 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received in {} ms", responseTime);
         
         logger.info("Validating response time is acceptable (less than 3000 ms)");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0 ms");
+        
         response.then().log().status()
                 .statusCode(200)
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testDeleteObjectResponseTime completed successfully - response time: {} ms", responseTime);
     }
 
@@ -140,12 +169,20 @@ public class ObjectDeleteTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating response structure contains message field");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        
+        String message = response.jsonPath().getString("message");
+        softAssert.assertNotNull(message, "Message should not be null");
+        softAssert.assertFalse(message.isEmpty(), "Message should not be empty");
+        softAssert.assertTrue(response.jsonPath().getMap("$").containsKey("message"), "Response should contain message key");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("$", hasKey("message"))
                 .body("message", notNullValue())
                 .body("message", not(emptyString()));
         
+        softAssert.assertAll();
         logger.info("Response structure validated successfully");
         logger.info("Test testDeleteObjectResponseStructure completed successfully");
     }

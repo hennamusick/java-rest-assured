@@ -61,10 +61,15 @@ public class ObjectPutTests extends BaseTest {
         logger.info("Response received with status code: {}", response.getStatusCode());
         
         logger.info("Validating updated object data");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertNotNull(response, "Response should not be null");
+        softAssert.assertEquals(response.jsonPath().getString("name"), "Apple MacBook Pro 16 Updated", "Name should be updated");
+        
         response.then().log().status().log().body()
                 .statusCode(200)
                 .body("name", equalTo(updatedObject.getName()));
         
+        softAssert.assertAll();
         logger.info("Test testUpdateObject completed successfully - object updated");
     }
 
@@ -262,11 +267,19 @@ public class ObjectPutTests extends BaseTest {
         logger.info("Response received in {} ms", responseTime);
         
         logger.info("Validating response time and content type");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0");
+        String contentType = response.getContentType();
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json")
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testUpdateObjectPerformance completed - response time: {} ms", responseTime);
     }
 }

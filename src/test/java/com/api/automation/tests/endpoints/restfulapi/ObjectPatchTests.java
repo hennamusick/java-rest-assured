@@ -234,14 +234,22 @@ public class ObjectPatchTests extends BaseTest {
         Response response = objectService.patchObject(objectId, patchObject);
         long responseTime = response.getTime();
         logger.info("Response received in {} ms", responseTime);
-        logger.info("Response content type: {}", response.getContentType());
+        String contentType = response.getContentType();
+        logger.info("Response content type: {}", contentType);
         
         logger.info("Validating content type and response time");
+        softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200");
+        softAssert.assertTrue(responseTime < 3000, "Response time should be less than 3000 ms");
+        softAssert.assertTrue(responseTime > 0, "Response time should be greater than 0");
+        softAssert.assertNotNull(contentType, "Content-Type should not be null");
+        softAssert.assertTrue(contentType.contains("application/json"), "Content-Type should be application/json");
+        
         response.then().log().status()
                 .statusCode(200)
                 .contentType("application/json")
                 .time(lessThan(3000L));
         
+        softAssert.assertAll();
         logger.info("Test testPatchObjectContentTypeAndTime completed - response time: {} ms", responseTime);
     }
 
