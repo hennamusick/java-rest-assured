@@ -1,0 +1,31 @@
+image: maven:3.9.6-eclipse-temurin-17
+
+variables:
+  MAVEN_CLI_OPTS: "-B -Dmaven.test.failure.ignore=false"
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .m2/repository
+  policy: pull-push
+
+stages:
+  - test
+
+maven:test:
+  stage: test
+  script:
+    - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
+    - echo "Using Maven version: $(mvn -v | head -n 1)"
+    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test
+  artifacts:
+    when: always
+    paths:
+      - target/surefire-reports/**
+      - test-output/**
+      - allure-results/**
+    expire_in: 1 week
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
