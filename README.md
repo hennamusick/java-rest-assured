@@ -1,6 +1,25 @@
-# REST Assured API Testing Framework with Page Object Model
+# 🎓 REST Assured API Testing Framework - Complete Beginner's Guide
 
-A comprehensive REST API automation testing framework using REST Assured with Page Object Model (POM) design pattern. This framework demonstrates professional API testing with detailed logging, soft assertions, and comprehensive test coverage.
+A **comprehensive REST API automation testing framework** built with **REST Assured** and **Page Object Model (POM)** design pattern. Perfect for beginners learning API automation testing with Java!
+
+This repository demonstrates **professional API testing** with detailed logging, soft assertions, POJO models, and comprehensive test coverage across real REST APIs.
+
+## 📚 What You'll Learn
+
+This framework teaches you:
+- ✅ **REST API Testing fundamentals** (GET, POST, PUT, PATCH, DELETE)
+- ✅ **REST Assured framework** with fluent assertions
+- ✅ **Page Object Model (POM)** pattern for API testing
+- ✅ **POJO (Plain Old Java Objects)** for request/response handling
+- ✅ **Soft Assertions** for comprehensive validation
+- ✅ **TestNG** test framework and test management
+- ✅ **Maven** dependency management
+- ✅ **Lombok** for cleaner code
+- ✅ **Logging best practices** with SLF4J + Logback
+- ✅ **Allure reporting** for beautiful test reports
+- ✅ **Builder Pattern** for object creation
+- ✅ **JSON serialization/deserialization**
+- ✅ **CI/CD ready** test automation structure
 
 ## 🚀 Features
 
@@ -89,66 +108,469 @@ This framework implements POM pattern for API testing:
    - `RestClient.java`: REST Assured request/response specifications
    - `JsonUtils.java`: JSON serialization/deserialization with formatted output
 
+## 🎯 Perfect For Beginners Because...
+
+- 📖 **Well-documented code** with comments explaining every step
+- 🏗️ **Clean architecture** following industry best practices
+- 🔍 **Real APIs** - Test against actual REST APIs (no mocks!)
+- 📝 **Detailed logging** - See exactly what's happening in each test
+- 🎨 **Beautiful reports** - Visual test execution results with Allure
+- 🧩 **Modular design** - Easy to understand and extend
+- ✨ **Modern Java** - Uses latest features (Java 17+, Lombok, Lambda)
+
+---
+
 ## 🛠️ Prerequisites
 
-- Java 17 or higher
-- Maven 3.6 or higher
+### Required Software
+- **Java JDK 17 or higher** - [Download Here](https://www.oracle.com/java/technologies/downloads/)
+- **Maven 3.6 or higher** - [Download Here](https://maven.apache.org/download.cgi)
+- **IDE** (recommended):
+  - IntelliJ IDEA Community Edition - [Download Here](https://www.jetbrains.com/idea/download/)
+  - Eclipse IDE - [Download Here](https://www.eclipse.org/downloads/)
+  - VS Code with Java Extension Pack - [Download Here](https://code.visualstudio.com/)
 
-## 📦 Installation
-
-1. Clone the repository:
+### Verify Installation
 ```bash
-git clone <repository-url>
+# Check Java version
+java -version
+
+# Check Maven version
+mvn -version
+```
+
+## 📦 Quick Start Installation
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/hennamusick/java-rest-assured.git
 cd java-rest-assured
 ```
 
-2. Install dependencies:
+### Step 2: Install Dependencies
 ```bash
 mvn clean install
 ```
 
-## ▶️ Running Tests
-
-### Run all tests:
+### Step 3: Run Your First Test
 ```bash
-mvn clean test
+mvn test -Dtest=ObjectGetTests#testGetObjectById
 ```
 
-### Run specific test class:
-```bash
-mvn test -Dtest=UserTests
-```
-
-### Run with TestNG XML:
-```bash
-mvn test -DsuiteXmlFile=testng.xml
-```
-
-## 📊 Generate Allure Reports
-
-1. Run tests:
-```bash
-mvn clean test
-```
-
-2. Generate and open Allure report:
+### Step 4: View Test Results
 ```bash
 mvn allure:serve
 ```
 
+🎉 **Congratulations!** You just ran your first API automation test!
+
+---
+
+## 🚀 Running Tests
+
+### Run All Tests
+```bash
+mvn clean test
+```
+
+### Run Specific Test Class
+```bash
+# Run all User API tests
+mvn test -Dtest=UserTests
+
+# Run all Object DELETE tests
+mvn test -Dtest=ObjectDeleteTests
+
+# Run all Object POST tests
+mvn test -Dtest=ObjectPostTests
+```
+
+### Run Single Test Method
+```bash
+# Run specific test method
+mvn test -Dtest=UserTests#testGetUserById
+
+# Run multiple specific tests
+mvn test -Dtest=ObjectGetTests#testGetObjectById,testObjectResponseStructure
+```
+
+### Run Tests by Priority
+```bash
+# Run with TestNG XML configuration
+mvn test -DsuiteXmlFile=testng.xml
+```
+
+### Run Tests with Different Log Levels
+```bash
+# Run with debug logging
+mvn test -Dlogback.configurationFile=src/test/resources/logback.xml
+```
+
+## 📊 Generate Beautiful Test Reports
+
+### Allure Reports (Recommended)
+
+**Step 1: Run tests**
+```bash
+mvn clean test
+```
+
+**Step 2: Generate and view report**
+```bash
+mvn allure:serve
+```
+
+This will automatically:
+- Generate the Allure report
+- Start a local web server
+- Open the report in your default browser
+
+### TestNG HTML Reports
+
+After running tests, find the HTML report at:
+```
+target/surefire-reports/index.html
+```
+
+### Console Output
+
+View detailed test execution logs in the console with:
+- Test names and descriptions
+- Request/Response details
+- Assertion results
+- Execution time
+
+---
+
+## 📖 Understanding the Framework - Beginner's Guide
+
+### What is API Testing?
+
+**API (Application Programming Interface)** testing involves testing the communication between different software components. Unlike UI testing (clicking buttons), API testing:
+- Tests the backend logic directly
+- Is faster and more reliable
+- Can be automated easily
+- Catches bugs early in development
+
+### What is REST?
+
+**REST (Representational State Transfer)** is an architectural style for designing networked applications. REST APIs use HTTP methods:
+
+| HTTP Method | Purpose | Example |
+|------------|---------|---------|
+| **GET** | Retrieve data | Get user by ID |
+| **POST** | Create new data | Create new user |
+| **PUT** | Update entire resource | Update user completely |
+| **PATCH** | Update partial resource | Update user email only |
+| **DELETE** | Remove data | Delete user |
+
+### What is REST Assured?
+
+**REST Assured** is a Java library that simplifies testing REST APIs. It provides:
+- Easy-to-read syntax (fluent API)
+- Built-in JSON/XML parsing
+- Request/Response validation
+- Authentication support
+- Header management
+
+### What is Page Object Model (POM)?
+
+**POM** is a design pattern that:
+- Separates test logic from API endpoints
+- Makes code reusable and maintainable
+- Reduces code duplication
+- Makes tests easier to read
+
+**Example:**
+```java
+// ❌ Without POM (messy)
+given().get("/users/1").then().statusCode(200);
+
+// ✅ With POM (clean)
+Response response = userService.getUserById(1);
+assertThat(response.getStatusCode()).isEqualTo(200);
+```
+
+### What are POJOs?
+
+**POJO (Plain Old Java Object)** - Simple Java classes used to represent data:
+
+```java
+// POJO for User
+@Data
+@Builder
+public class User {
+    private Integer id;
+    private String name;
+    private String email;
+}
+
+// Using POJO
+User user = User.builder()
+    .name("John")
+    .email("john@example.com")
+    .build();
+```
+
+**Benefits:**
+- Type-safe (compile-time checking)
+- Auto-completion in IDE
+- Easy JSON conversion
+- Clean, readable code
+
+---
+
 ## 🔧 Configuration
+
+### Project Configuration
 
 Edit `src/test/resources/config.properties` to configure:
 
 ```properties
+# Base URL for JSONPlaceholder API
 base.uri=https://jsonplaceholder.typicode.com
+
+# Request timeout in seconds
 timeout=30
+
+# Environment name
 environment=dev
 ```
 
-## 📝 Example Usage
+### Logging Configuration
 
-### Service Layer (POM):
+Edit `src/test/resources/logback.xml` for logging settings:
+
+```xml
+<configuration>
+    <!-- Console logging -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Set log level: TRACE, DEBUG, INFO, WARN, ERROR -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+```
+
+### TestNG Configuration
+
+Edit `testng.xml` to configure test suites:
+
+```xml
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="API Test Suite">
+    <test name="Object API Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetTests"/>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPostTests"/>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectDeleteTests"/>
+        </classes>
+    </test>
+</suite>
+```
+
+---
+
+## 📝 Code Examples - Step by Step
+
+### Example 1: Simple GET Request (Beginner)
+
+```java
+@Test
+public void testGetUserById() {
+    // Step 1: Initialize the service
+    UserService userService = new UserService();
+    
+    // Step 2: Make GET request
+    Response response = userService.getUserById(1);
+    
+    // Step 3: Validate response
+    Assert.assertEquals(response.getStatusCode(), 200);
+    Assert.assertNotNull(response.jsonPath().getString("name"));
+    
+    System.out.println("User name: " + response.jsonPath().getString("name"));
+}
+```
+
+**What's happening:**
+1. Created a service object to interact with User API
+2. Called `getUserById(1)` which sends `GET /users/1`
+3. Validated status code is 200 (Success)
+4. Checked that name field exists
+5. Printed the user name
+
+### Example 2: POST Request with POJO (Intermediate)
+
+```java
+@Test
+public void testCreateUser() {
+    // Step 1: Create POJO object using Builder pattern
+    User newUser = User.builder()
+        .name("John Doe")
+        .username("johndoe")
+        .email("john@example.com")
+        .build();
+    
+    // Step 2: Initialize service
+    UserService userService = new UserService();
+    
+    // Step 3: Send POST request
+    Response response = userService.createUser(newUser);
+    
+    // Step 4: Validate response
+    Assert.assertEquals(response.getStatusCode(), 201); // 201 = Created
+    Assert.assertNotNull(response.jsonPath().getString("id"));
+    
+    System.out.println("Created user ID: " + response.jsonPath().getString("id"));
+}
+```
+
+**What's happening:**
+1. Used Builder pattern to create User object (clean code!)
+2. Sent POST request with User object (auto-converted to JSON)
+3. Validated 201 status (resource created)
+4. Verified server assigned an ID
+
+### Example 3: Advanced with Soft Assertions (Advanced)
+
+```java
+@Test
+public void testGetObjectWithSoftAssertions() {
+    // Initialize
+    SoftAssert softAssert = new SoftAssert();
+    ObjectService objectService = new ObjectService();
+    
+    // Make request
+    Response response = objectService.getObjectById("6");
+    
+    // Multiple assertions - ALL will execute even if one fails!
+    softAssert.assertEquals(response.getStatusCode(), 200, "Status should be 200");
+    softAssert.assertNotNull(response.jsonPath().getString("id"), "ID should exist");
+    softAssert.assertNotNull(response.jsonPath().getString("name"), "Name should exist");
+    softAssert.assertTrue(response.getTime() < 3000, "Response time should be < 3000ms");
+    softAssert.assertTrue(
+        response.getContentType().contains("application/json"), 
+        "Content type should be JSON"
+    );
+    
+    // Execute all assertions at once
+    softAssert.assertAll();
+}
+```
+
+**Benefits of Soft Assertions:**
+- ✅ All assertions run (doesn't stop at first failure)
+- ✅ See all validation issues at once
+- ✅ Better for comprehensive testing
+- ✅ Saves time debugging
+
+### Example 4: Complete CRUD Operations
+
+```java
+public class CompleteCRUDExample {
+    
+    @Test(priority = 1)
+    public void testCreate() {
+        // CREATE - POST
+        ApiObject newObject = ApiObject.builder()
+            .name("Apple MacBook Pro 16")
+            .data(Map.of("year", 2023, "price", 2499.99))
+            .build();
+        
+        Response response = objectService.createObject(newObject);
+        Assert.assertEquals(response.getStatusCode(), 200);
+        
+        // Save ID for next tests
+        String objectId = response.jsonPath().getString("id");
+        System.out.println("Created object with ID: " + objectId);
+    }
+    
+    @Test(priority = 2)
+    public void testRead() {
+        // READ - GET
+        Response response = objectService.getObjectById("6");
+        Assert.assertEquals(response.getStatusCode(), 200);
+        
+        // Extract data
+        String name = response.jsonPath().getString("name");
+        System.out.println("Retrieved object: " + name);
+    }
+    
+    @Test(priority = 3)
+    public void testUpdate() {
+        // UPDATE - PUT (full update)
+        ApiObject updateObject = ApiObject.builder()
+            .name("Apple MacBook Pro 16 (Updated)")
+            .data(Map.of("year", 2024, "price", 2699.99))
+            .build();
+        
+        Response response = objectService.updateObject("6", updateObject);
+        Assert.assertEquals(response.getStatusCode(), 200);
+    }
+    
+    @Test(priority = 4)
+    public void testPartialUpdate() {
+        // PARTIAL UPDATE - PATCH (partial update)
+        ApiObject patchObject = ApiObject.builder()
+            .name("MacBook Pro 16 - Special Edition")
+            .build();
+        
+        Response response = objectService.patchObject("6", patchObject);
+        Assert.assertEquals(response.getStatusCode(), 200);
+    }
+    
+    @Test(priority = 5)
+    public void testDelete() {
+        // DELETE
+        Response response = objectService.deleteObject("6");
+        Assert.assertEquals(response.getStatusCode(), 200);
+        
+        String message = response.jsonPath().getString("message");
+        Assert.assertTrue(message.contains("deleted"));
+    }
+}
+```
+
+### Example 5: Using POJO for Response Deserialization
+
+```java
+@Test
+public void testUserAsPOJO() {
+    // Get response as POJO object directly
+    User user = userService.getUserByIdAsObject(1);
+    
+    // Now use object properties (type-safe!)
+    Assert.assertNotNull(user.getName());
+    Assert.assertNotNull(user.getEmail());
+    
+    // Access nested objects
+    Assert.assertNotNull(user.getAddress());
+    Assert.assertNotNull(user.getAddress().getCity());
+    
+    // Print details
+    System.out.println("User: " + user.getName());
+    System.out.println("Email: " + user.getEmail());
+    System.out.println("City: " + user.getAddress().getCity());
+}
+```
+
+**Why use POJOs for responses:**
+- ✅ Type-safe access to fields
+- ✅ IDE auto-completion
+- ✅ Compile-time error checking
+- ✅ Cleaner code
+- ✅ Easy to work with nested structures
+
+---
+
+## 🏗️ Framework Architecture Explained
+
+### Service Layer (POM)
 ```java
 // Initialize service
 UserService userService = new UserService();
@@ -404,10 +826,258 @@ Abstract class providing common HTTP methods (GET, POST, PUT, PATCH, DELETE) wit
 </dependencies>
 ```
 
+---
+
+## 🎓 Learning Path for Beginners
+
+### Week 1: Basics
+1. **Understand REST APIs**
+   - Read about HTTP methods (GET, POST, PUT, DELETE)
+   - Learn about status codes (200, 201, 404, 500)
+   - Understand JSON format
+   
+2. **Run Existing Tests**
+   - Clone this repository
+   - Run `mvn test -Dtest=ObjectGetTests#testGetObjectById`
+   - Study the test code and logs
+   
+3. **Modify a Test**
+   - Open `ObjectGetTests.java`
+   - Change the object ID from "6" to "7"
+   - Run the test again
+
+### Week 2: Write Your First Test
+1. **Create a Simple GET Test**
+   - Copy an existing test method
+   - Change the endpoint or ID
+   - Add your own assertions
+   
+2. **Create a POST Test**
+   - Study `ObjectPostTests.java`
+   - Create a new object with different data
+   - Verify it was created successfully
+
+### Week 3: Advanced Concepts
+1. **Learn Soft Assertions**
+   - Add multiple validations to one test
+   - See how all assertions execute
+   
+2. **Work with POJOs**
+   - Create a custom data object
+   - Use Builder pattern
+   - Deserialize response to POJO
+
+### Week 4: Best Practices
+1. **Add Logging**
+   - Log important test steps
+   - Log request/response data
+   
+2. **Organize Tests**
+   - Group related tests
+   - Use TestNG annotations
+   - Create test suites
+
+---
+
+## 🔍 Common Scenarios & Solutions
+
+### Scenario 1: How to verify response contains specific field?
+```java
+Response response = userService.getUserById(1);
+Assert.assertNotNull(response.jsonPath().getString("name"));
+```
+
+### Scenario 2: How to verify status code?
+```java
+Response response = userService.getUserById(1);
+Assert.assertEquals(response.getStatusCode(), 200);
+```
+
+### Scenario 3: How to extract value from response?
+```java
+Response response = userService.getUserById(1);
+String userName = response.jsonPath().getString("name");
+String userEmail = response.jsonPath().getString("email");
+```
+
+### Scenario 4: How to verify response time?
+```java
+Response response = userService.getUserById(1);
+long responseTime = response.getTime();
+Assert.assertTrue(responseTime < 3000, "Response took too long!");
+```
+
+### Scenario 5: How to verify multiple conditions?
+```java
+SoftAssert softAssert = new SoftAssert();
+Response response = userService.getUserById(1);
+
+softAssert.assertEquals(response.getStatusCode(), 200);
+softAssert.assertNotNull(response.jsonPath().getString("name"));
+softAssert.assertTrue(response.getTime() < 3000);
+
+softAssert.assertAll(); // Execute all assertions
+```
+
+### Scenario 6: How to create object with nested data?
+```java
+Map<String, Object> data = new HashMap<>();
+data.put("year", 2023);
+data.put("price", 2499.99);
+data.put("CPU", "M2 Pro");
+data.put("RAM", "16 GB");
+
+ApiObject newObject = ApiObject.builder()
+    .name("Apple MacBook Pro 14")
+    .data(data)
+    .build();
+```
+
+### Scenario 7: How to handle authentication?
+```java
+// In BaseService.java, add to request specification:
+.header("Authorization", "Bearer " + token)
+```
+
+### Scenario 8: How to test error responses?
+```java
+Response response = userService.getUserById(9999); // Non-existent ID
+Assert.assertEquals(response.getStatusCode(), 404); // Not Found
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Issue: Tests fail with connection timeout
+**Solution:**
+- Check internet connection
+- Verify API endpoints are accessible
+- Increase timeout in `config.properties`
+
+### Issue: Maven dependencies not downloading
+**Solution:**
+```bash
+mvn clean install -U
+```
+
+### Issue: Java version error
+**Solution:**
+- Verify Java 17+ is installed: `java -version`
+- Set JAVA_HOME environment variable
+- Update pom.xml if using different Java version
+
+### Issue: Allure report not generating
+**Solution:**
+```bash
+# Install Allure
+brew install allure  # macOS
+# or download from https://github.com/allure-framework/allure2/releases
+
+# Then run
+mvn clean test
+mvn allure:serve
+```
+
+### Issue: Lombok not working in IDE
+**Solution:**
+- Install Lombok plugin in your IDE
+- Enable annotation processing in IDE settings
+- Restart IDE
+
+---
+
+## 📚 Additional Resources
+
+### Documentation
+- [REST Assured Documentation](https://rest-assured.io/)
+- [TestNG Documentation](https://testng.org/doc/)
+- [Allure Documentation](https://docs.qameta.io/allure/)
+- [Lombok Documentation](https://projectlombok.org/)
+
+### Tutorials
+- [REST API Tutorial](https://restfulapi.net/)
+- [JSON Tutorial](https://www.json.org/)
+- [Maven Tutorial](https://maven.apache.org/guides/getting-started/)
+
+### Practice APIs
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - Fake REST API
+- [ReqRes](https://reqres.in/) - Practice REST API
+- [Restful-API.dev](https://restful-api.dev/) - Test API for objects
+
+---
+
+## ❓ FAQ
+
+**Q: Do I need API development experience to use this framework?**
+A: No! This framework is designed for QA engineers and beginners. You only need to understand how to call APIs, not build them.
+
+**Q: Can I use this for my company's APIs?**
+A: Yes! Just update the base URLs in service classes and create POJOs for your API responses.
+
+**Q: How do I add authentication?**
+A: Add headers or tokens in the `BaseService` class request specification.
+
+**Q: Can I run tests in parallel?**
+A: Yes! Configure TestNG XML with `parallel="tests"` or `parallel="methods"`.
+
+**Q: How do I integrate with CI/CD?**
+A: Run `mvn test` in your CI pipeline (Jenkins, GitHub Actions, GitLab CI, etc.).
+
+**Q: What if I don't know Java well?**
+A: This framework uses simple Java concepts. Start with the examples and learn as you go!
+
+---
+
+## 🌟 Best Practices Implemented
+
+✅ **Page Object Model** - Service layer separates test logic from API endpoints
+✅ **POJO Pattern** - Type-safe request/response handling
+✅ **Builder Pattern** - Clean object creation
+✅ **Soft Assertions** - Comprehensive validation without stopping
+✅ **Detailed Logging** - SLF4J for debugging
+✅ **Proper Structure** - Organized packages and classes
+✅ **Reusable Code** - Base classes and utility methods
+✅ **Meaningful Names** - Clear method and variable names
+✅ **Comments** - Explains what code does
+✅ **Test Independence** - Each test can run standalone
+✅ **Data Validation** - Status codes, response times, content types
+✅ **Allure Reports** - Beautiful visual test results
+
+---
+
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - feel free to use it for learning and commercial projects!
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Whether you're fixing bugs, improving documentation, or adding new features:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 💬 Questions or Issues?
+
+- 📧 Open an issue in this repository
+- 💡 Check existing issues for solutions
+- 🌟 Star this repo if it helped you learn!
+
+---
+
+## 🎉 Conclusion
+
+You now have a **professional-grade API automation framework** that you can:
+- Learn from and practice with
+- Customize for your own projects
+- Use as a template for work projects
+- Showcase in your portfolio
+
+**Happy Testing! 🚀**
+
+---
+
+Made with ❤️ for API Test Automation learners
