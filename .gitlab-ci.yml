@@ -12,6 +12,7 @@ cache:
 
 stages:
   - test
+  - bvt
 
 maven:test:
   stage: test
@@ -29,3 +30,20 @@ maven:test:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+  maven:bvt:
+    stage: bvt
+    script:
+      - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
+      - echo "Using Maven version: $(mvn -v | head -n 1)"
+      - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=testng-bvt.xml
+    artifacts:
+      when: always
+      paths:
+        - target/surefire-reports/**
+        - test-output/**
+        - allure-results/**
+      expire_in: 1 week
+    rules:
+      - if: '$CI_PIPELINE_SOURCE == "push"'
+      - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

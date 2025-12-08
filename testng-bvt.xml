@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BVT High Priority Suite" verbose="1">
+    <!-- High-priority (priority = 1) tests only -->
+    <test name="Restful API - Core CRUD BVTs">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetTests">
+                <methods>
+                    <include name="testGetObjectById"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetAllTests">
+                <methods>
+                    <include name="testGetAllObjectsStatusCode"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetByIdsTests">
+                <methods>
+                    <include name="testGetObjectsByIds"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPostTests">
+                <methods>
+                    <include name="testCreateObject"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPutTests">
+                <methods>
+                    <include name="testUpdateObject"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPatchTests">
+                <methods>
+                    <include name="testPatchObjectNameOnly"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectDeleteTests">
+                <methods>
+                    <include name="testDeleteObjectStatusCode"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="JSONPlaceholder - Core BVTs">
+        <classes>
+            <class name="com.api.automation.tests.jsonplaceholder.PostTests">
+                <methods>
+                    <include name="testGetAllPosts"/>
+                </methods>
+            </class>
+            <class name="com.api.automation.tests.jsonplaceholder.UserTests">
+                <methods>
+                    <include name="testGetAllUsers"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
