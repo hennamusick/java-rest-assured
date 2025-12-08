@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Testing Suite" verbose="1">
+    <!-- All regression level tests (priority >= 2) -->
+    
+    <test name="User API Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.jsonplaceholder.UserTests">
+                <methods>
+                    <include name="testGetUserById"/>
+                    <include name="testGetUserAsObject"/>
+                    <include name="testCreateUser"/>
+                    <include name="testUpdateUser"/>
+                    <include name="testPartialUpdateUser"/>
+                    <include name="testDeleteUser"/>
+                    <include name="testGetAllUsersAsArray"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Post API Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.jsonplaceholder.PostTests">
+                <methods>
+                    <include name="testGetPostById"/>
+                    <include name="testGetPostAsObject"/>
+                    <include name="testGetPostsByUserId"/>
+                    <include name="testCreatePost"/>
+                    <include name="testUpdatePost"/>
+                    <include name="testPartialUpdatePost"/>
+                    <include name="testDeletePost"/>
+                    <include name="testGetAllPostsAsArray"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API GET Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetTests">
+                <methods>
+                    <include name="testGetObjectAsObject"/>
+                    <include name="testObjectResponseStructure"/>
+                    <include name="testObjectResponseDataTypes"/>
+                    <include name="testObjectResponseTime"/>
+                    <include name="testObjectContentType"/>
+                    <include name="testGetAllObjects"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API GET by IDs Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetByIdsTests">
+                <methods>
+                    <include name="testGetObjectsByIdsAsArray"/>
+                    <include name="testObjectsByIdsResponseStructure"/>
+                    <include name="testGetSingleObjectByIdQueryParam"/>
+                    <include name="testObjectsDataFieldContents"/>
+                    <include name="testGetObjectsByIdsContentTypeAndHeaders"/>
+                    <include name="testGetObjectsByIdsResponseTime"/>
+                    <include name="testGetObjectsByIdsMixedOrder"/>
+                    <include name="testGetObjectsByIdsDuplicateIds"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API GET All Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectGetAllTests">
+                <methods>
+                    <include name="testGetAllObjectsIsArray"/>
+                    <include name="testGetAllObjectsRequiredFields"/>
+                    <include name="testGetAllObjectsAsArray"/>
+                    <include name="testGetAllObjectsMinimumCount"/>
+                    <include name="testGetAllObjectsUniqueIds"/>
+                    <include name="testGetAllObjectsSpecificObjectsExist"/>
+                    <include name="testGetAllObjectsNullDataField"/>
+                    <include name="testGetAllObjectsDifferentDataStructures"/>
+                    <include name="testGetAllObjectsContentType"/>
+                    <include name="testGetAllObjectsResponseTime"/>
+                    <include name="testGetAllObjectsNoEmptyIds"/>
+                    <include name="testGetAllObjectsNonEmptyNames"/>
+                    <include name="testGetAllObjectsDuplicateNames"/>
+                    <include name="testGetAllObjectsConsistentStructure"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API POST Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPostTests">
+                <methods>
+                    <include name="testCreateAppleMacBookPro16"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API PUT Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPutTests">
+                <methods>
+                    <include name="testUpdateObjectApiDocExample"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API PATCH Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectPatchTests">
+                <methods>
+                    <include name="testPatchObjectResponseStructure"/>
+                    <include name="testPatchObjectDataFieldOnly"/>
+                    <include name="testPatchObjectWithBothNameAndData"/>
+                    <include name="testPatchObjectWithAdditionalFields"/>
+                    <include name="testPatchObjectPreservedDataFields"/>
+                    <include name="testPatchObjectContentTypeAndResponseTime"/>
+                    <include name="testPatchObjectWithEmptyData"/>
+                    <include name="testPatchMultipleObjectsSequentially"/>
+                    <include name="testPatchObjectIdempotent"/>
+                    <include name="testPatchObjectReturnUpdatedAsObject"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Object API DELETE Regression Tests">
+        <classes>
+            <class name="com.api.automation.tests.endpoints.restfulapi.ObjectDeleteTests">
+                <methods>
+                    <include name="testDeleteObjectResponseMessage"/>
+                    <include name="testDeleteObjectResponseContainsId"/>
+                    <include name="testDeleteObjectContentType"/>
+                    <include name="testDeleteObjectResponseTime"/>
+                    <include name="testDeleteObjectResponseStructure"/>
+                    <include name="testDeleteMultipleObjectsSequentially"/>
+                    <include name="testDeleteObjectMessageFormat"/>
+                    <include name="testDeleteObjectIdInResponseMessage"/>
+                    <include name="testDeleteObjectResponseDoesNotContainObjectData"/>
+                    <include name="testDeleteObjectResponseHasOnlyMessageKey"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
