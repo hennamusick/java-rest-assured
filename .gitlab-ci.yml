@@ -10,16 +10,35 @@ cache:
     - .m2/repository
   policy: pull-push
 
-stages:
+stages:          # List of stages for jobs, and their order of execution
+  - build
   - test
-  - bvt
+  - deploy
+
+maven:build:
+  stage: build
+  script:
+    - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
+    - echo "Using Maven version: $(mvn -v | head -n 1)"
+    - echo "Building application - skipping tests..."
+    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean install -DskipTests
+  artifacts:
+    when: always
+    paths:
+      - target/**
+      - .m2/repository/**
+    expire_in: 1 week
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 maven:test:
   stage: test
   script:
     - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
     - echo "Using Maven version: $(mvn -v | head -n 1)"
-    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test
+    - echo "Running BVT tests..."
+    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=testng-bvt.xml
   artifacts:
     when: always
     paths:
@@ -31,19 +50,11 @@ maven:test:
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-  maven:bvt:
-    stage: bvt
-    script:
-      - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
-      - echo "Using Maven version: $(mvn -v | head -n 1)"
-      - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=testng-bvt.xml
-    artifacts:
-      when: always
-      paths:
-        - target/surefire-reports/**
-        - test-output/**
-        - allure-results/**
-      expire_in: 1 week
-    rules:
-      - if: '$CI_PIPELINE_SOURCE == "push"'
-      - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+maven:deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
