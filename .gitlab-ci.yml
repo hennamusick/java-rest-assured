@@ -39,7 +39,7 @@ maven:test:
     - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
     - echo "Using Maven version: $(mvn -v | head -n 1)"
     - echo "Running BVT tests..."
-    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=testng-bvt.xml
+    - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=test-suites/testng-bvt.xml
   artifacts:
     when: always
     paths:
