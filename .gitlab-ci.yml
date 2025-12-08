@@ -34,6 +34,7 @@ maven:build:
 
 maven:test:
   stage: test
+  needs: ["maven:build"]
   script:
     - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
     - echo "Using Maven version: $(mvn -v | head -n 1)"
@@ -52,6 +53,7 @@ maven:test:
 
 maven:deploy:
   stage: deploy
+  needs: ["maven:test"]
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
