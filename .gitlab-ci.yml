@@ -16,10 +16,6 @@ cache:
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-.version_check: &version_check
-  - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
-  - echo "Using Maven version: $(mvn -v | head -n 1)"
-
 .artifacts_config: &artifacts_config
   artifacts:
     when: always
@@ -33,7 +29,8 @@ stages:          # List of stages for jobs, and their order of execution
 maven:build:
   stage: build
   script:
-    - *version_check
+    - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
+    - echo "Using Maven version: $(mvn -v | head -n 1)"
     - echo "Building application - skipping tests..."
     - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean install -DskipTests
   <<: *artifacts_config
@@ -47,7 +44,8 @@ maven:test:
   stage: test
   needs: ["maven:build"]
   script:
-    - *version_check
+    - echo "Using Java version: $(java -version 2>&1 | head -n 1)"
+    - echo "Using Maven version: $(mvn -v | head -n 1)"
     - echo "Running BVT tests..."
     - mvn $MAVEN_CLI_OPTS $MAVEN_OPTS clean test -DsuiteXmlFile=test-suites/testng-bvt.xml
   <<: *artifacts_config
