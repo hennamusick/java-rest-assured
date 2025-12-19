@@ -4,6 +4,42 @@ A **comprehensive REST API automation testing framework** built with **REST Assu
 
 This repository demonstrates **professional API testing** with detailed logging, soft assertions, POJO models, and comprehensive test coverage across real REST APIs.
 
+---
+
+## 📋 Table of Contents
+
+- [What You'll Learn](#-what-youll-learn)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Architecture](#️-architecture)
+- [Perfect For Beginners Because](#-perfect-for-beginners-because)
+- [Framework Architecture - End-to-End Flow](#-framework-architecture---end-to-end-flow)
+- [Prerequisites](#️-prerequisites)
+- [Quick Start Installation](#-quick-start-installation)
+- [Running Tests](#-running-tests)
+- [Generate Beautiful Test Reports](#-generate-beautiful-test-reports)
+- [Understanding the Framework - Beginner's Guide](#-understanding-the-framework---beginners-guide)
+- [Configuration](#-configuration)
+- [Code Examples - Step by Step](#-code-examples---step-by-step)
+- [Framework Architecture Explained](#️-framework-architecture-explained)
+- [Test Coverage](#-test-coverage)
+- [Key Components](#-key-components)
+- [APIs Under Test](#-apis-under-test)
+- [Dependencies](#-dependencies)
+- [Learning Path for Beginners](#-learning-path-for-beginners)
+- [Common Scenarios & Solutions](#-common-scenarios--solutions)
+- [Troubleshooting](#-troubleshooting)
+- [Additional Resources](#-additional-resources)
+- [FAQ](#-faq)
+- [Best Practices Implemented](#-best-practices-implemented)
+- [Annotated Code Walkthroughs (Line-by-Line)](#-annotated-code-walkthroughs-line-by-line)
+- [License](#-license)
+- [Contributing](#-contributing)
+- [Questions or Issues](#-questions-or-issues)
+- [Conclusion](#-conclusion)
+
+---
+
 ## 📚 What You'll Learn
 
 This framework teaches you:
