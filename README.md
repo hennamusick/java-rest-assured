@@ -1582,7 +1582,132 @@ maven:test:                                       # [4]
 - [5]: `needs` ensures build success before tests start.
 - [6]: Runs the BVT suite explicitly from `test-suites/`.
 
-If you want deeper walkthroughs (GET/POST/PATCH/DELETE scenarios, JSONPlaceholder services, Allure setup), I can extend this section further.
+### 7) POST Test — `ObjectPostTests#testCreateObject` (with Builder Pattern)
+
+```java
+@Test(priority = 1, description = "Verify creating a new object with complete data")  // [1]
+public void testCreateObject() {
+    logger.info("Starting test: testCreateObject");                       // [2]
+    logger.info("Preparing test data for new object creation");          // [3]
+    
+    Map<String, Object> data = new HashMap<>();                          // [4]
+    data.put("year", 2023);                                              // [5]
+    data.put("price", 2499.99);                                          // [6]
+    data.put("CPU model", "M2 Max");                                     // [7]
+    data.put("Hard disk size", "2 TB");                                  // [8]
+
+    ApiObject newObject = ApiObject.builder()                            // [9]
+            .name("Apple MacBook Pro 14")                                // [10]
+            .data(data)                                                   // [11]
+            .build();                                                     // [12]
+    
+    logger.info("Request JSON body: \n{}", JsonUtils.serialize(newObject)); // [13]
+    logger.info("Creating new object: {}", newObject.getName());         // [14]
+    Response response = objectService.createObject(newObject);           // [15]
+    logger.info("Response received with status code: {}", response.getStatusCode()); // [16]
+    
+    logger.info("Validating created object data");                       // [17]
+    softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200"); // [18]
+    softAssert.assertNotNull(response, "Response should not be null");   // [19]
+    softAssert.assertNotNull(response.jsonPath().getString("id"), 
+                             "Response should contain ID");              // [20]
+    softAssert.assertEquals(response.jsonPath().getString("name"), 
+                           "Apple MacBook Pro 14", "Name should match"); // [21]
+    
+    response.then().log().status().log().body()                          // [22]
+            .statusCode(200)                                              // [23]
+            .body("name", equalTo(newObject.getName()))                  // [24]
+            .body("data.year", equalTo(2023))                            // [25]
+            .body("data.price", equalTo(2499.99f))                       // [26]
+            .body("data.'CPU model'", equalTo("M2 Max"))                // [27]
+            .body("data.'Hard disk size'", equalTo("2 TB"));            // [28]
+    
+    softAssert.assertAll();                                              // [29]
+    logger.info("Test testCreateObject completed successfully - object created"); // [30]
+}
+```
+
+- [1]: Test metadata (priority for suite ordering, description for reports).
+- [2]-[3]: Structured logging for debugging and Allure report enrichment.
+- [4]-[8]: Build a dynamic `Map<String, Object>` for nested JSON fields (flexible schema).
+- [9]-[12]: Lombok Builder pattern in action; chainable, readable object creation.
+- [13]: JSON serialization utility for request logging (pretty-print).
+- [14]-[16]: Service call with pre/post logging; separates concerns (test logic vs. API call).
+- [17]: Clear validation checkpoint for test step clarity.
+- [18]-[21]: TestNG SoftAssert for status, non-null, ID presence, and name match.
+- [22]-[28]: Fluent Hamcrest-style assertions via REST Assured DSL (nested path `data.year`).
+- [29]: Finalize all soft assertions; fails test if any assertion failed.
+- [30]: Test completion log with contextual detail.
+
+### 8) DELETE Test with AssertionHelper — `ObjectDeleteTests#testDeleteObjectStatusCode`
+
+```java
+@Test(priority = 1, description = "Verify deleting an existing object returns 200 status") // [1]
+public void testDeleteObjectStatusCode() {
+    assertionHelper.logTestStart("testDeleteObjectStatusCode");          // [2]
+    
+    String objectId = "6";                                               // [3]
+    assertionHelper.logRequest("DELETE", objectId);                      // [4]
+    Response response = objectService.deleteObject(objectId);            // [5]
+    assertionHelper.assertStatusCodeAndLogging(response, 200);           // [6]
+    
+    response.then().log().status().log().body()                          // [7]
+            .statusCode(200);                                             // [8]
+    
+    assertionHelper.assertAll();                                         // [9]
+    assertionHelper.logTestCompletion("testDeleteObjectStatusCode");     // [10]
+}
+```
+
+- [1]: Standard TestNG annotation with priority (1 = runs first) and description.
+- [2]: `AssertionHelper` centralizes repetitive log patterns; keeps test concise.
+- [3]: Test data (immutable resource ID from API docs).
+- [4]: Logs HTTP method + resource for request traceability.
+- [5]: Service-layer call (POM); encapsulates DELETE endpoint logic.
+- [6]: Combined assertion + logging via helper method; validates status and logs outcome.
+- [7]-[8]: REST Assured's fluent validation DSL; can chain multiple body/header checks.
+- [9]: Delegates to SoftAssert.assertAll() via helper; preserves all assertion results.
+- [10]: Final log marker; test passed if we reach here.
+
+### 9) AssertionHelper Utility — Centralized Assertion Logic
+
+```java
+public class AssertionHelper {                                           // [1]
+    private final SoftAssert softAssert;                                 // [2]
+    private final Logger logger;                                         // [3]
+
+    public AssertionHelper(SoftAssert softAssert, Logger logger) {       // [4]
+        this.softAssert = softAssert;                                    // [5]
+        this.logger = logger;                                            // [6]
+    }
+
+    public void logTestStart(String testMethodName) {                    // [7]
+        logger.info("Starting test: {}", testMethodName);                // [8]
+    }
+
+    public void assertStatusCode(Response response, int expectedStatusCode, String context) { // [9]
+        logger.info("Response received with status code: {}", response.getStatusCode()); // [10]
+        softAssert.assertEquals(response.getStatusCode(), expectedStatusCode, 
+                               "Status code should be " + expectedStatusCode + " - " + context); // [11]
+    }
+
+    public void assertAll() {                                            // [12]
+        softAssert.assertAll();                                          // [13]
+    }
+}
+```
+
+- [1]: Utility class following single-responsibility principle (assertions + logging).
+- [2]-[3]: Immutable dependencies injected via constructor (thread-safe per test).
+- [4]-[6]: Constructor injection; each test method gets a fresh instance (via `@BeforeMethod`).
+- [7]-[8]: Reusable log method; standardizes test start messages across all tests.
+- [9]-[11]: Combines assertion + logging; reduces 3 lines to 1 in every test.
+- [12]-[13]: Delegates to SoftAssert; preserves test failure if any assertion failed.
+
+**Why AssertionHelper?**
+- **DRY Principle**: Eliminates duplicated logger/assert patterns across 50+ test methods.
+- **Maintainability**: Change log format once; all tests inherit the update.
+- **Readability**: Tests focus on "what" (business logic) vs. "how" (logging syntax).
 
 ---
 
