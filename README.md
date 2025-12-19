@@ -1415,6 +1415,177 @@ A: This framework uses simple Java concepts. Start with the examples and learn a
 
 ---
 
+## 🧩 Annotated Code Walkthroughs (Line-by-Line)
+
+This section explains key parts of the framework line-by-line so you can connect tests → services → POJOs → utilities → CI.
+
+### 1) Service Layer — `ObjectService`
+
+```java
+public class ObjectService {                                        // [1]
+    private static final String BASE_URI = "https://api.restful-api.dev"; // [2]
+    private static final String OBJECTS_PATH = "/objects";               // [3]
+
+    public Response getObjectById(String objectId) {               // [4]
+        return given()                                             // [5]
+                .log().method().log().uri()                        // [6]
+                .baseUri(BASE_URI)                                 // [7]
+                .basePath(OBJECTS_PATH)                            // [8]
+                .when()                                            // [9]
+                .get("/" + objectId);                              // [10]
+    }
+
+    public Response updateObject(String objectId, ApiObject body) { // [11]
+        return given()                                              // [12]
+                .log().method().log().uri()                         // [13]
+                .baseUri(BASE_URI)                                  // [14]
+                .basePath(OBJECTS_PATH)                             // [15]
+                .contentType("application/json")                    // [16]
+                .body(body)                                         // [17]
+                .when()                                             // [18]
+                .put("/" + objectId);                               // [19]
+    }
+}
+```
+
+- [1]: A dedicated service class per API domain (POM pattern).
+- [2]: Central base URL for the API under test.
+- [3]: All object endpoints share the same path; keeps requests consistent.
+- [4]: Method signature: accepts the target resource ID.
+- [5]: Starts a REST Assured request (fluent builder API).
+- [6]: Logs method and URI for clear request visibility.
+- [7]-[8]: Sets base URI and resource path once, avoiding duplication.
+- [9]: Switches from request building to execution stage.
+- [10]: Executes GET on a specific resource using the provided ID.
+- [11]-[19]: PUT request flow with JSON body (POJO is auto-serialized by Jackson).
+
+### 2) Model Layer — `ApiObject` (POJO with Lombok)
+
+```java
+@Data               // [1]
+@Builder            // [2]
+@NoArgsConstructor  // [3]
+@AllArgsConstructor // [4]
+public class ApiObject {               // [5]
+    private String id;                 // [6]
+    private String name;               // [7]
+    private Map<String, Object> data;  // [8]
+}
+```
+
+- [1]: Generates getters, setters, equals, hashCode, toString.
+- [2]: Adds a fluent Builder for readable object creation in tests.
+- [3]-[4]: Adds both empty and full-args constructors for flexibility.
+- [5]-[8]: Simple, type-safe structure mirroring API payloads.
+
+### 3) Test Base — `BaseTest`
+
+```java
+@BeforeClass
+public void setUp() {                  // [1]
+    RestClient.getRequestSpec();       // [2]
+    RestClient.getResponseSpec();      // [3]
+}
+
+@AfterClass
+public void tearDown() {               // [4]
+    RestClient.resetSpecs();           // [5]
+}
+```
+
+- [1]: Runs once per class; prepares common REST Assured specs.
+- [2]: Request spec sets base URI, content type, and logging filters.
+- [3]: Response spec centralizes expectations like JSON content type.
+- [4]-[5]: Cleanly resets global state after the class finishes.
+
+### 4) REST Assured Utility — `RestClient`
+
+```java
+public static RequestSpecification getRequestSpec() {              // [1]
+    if (requestSpec == null) {                                     // [2]
+        requestSpec = new RequestSpecBuilder()                      // [3]
+                .setBaseUri(ConfigManager.getInstance().getBaseUri()) // [4]
+                .setContentType(ContentType.JSON)                   // [5]
+                .addFilter(new RequestLoggingFilter())              // [6]
+                .addFilter(new ResponseLoggingFilter())             // [7]
+                .build();                                           // [8]
+    }
+    return requestSpec;                                            // [9]
+}
+```
+
+- [1]: Provides a singleton-like request specification instance.
+- [2]: Lazily initializes the spec once per JVM to avoid repetition.
+- [3]-[5]: Establish consistent base URI and JSON content type.
+- [6]-[7]: Enable full request/response logging for debugging.
+- [8]-[9]: Build and reuse the configured specification.
+
+### 5) A Real Test — `ObjectPutTests#testUpdateObject`
+
+```java
+@Test(priority = 1, description = "Verify updating an object with complete data replacement") // [1]
+public void testUpdateObject() {
+    String objectId = "7";                                  // [2]
+
+    Map<String, Object> updatedData = new HashMap<>();      // [3]
+    updatedData.put("year", 2024);                          // [4]
+    updatedData.put("price", 2999.99);                      // [5]
+    updatedData.put("CPU model", "M3 Max");                // [6]
+    updatedData.put("Hard disk size", "4 TB");             // [7]
+
+    ApiObject updatedObject = ApiObject.builder()           // [8]
+            .name("Apple MacBook Pro 16 Updated")           // [9]
+            .data(updatedData)                              // [10]
+            .build();                                       // [11]
+
+    Response response = objectService.updateObject(objectId, updatedObject); // [12]
+
+    softAssert.assertEquals(response.getStatusCode(), 200, "Status code should be 200"); // [13]
+    softAssert.assertEquals(response.jsonPath().getString("name"),
+            "Apple MacBook Pro 16 Updated", "Name should be updated"); // [14]
+    softAssert.assertAll();                                    // [15]
+}
+```
+
+- [1]: Prioritization helps compose BVT vs. regression suites.
+- [2]: Target resource ID under test (stable example from API docs).
+- [3]-[7]: Build a flexible JSON map for dynamic fields like specs/pricing.
+- [8]-[11]: Use the Lombok Builder to create a clean request body.
+- [12]: Call into the service layer (POM) to perform the PUT.
+- [13]-[15]: Validate status + body using TestNG SoftAssert, then finalize.
+
+### 6) CI Pipeline — Key Bits Explained
+
+```yaml
+stages: [build, test, deploy]                     # [1]
+
+maven:build:                                      # [2]
+  stage: build
+  script:
+    - mvn -B -Dmaven.test.failure.ignore=false \
+      -Dmaven.repo.local=$CI_PROJECT_DIR/.m2 \
+      clean install -DskipTests                  # [3]
+
+maven:test:                                       # [4]
+  stage: test
+  needs: ["maven:build"]                          # [5]
+  script:
+    - mvn -B -Dmaven.test.failure.ignore=false \
+      -Dmaven.repo.local=$CI_PROJECT_DIR/.m2 \
+      clean test -DsuiteXmlFile=test-suites/testng-bvt.xml  # [6]
+```
+
+- [1]: Standard pipeline flow; fails fast if any stage fails.
+- [2]: Uses official Maven+JDK image; consistent CI env.
+- [3]: Build artifacts quickly by skipping tests.
+- [4]: Isolated test stage runs after a successful build.
+- [5]: `needs` ensures build success before tests start.
+- [6]: Runs the BVT suite explicitly from `test-suites/`.
+
+If you want deeper walkthroughs (GET/POST/PATCH/DELETE scenarios, JSONPlaceholder services, Allure setup), I can extend this section further.
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - feel free to use it for learning and commercial projects!
