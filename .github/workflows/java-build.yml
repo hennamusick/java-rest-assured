@@ -41,6 +41,7 @@ jobs:
         if [ -f "test-suites/testng.xml" ]; then
           mvn test -B -DsuiteXmlFile=test-suites/testng.xml
         else
+          echo "Warning: test-suites/testng.xml not found. Falling back to 'mvn test -B' using pom.xml configuration."
           mvn test -B
         fi
       continue-on-error: true
