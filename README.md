@@ -1,5 +1,7 @@
 # 🎓 REST Assured API Testing Framework - Complete Beginner's Guide
 
+[![Java CI/CD](https://github.com/hennamusick/java-rest-assured/actions/workflows/java-build.yml/badge.svg)](https://github.com/hennamusick/java-rest-assured/actions/workflows/java-build.yml)
+
 A **comprehensive REST API automation testing framework** built with **REST Assured** and **Page Object Model (POM)** design pattern. Perfect for beginners learning API automation testing with Java!
 
 This repository demonstrates **professional API testing** with detailed logging, soft assertions, POJO models, and comprehensive test coverage across real REST APIs.
@@ -528,7 +530,7 @@ This architecture ensures:
 ## 🛠️ Prerequisites
 
 ### Required Software
-- **Java JDK 17 or higher** - [Download Here](https://www.oracle.com/java/technologies/downloads/)
+- **Java JDK 21 (LTS)** - [Download Here](https://www.oracle.com/java/technologies/downloads/)
 - **Maven 3.6 or higher** - [Download Here](https://maven.apache.org/download.cgi)
 - **IDE** (recommended):
   - IntelliJ IDEA Community Edition - [Download Here](https://www.jetbrains.com/idea/download/)
@@ -602,7 +604,7 @@ mvn test -Dtest=ObjectGetTests#testGetObjectById,testObjectResponseStructure
 ### Run Tests by Priority
 ```bash
 # Run with TestNG XML configuration
-mvn test -DsuiteXmlFile=testng.xml
+mvn test -DsuiteXmlFile=test-suites/testng.xml
 ```
 
 ### Run Tests with Different Log Levels
@@ -644,6 +646,19 @@ View detailed test execution logs in the console with:
 - Request/Response details
 - Assertion results
 - Execution time
+
+## ⚙️ CI/CD Pipeline (GitHub Actions)
+
+- **Triggers:** Runs on both `push` and `pull_request` events.
+- **Build:** Uses `actions/setup-java@v4` with Java 21 (LTS) and Maven cache.
+- **Tests:** Executes `mvn -B -U -e -DskipITs=true test` with TestNG.
+- **Reports:** Generates Allure via CLI (`allure generate`) and deploys to GitHub Pages on `push`.
+- **PRs:** Pull requests run tests and artifacts; report deploy is skipped.
+
+How to view CI results:
+- Check workflow runs under GitHub “Actions”.
+- Allure report (when enabled) publishes to GitHub Pages: `https://hennamusick.github.io/java-rest-assured/`.
+- To enable Pages, set repository Settings → Pages → Branch: `gh-pages` (root).
 
 ---
 
@@ -1368,7 +1383,7 @@ mvn clean install -U
 
 ### Issue: Java version error
 **Solution:**
-- Verify Java 17+ is installed: `java -version`
+- Verify Java 21+ is installed: `java -version`
 - Set JAVA_HOME environment variable
 - Update pom.xml if using different Java version
 
