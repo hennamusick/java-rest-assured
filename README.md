@@ -653,11 +653,11 @@ View detailed test execution logs in the console with:
 - **Build:** Uses `actions/setup-java@v4` with Java 21 (LTS) and Maven cache.
 - **Tests:** Executes `mvn -B -U -e -DskipITs=true test` with TestNG.
 - **Reports:** Generates Allure via CLI (`allure generate`) and deploys to GitHub Pages on `push`.
-- **PRs:** Pull requests run tests and artifacts; report deploy is skipped.
+- **PRs:** Pull requests run tests and artifacts. Report deployment to GitHub Pages is skipped, so PRs won’t include a live report link; download the `allure-results` artifact and run `allure serve` locally.
 
 How to view CI results:
 - Check workflow runs under GitHub “Actions”.
-- Allure report (when enabled) publishes to GitHub Pages: `https://hennamusick.github.io/java-rest-assured/`.
+- Allure report (when enabled) publishes to GitHub Pages: `https://your-username.github.io/java-rest-assured/`.
 - To enable Pages, set repository Settings → Pages → Branch: `gh-pages` (root).
 
 ---
