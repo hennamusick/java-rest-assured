@@ -83,7 +83,7 @@ public class PostTests extends BaseTest {
         
         logger.info("Validating Post object fields");
         softAssert.assertNotNull(post, "Post should not be null");
-        softAssert.assertEquals(post.getId(), postId, "Post ID should match");
+        softAssert.assertEquals((int)post.getId(), (int)postId, "Post ID should match");
         softAssert.assertFalse(post.getTitle().isEmpty(), "Post title should not be empty");
         softAssert.assertTrue(post.getUserId() > 0, "User ID should be positive");
         

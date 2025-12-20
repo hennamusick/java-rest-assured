@@ -82,7 +82,7 @@ public class UserTests extends BaseTest {
         
         logger.info("Validating User object fields");
         softAssert.assertNotNull(user, "User should not be null");
-        softAssert.assertEquals(user.getId(), userId, "User ID should match");
+        softAssert.assertEquals((int)user.getId(), (int)userId, "User ID should match");
         softAssert.assertFalse(user.getName().isEmpty(), "User name should not be empty");
         softAssert.assertTrue(user.getEmail().contains("@"), "Email should contain @");
         
