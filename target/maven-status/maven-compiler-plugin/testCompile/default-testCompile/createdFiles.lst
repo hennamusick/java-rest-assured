@@ -1,0 +1,13 @@
+com/api/automation/tests/endpoints/restfulapi/ObjectDeleteTests.class
+com/api/automation/tests/endpoints/restfulapi/ObjectPatchTests.class
+com/api/automation/tests/endpoints/restfulapi/ObjectPutTests.class
+com/api/automation/tests/endpoints/restfulapi/ObjectGetTests.class
+com/api/automation/tests/endpoints/restfulapi/ObjectGetByIdsTests.class
+com/api/automation/tests/endpoints/restfulapi/ObjectPostTests.class
+com/api/automation/tests/utils/BaseTest.class
+com/api/automation/tests/utils/TestUtils$ResponseFetcher.class
+com/api/automation/tests/jsonplaceholder/UserTests.class
+com/api/automation/tests/utils/AssertionHelper.class
+com/api/automation/tests/endpoints/restfulapi/ObjectGetAllTests.class
+com/api/automation/tests/jsonplaceholder/PostTests.class
+com/api/automation/tests/utils/TestUtils.class

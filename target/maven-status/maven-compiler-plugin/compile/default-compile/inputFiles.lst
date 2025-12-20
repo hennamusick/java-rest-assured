@@ -1,0 +1,10 @@
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/config/ConfigManager.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/models/ApiObject.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/models/Post.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/models/User.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/services/BaseService.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/services/ObjectService.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/services/PostService.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/services/UserService.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/utils/JsonUtils.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/main/java/com/api/automation/utils/RestClient.java
