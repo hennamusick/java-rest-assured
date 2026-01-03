@@ -660,6 +660,49 @@ How to view CI results:
 - Allure report (when enabled) publishes to GitHub Pages: `https://your-username.github.io/java-rest-assured/`.
 - To enable Pages, set repository Settings → Pages → Branch: `gh-pages` (root).
 
+### Auto-PR Workflow (auto-pr-develop-to-main.yml)
+
+**Purpose:** Automatically create and maintain a pull request from `develop` to `main`.
+
+**How it works:**
+1. Triggers on every push to `develop` branch
+2. Checks if PR from `develop` to `main` already exists
+3. If no PR exists → Creates new PR automatically
+4. If PR exists → Keeps it in sync with latest commits
+
+**Configuration:**
+- Uses GitHub CLI (`gh pr create`) for reliability and idempotency
+- Prevents duplicate PRs automatically
+- Title: `chore: merge develop into main`
+- Labels: `automated`
+- Requires: `pull-requests: write` and `contents: read` permissions
+
+**Usage:**
+```bash
+# Make and push changes to develop
+git checkout develop
+git commit -m "feat: add new feature"
+git push origin develop
+
+# Workflow automatically creates/updates PR
+# No manual action needed!
+```
+
+**Monitoring:**
+- GitHub **Actions** tab → "Auto PR develop to main"
+- Check workflow run status (✅ Success or ❌ Failed)
+- View PR in **Pull Requests** tab
+- PR automatically updates when you push new commits to develop
+
+**Debugging:**
+If PR is not created, check workflow logs for:
+```
+🔍 Checking for existing PRs...
+Existing PR check result: 'NUMBER' or ''
+📝 No existing PR found. Creating...
+✅ PR creation attempt completed
+```
+
 ---
 
 ## 📖 Understanding the Framework - Beginner's Guide
