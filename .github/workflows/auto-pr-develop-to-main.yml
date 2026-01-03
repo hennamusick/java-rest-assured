@@ -1,0 +1,64 @@
+name: Auto PR develop to main
+
+# Trigger: automatically create PR whenever code is pushed to develop branch
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest  # Use latest Ubuntu runner
+    # Permissions required for this workflow to create/update PRs
+    permissions:
+      pull-requests: write  # Create/update pull requests
+      contents: write       # Write to repository (needed to push PR branch)
+    steps:
+      # Step 1: Clone the repository (needed for branch information)
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for accurate analysis
+
+      # Step 2: Create or update pull request using peter-evans/create-pull-request
+      # This action is idempotent: reuses existing PR if one already exists
+      # (Unlike GitHub CLI which creates duplicate PRs on each run)
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          # GitHub token for authentication
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Commit message when pushing changes to the PR branch
+          commit-message: 'chore: merge develop into main'
+          # PR branch name (separate from develop, used by the action)
+          branch: develop-to-main-pr
+          # Don't delete the branch after PR is merged (keep branch history)
+          delete-branch: false
+          # Title that appears in the PR list
+          title: 'chore: merge develop into main'
+          # Description body that reviewers see when opening the PR
+          body: |
+            ## 🔄 Automated PR from `develop` to `main`
+            
+            This PR was automatically created by the Auto PR workflow whenever code is pushed to the `develop` branch.
+            
+            ### Pre-merge checklist:
+            - [ ] ✅ All GitHub Actions workflows passed (check "Checks" tab)
+            - [ ] 🧪 All tests pass (view Allure report in comments below)
+            - [ ] 📖 Documentation is updated
+            - [ ] 🔍 Code review completed
+            - [ ] 🐛 No breaking changes
+            - [ ] 🚀 Ready for production
+            
+            **View detailed test reports:** Check the PR comments for Allure test report links.
+            
+            ---
+            *This PR will automatically update when you push to `develop`. Merge manually when ready.*
+          # Branch to pull changes from (develop is the source of truth)
+          head_branch: develop
+          # Target branch (where PR merges to)
+          base: main
+          # Don't mark as draft (reviewers can merge immediately if approved)
+          draft: false
+          # Labels for organizing PRs in the PR list
+          labels: 'automated'
