@@ -1,6 +1,12 @@
 # 🎓 REST Assured API Testing Framework - Complete Beginner's Guide
 
 [![Java CI/CD](https://github.com/hennamusick/java-rest-assured/actions/workflows/java-build.yml/badge.svg)](https://github.com/hennamusick/java-rest-assured/actions/workflows/java-build.yml)
+[![Java Version](https://img.shields.io/badge/Java-21+-orange.svg)](https://www.oracle.com/java/technologies/downloads/)
+[![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
+[![REST Assured](https://img.shields.io/badge/REST%20Assured-5.4.0-green.svg)](https://rest-assured.io/)
+[![TestNG](https://img.shields.io/badge/TestNG-7.9.0-red.svg)](https://testng.org/)
+[![Allure](https://img.shields.io/badge/Allure-2.25.0-yellow.svg)](https://docs.qameta.io/allure/)
+[![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
 A **comprehensive REST API automation testing framework** built with **REST Assured** and **Page Object Model (POM)** design pattern. Perfect for beginners learning API automation testing with Java!
 
@@ -44,32 +50,50 @@ This repository demonstrates **professional API testing** with detailed logging,
 
 ## 📚 What You'll Learn
 
-This framework teaches you:
-- ✅ **REST API Testing fundamentals** (GET, POST, PUT, PATCH, DELETE)
-- ✅ **REST Assured framework** with fluent assertions
-- ✅ **Page Object Model (POM)** pattern for API testing
-- ✅ **POJO (Plain Old Java Objects)** for request/response handling
-- ✅ **Soft Assertions** for comprehensive validation
-- ✅ **TestNG** test framework and test management
-- ✅ **Maven** dependency management
-- ✅ **Lombok** for cleaner code
-- ✅ **Logging best practices** with SLF4J + Logback
-- ✅ **Allure reporting** for beautiful test reports
-- ✅ **Builder Pattern** for object creation
-- ✅ **JSON serialization/deserialization**
-- ✅ **CI/CD ready** test automation structure
+| Category | Skills |
+|----------|--------|
+| 🌐 **API Testing** | REST API fundamentals (GET, POST, PUT, PATCH, DELETE) |
+| 🔧 **Framework** | REST Assured 5.4 with fluent assertions |
+| 🏗️ **Design Pattern** | Page Object Model (POM) for API testing |
+| 📦 **Data Handling** | POJO models with Lombok & Builder pattern |
+| ✅ **Assertions** | Soft assertions for comprehensive validation |
+| 🧪 **Test Framework** | TestNG suite management & parallel execution |
+| 📋 **Build Tool** | Maven dependency & lifecycle management |
+| 🎨 **Clean Code** | Lombok annotations for reduced boilerplate |
+| 📝 **Logging** | SLF4J + Logback best practices |
+| 📊 **Reporting** | Allure interactive test reports |
+| 🔄 **JSON** | Serialization/deserialization with Jackson |
+| 🚀 **CI/CD** | GitHub Actions automation pipeline |
 
 ## 🚀 Features
 
-- **Page Object Model (POM)**: Clean separation of test logic and API service layer
-- **REST Assured 5.4.0**: Powerful REST API testing library with fluent assertions
-- **TestNG 7.9.0**: Test execution and management framework
-- **Allure Reporting 2.25.0**: Beautiful and comprehensive test execution reports
-- **Lombok 1.18.30**: Reduced boilerplate code with annotations
-- **Jackson 2.16.1**: JSON serialization/deserialization with formatted output
-- **SLF4J + Logback**: Comprehensive logging with console and file output
-- **Comprehensive Soft Assertions**: Non-blocking assertions across all test methods using TestNG SoftAssert for better test failure visibility and detailed validation reports
-- **Request/Response Logging**: Detailed API call logging (method, URI, status, body)
+| Feature | Description | Version |
+|---------|-------------|---------|
+| 🏗️ **Page Object Model** | Clean separation of test logic and API service layer | - |
+| 🔧 **REST Assured** | Powerful REST API testing with fluent assertions | 5.4.0 |
+| 🧪 **TestNG** | Test execution and management framework | 7.9.0 |
+| 📊 **Allure Reports** | Beautiful and comprehensive test execution reports | 2.25.0 |
+| 🎨 **Lombok** | Reduced boilerplate code with annotations | 1.18.30 |
+| 🔄 **Jackson** | JSON serialization/deserialization with formatting | 2.16.1 |
+| 📝 **SLF4J + Logback** | Comprehensive logging with console and file output | 2.0.11 |
+| ✅ **Soft Assertions** | Non-blocking assertions for better test failure visibility | Built-in |
+| 📋 **Request/Response Logging** | Detailed API call logging (method, URI, status, body) | Built-in |
+| 🚀 **CI/CD Ready** | GitHub Actions workflow with automated reporting | Built-in |
+
+### ✨ Key Highlights
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ✅  48 Comprehensive Test Cases                            │
+│  📦  3 REST APIs Under Test                                 │
+│  🎯  100% Test Coverage for CRUD Operations                 │
+│  📊  Automated Allure Reports                               │
+│  🔄  GitHub Actions CI/CD Pipeline                          │
+│  📝  Detailed Request/Response Logging                      │
+│  🏗️  Professional POM Architecture                          │
+│  ✨  Clean Code with Lombok                                 │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## 📁 Project Structure
 
@@ -539,35 +563,57 @@ This architecture ensures:
 
 ### Verify Installation
 ```bash
-# Check Java version
+# ☕ Check Java version (should be 21+)
 java -version
 
-# Check Maven version
+# 📦 Check Maven version (should be 3.6+)
 mvn -version
 ```
 
+**✅ Expected Output:**
+```
+java version "21.0.x"
+Apache Maven 3.6.x or higher
+```
+
+---
+
 ## 📦 Quick Start Installation
 
-### Step 1: Clone the Repository
+### 🚀 4 Steps to Get Started
+
+```
+┌───────────────────────────────────────────────────────┐
+│  Step 1️⃣  →  Clone Repository                        │
+│  Step 2️⃣  →  Install Dependencies                    │
+│  Step 3️⃣  →  Run Your First Test                     │
+│  Step 4️⃣  →  View Beautiful Reports                  │
+└───────────────────────────────────────────────────────┘
+```
+
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/hennamusick/java-rest-assured.git
 cd java-rest-assured
 ```
 
-### Step 2: Install Dependencies
+### 2️⃣ Install Dependencies
 ```bash
 mvn clean install
 ```
+> ⏱️ **Tip:** First run may take 2-3 minutes to download dependencies
 
-### Step 3: Run Your First Test
+### 3️⃣ Run Your First Test
 ```bash
 mvn test -Dtest=ObjectGetTests#testGetObjectById
 ```
+> ✅ **Success:** You should see `Tests run: 1, Failures: 0, Skipped: 0`
 
-### Step 4: View Test Results
+### 4️⃣ View Test Results
 ```bash
 mvn allure:serve
 ```
+> 🌐 **Result:** Opens interactive report in your browser automatically
 
 🎉 **Congratulations!** You just ran your first API automation test!
 
@@ -659,6 +705,126 @@ How to view CI results:
 - Check workflow runs under GitHub “Actions”.
 - Allure report (when enabled) publishes to GitHub Pages: `https://your-username.github.io/java-rest-assured/`.
 - To enable Pages, set repository Settings → Pages → Branch: `gh-pages` (root).
+
+### Auto-PR Workflow (auto-pr-develop-to-main.yml)
+
+**Purpose:** Automatically create and maintain a pull request from `develop` to `main`.
+
+**How it works:**
+1. Triggers on every push to `develop` branch
+2. Checks if `develop` branch is ahead of `main`
+3. If ahead → Creates/updates PR automatically using `peter-evans/create-pull-request@v5`
+4. If branches are in sync → No PR created (expected behavior)
+
+#### GitHub Actions Auto-PR Approaches
+
+Automated PR creation in GitHub Actions is generally achieved using:
+
+1. **Third-party Actions** (Recommended)
+   - `peter-evans/create-pull-request` - Widely used, well-documented solution
+   - Handles edge cases and permissions automatically
+   - Supports idempotent operations (won't create duplicates)
+
+2. **GitHub CLI** (`gh pr create`)
+   - Direct command-line approach
+   - Requires explicit permission configuration
+   - Note: `GITHUB_TOKEN` has security restrictions preventing PR creation via CLI
+
+3. **GitHub API** (Advanced)
+   - Via `actions/github-script` or custom scripts
+   - Maximum flexibility but more complex
+   - Requires manual duplicate prevention logic
+
+#### Common Use Cases
+
+- **Branch Synchronization**: Creating PR from `develop` to `main` (this project)
+- **Dependency Updates**: Auto-PRs when Dependabot finds new versions
+- **Release Management**: PR from release branch back to main after hotfix
+- **Automated Content**: PRs when scripts update docs, data files, or generated code
+
+#### Configuration
+
+This project uses `peter-evans/create-pull-request@v5`:
+
+```yaml
+- uses: peter-evans/create-pull-request@v5
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    title: 'chore: merge develop into main'
+    base: main
+    branch: develop-to-main-pr
+    delete-branch: false
+    labels: automated
+```
+
+**Key Settings:**
+- **base**: Target branch (`main`)
+- **branch**: Tracking branch created for PR (`develop-to-main-pr`)
+- **delete-branch**: Keep tracking branch after PR merge
+- **labels**: Tag PR with `automated` label
+- **Permissions Required**: `contents: write`, `pull-requests: write`
+
+#### Usage
+
+```bash
+# Make and push changes to develop
+git checkout develop
+git commit -m "feat: add new feature"
+git push origin develop
+
+# Workflow automatically creates/updates PR
+# No manual action needed!
+```
+
+#### Key Setup Steps
+
+1. **Define Trigger**: Workflow runs on `push` to `develop` branch
+2. **Check Differences**: Action compares `develop` vs `main`
+3. **Create PR**: If branches differ, creates/updates PR automatically
+4. **Manage Permissions**: Workflow has `contents: write` and `pull-requests: write`
+
+#### Monitoring
+
+- **Actions tab** → "Auto PR develop to main"
+- Check workflow run status (✅ Success or ❌ Failed)
+- View PR in **Pull Requests** tab
+- PR automatically updates when pushing new commits to develop
+
+#### Expected Behavior
+
+**When PR is Created:**
+```
+Branch 'develop-to-main-pr' created
+Pull request #X created: chore: merge develop into main
+```
+
+**When Branches Are Synced:**
+```
+Branch 'develop-to-main-pr' is not ahead of base 'main' and will not be created
+```
+*This is normal - no PR needed when branches are identical*
+
+#### Debugging
+
+Check workflow logs for these indicators:
+
+**Successful PR Creation:**
+```
+Creating pull request for develop-to-main-pr:main
+Pull request #X (chore: merge develop into main) created
+```
+
+**No Changes to Merge:**
+```
+Branch not ahead of base
+No pull request will be created
+```
+
+**Permission Issues:**
+```
+Error: Resource not accessible by integration
+Solution: Verify permissions in workflow YAML
+```
 
 ---
 
@@ -1793,3 +1959,5 @@ You now have a **professional-grade API automation framework** that you can:
 - Showcase in your portfolio
 
 **Happy Testing! 🚀**
+
+# Test commit for auto-PR

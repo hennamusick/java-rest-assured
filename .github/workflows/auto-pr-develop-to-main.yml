@@ -1,0 +1,40 @@
+name: Auto PR develop to main
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: merge develop into main'
+          title: 'chore: merge develop into main'
+          body: |
+            ## Automated PR from develop to main
+            
+            This PR was automatically created by the CI/CD workflow.
+            
+            ### Pre-merge checklist:
+            - [ ] All GitHub Actions workflows passed
+            - [ ] Tests are passing
+            - [ ] Documentation is updated
+            - [ ] Code review completed
+            - [ ] Ready to merge
+          base: main
+          branch: develop-to-main-pr
+          delete-branch: false
+          labels: automated
