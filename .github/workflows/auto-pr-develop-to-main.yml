@@ -42,24 +42,11 @@ jobs:
           if [ -z "$EXISTING_PR" ]; then
             echo "📝 No existing PR found. Creating new PR from develop to main..."
             
-            # Create PR body as a variable to avoid shell escaping issues
-            PR_BODY="## 🔄 Automated PR from develop to main
-
-This PR was automatically created by the Auto PR workflow whenever code is pushed to the \`develop\` branch.
-
-### Pre-merge checklist:
-- [ ] ✅ All GitHub Actions workflows passed
-- [ ] 🧪 All tests pass
-- [ ] 📖 Documentation is updated
-- [ ] 🔍 Code review completed
-- [ ] 🐛 No breaking changes
-- [ ] 🚀 Ready for production"
-            
             gh pr create \
               --base main \
               --head develop \
               --title "chore: merge develop into main" \
-              --body "$PR_BODY" \
+              --body "Automated PR from develop to main. Review and merge when ready." \
               --label "automated" || echo "⚠️ PR creation returned error (may already exist)"
             echo "✅ PR creation attempt completed"
           else
