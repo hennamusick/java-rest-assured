@@ -666,18 +666,60 @@ How to view CI results:
 
 **How it works:**
 1. Triggers on every push to `develop` branch
-2. Checks if PR from `develop` to `main` already exists
-3. If no PR exists → Creates new PR automatically
-4. If PR exists → Keeps it in sync with latest commits
+2. Checks if `develop` branch is ahead of `main`
+3. If ahead → Creates/updates PR automatically using `peter-evans/create-pull-request@v5`
+4. If branches are in sync → No PR created (expected behavior)
 
-**Configuration:**
-- Uses GitHub CLI (`gh pr create`) for reliability and idempotency
-- Prevents duplicate PRs automatically
-- Title: `chore: merge develop into main`
-- Labels: `automated`
-- Requires: `pull-requests: write` and `contents: read` permissions
+#### GitHub Actions Auto-PR Approaches
 
-**Usage:**
+Automated PR creation in GitHub Actions is generally achieved using:
+
+1. **Third-party Actions** (Recommended)
+   - `peter-evans/create-pull-request` - Widely used, well-documented solution
+   - Handles edge cases and permissions automatically
+   - Supports idempotent operations (won't create duplicates)
+
+2. **GitHub CLI** (`gh pr create`)
+   - Direct command-line approach
+   - Requires explicit permission configuration
+   - Note: `GITHUB_TOKEN` has security restrictions preventing PR creation via CLI
+
+3. **GitHub API** (Advanced)
+   - Via `actions/github-script` or custom scripts
+   - Maximum flexibility but more complex
+   - Requires manual duplicate prevention logic
+
+#### Common Use Cases
+
+- **Branch Synchronization**: Creating PR from `develop` to `main` (this project)
+- **Dependency Updates**: Auto-PRs when Dependabot finds new versions
+- **Release Management**: PR from release branch back to main after hotfix
+- **Automated Content**: PRs when scripts update docs, data files, or generated code
+
+#### Configuration
+
+This project uses `peter-evans/create-pull-request@v5`:
+
+```yaml
+- uses: peter-evans/create-pull-request@v5
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    title: 'chore: merge develop into main'
+    base: main
+    branch: develop-to-main-pr
+    delete-branch: false
+    labels: automated
+```
+
+**Key Settings:**
+- **base**: Target branch (`main`)
+- **branch**: Tracking branch created for PR (`develop-to-main-pr`)
+- **delete-branch**: Keep tracking branch after PR merge
+- **labels**: Tag PR with `automated` label
+- **Permissions Required**: `contents: write`, `pull-requests: write`
+
+#### Usage
+
 ```bash
 # Make and push changes to develop
 git checkout develop
@@ -688,19 +730,54 @@ git push origin develop
 # No manual action needed!
 ```
 
-**Monitoring:**
-- GitHub **Actions** tab → "Auto PR develop to main"
+#### Key Setup Steps
+
+1. **Define Trigger**: Workflow runs on `push` to `develop` branch
+2. **Check Differences**: Action compares `develop` vs `main`
+3. **Create PR**: If branches differ, creates/updates PR automatically
+4. **Manage Permissions**: Workflow has `contents: write` and `pull-requests: write`
+
+#### Monitoring
+
+- **Actions tab** → "Auto PR develop to main"
 - Check workflow run status (✅ Success or ❌ Failed)
 - View PR in **Pull Requests** tab
-- PR automatically updates when you push new commits to develop
+- PR automatically updates when pushing new commits to develop
 
-**Debugging:**
-If PR is not created, check workflow logs for:
+#### Expected Behavior
+
+**When PR is Created:**
 ```
-🔍 Checking for existing PRs...
-Existing PR check result: 'NUMBER' or ''
-📝 No existing PR found. Creating...
-✅ PR creation attempt completed
+Branch 'develop-to-main-pr' created
+Pull request #X created: chore: merge develop into main
+```
+
+**When Branches Are Synced:**
+```
+Branch 'develop-to-main-pr' is not ahead of base 'main' and will not be created
+```
+*This is normal - no PR needed when branches are identical*
+
+#### Debugging
+
+Check workflow logs for these indicators:
+
+**Successful PR Creation:**
+```
+Creating pull request for develop-to-main-pr:main
+Pull request #X (chore: merge develop into main) created
+```
+
+**No Changes to Merge:**
+```
+Branch not ahead of base
+No pull request will be created
+```
+
+**Permission Issues:**
+```
+Error: Resource not accessible by integration
+Solution: Verify permissions in workflow YAML
 ```
 
 ---
