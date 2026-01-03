@@ -40,10 +40,10 @@ jobs:
           echo "Existing PR check result: '$EXISTING_PR'"
           
           if [ -z "$EXISTING_PR" ]; then
-            echo "📝 No existing PR found. Creating new PR from develop→main..."
+            echo "📝 No existing PR found. Creating new PR from develop to main..."
             
             # Create PR body as a variable to avoid shell escaping issues
-            PR_BODY="## 🔄 Automated PR from \`develop\` to \`main\`
+            PR_BODY="## 🔄 Automated PR from develop to main
 
 This PR was automatically created by the Auto PR workflow whenever code is pushed to the \`develop\` branch.
 
