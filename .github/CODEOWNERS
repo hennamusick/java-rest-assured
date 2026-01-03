@@ -1,0 +1,24 @@
+# 🔐 Code Owners - Security & Review Requirements
+
+# Default: Repository owner reviews all changes
+* @hennamusick
+
+# Security: Security-related files require explicit review
+/.github/workflows/ @hennamusick
+SECURITY.md @hennamusick
+.gitignore @hennamusick
+
+# Tests: Test changes reviewed by test maintainers
+/src/test/ @hennamusick
+
+# Configuration: Config changes reviewed carefully
+pom.xml @hennamusick
+/src/test/resources/ @hennamusick
+
+# Documentation: README and docs
+README.md @hennamusick
+/docs/ @hennamusick
+
+# Build & CI/CD: Critical infrastructure
+/.github/ @hennamusick
+Jenkinsfile @hennamusick
