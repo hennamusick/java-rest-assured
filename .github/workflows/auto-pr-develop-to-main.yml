@@ -1,6 +1,5 @@
 name: Auto PR develop to main
 
-# Trigger: automatically create PR whenever code is pushed to develop branch
 on:
   push:
     branches:
@@ -11,47 +10,31 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-      contents: read
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Create or Update Pull Request
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "🔍 Checking for existing PRs..."
-          
-          # List all PRs to debug
-          echo "All PRs with base=main:"
-          gh pr list --base main --state open --json number,title,headRefName || true
-          
-          # Check if PR already exists between develop and main
-          EXISTING_PR=$(gh pr list \
-            --base main \
-            --head develop \
-            --state open \
-            --json number \
-            -q '.[0].number' 2>/dev/null || echo "")
-          
-          echo "Existing PR check result: '$EXISTING_PR'"
-          
-          if [ -z "$EXISTING_PR" ]; then
-            echo "📝 No existing PR found. Creating new PR from develop to main..."
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: merge develop into main'
+          title: 'chore: merge develop into main'
+          body: |
+            ## Automated PR from develop to main
             
-            gh pr create \
-              --base main \
-              --head develop \
-              --title "chore: merge develop into main" \
-              --body "Automated PR from develop to main. Review and merge when ready." \
-              --label "automated" || echo "⚠️ PR creation returned error (may already exist)"
-            echo "✅ PR creation attempt completed"
-          else
-            echo "✅ PR #$EXISTING_PR already exists - no action needed"
-          fi
-          
-          echo "📋 Final PR list:"
-          gh pr list --base main --state open --json number,title,headRefName
+            This PR was automatically created by the CI/CD workflow.
+            
+            ### Pre-merge checklist:
+            - [ ] All GitHub Actions workflows passed
+            - [ ] Tests are passing
+            - [ ] Documentation is updated
+            - [ ] Code review completed
+            - [ ] Ready to merge
+          base: main
+          branch: develop-to-main-pr
+          delete-branch: false
+          labels: automated
