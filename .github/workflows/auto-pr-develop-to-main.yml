@@ -28,12 +28,10 @@ jobs:
         with:
           # GitHub token for authentication
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Commit message when pushing changes to the PR branch
-          commit-message: 'chore: merge develop into main'
           # PR branch name (separate from develop, used by the action)
           branch: develop-to-main-pr
-          # Don't delete the branch after PR is merged (keep branch history)
-          delete-branch: false
+          # Target branch (where PR merges to)
+          base: main
           # Title that appears in the PR list
           title: 'chore: merge develop into main'
           # Description body that reviewers see when opening the PR
@@ -54,11 +52,11 @@ jobs:
             
             ---
             *This PR will automatically update when you push to `develop`. Merge manually when ready.*
-          # Branch to pull changes from (develop is the source of truth)
-          head_branch: develop
-          # Target branch (where PR merges to)
-          base: main
+          # Don't delete the branch after PR is merged (keep branch history)
+          delete-branch: false
           # Don't mark as draft (reviewers can merge immediately if approved)
           draft: false
           # Labels for organizing PRs in the PR list
           labels: 'automated'
+          # Commit message when pushing changes to the PR branch
+          commit-message: 'chore: merge develop into main'
