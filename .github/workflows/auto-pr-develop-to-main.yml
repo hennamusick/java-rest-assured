@@ -8,55 +8,59 @@ on:
 
 jobs:
   create-pr:
-    runs-on: ubuntu-latest  # Use latest Ubuntu runner
-    # Permissions required for this workflow to create/update PRs
+    runs-on: ubuntu-latest
     permissions:
-      pull-requests: write  # Create/update pull requests
-      contents: write       # Write to repository (needed to push PR branch)
+      pull-requests: write
+      contents: read
     steps:
-      # Step 1: Clone the repository (needed for branch information)
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history for accurate analysis
+          fetch-depth: 0
 
-      # Step 2: Create or update pull request using peter-evans/create-pull-request
-      # This action is idempotent: reuses existing PR if one already exists
-      # (Unlike GitHub CLI which creates duplicate PRs on each run)
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          # GitHub token for authentication
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # PR branch name (separate from develop, used by the action)
-          branch: develop-to-main-pr
-          # Target branch (where PR merges to)
-          base: main
-          # Title that appears in the PR list
-          title: 'chore: merge develop into main'
-          # Description body that reviewers see when opening the PR
-          body: |
-            ## 🔄 Automated PR from `develop` to `main`
-            
-            This PR was automatically created by the Auto PR workflow whenever code is pushed to the `develop` branch.
-            
-            ### Pre-merge checklist:
-            - [ ] ✅ All GitHub Actions workflows passed (check "Checks" tab)
-            - [ ] 🧪 All tests pass (view Allure report in comments below)
-            - [ ] 📖 Documentation is updated
-            - [ ] 🔍 Code review completed
-            - [ ] 🐛 No breaking changes
-            - [ ] 🚀 Ready for production
-            
-            **View detailed test reports:** Check the PR comments for Allure test report links.
-            
-            ---
-            *This PR will automatically update when you push to `develop`. Merge manually when ready.*
-          # Don't delete the branch after PR is merged (keep branch history)
-          delete-branch: false
-          # Don't mark as draft (reviewers can merge immediately if approved)
-          draft: false
-          # Labels for organizing PRs in the PR list
-          labels: 'automated'
-          # Commit message when pushing changes to the PR branch
-          commit-message: 'chore: merge develop into main'
+      - name: Create or Update Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔍 Checking for existing PRs..."
+          
+          # List all PRs to debug
+          echo "All PRs with base=main:"
+          gh pr list --base main --state open --json number,title,headRefName || true
+          
+          # Check if PR already exists between develop and main
+          EXISTING_PR=$(gh pr list \
+            --base main \
+            --head develop \
+            --state open \
+            --json number \
+            -q '.[0].number' 2>/dev/null || echo "")
+          
+          echo "Existing PR check result: '$EXISTING_PR'"
+          
+          if [ -z "$EXISTING_PR" ]; then
+            echo "📝 No existing PR found. Creating new PR from develop→main..."
+            gh pr create \
+              --base main \
+              --head develop \
+              --title "chore: merge develop into main" \
+              --body "## 🔄 Automated PR from \`develop\` to \`main\`
+              
+This PR was automatically created by the Auto PR workflow whenever code is pushed to the \`develop\` branch.
+
+### Pre-merge checklist:
+- [ ] ✅ All GitHub Actions workflows passed
+- [ ] 🧪 All tests pass
+- [ ] 📖 Documentation is updated
+- [ ] 🔍 Code review completed
+- [ ] 🐛 No breaking changes
+- [ ] 🚀 Ready for production" \
+              --label "automated" || echo "⚠️ PR creation returned error (may already exist)"
+            echo "✅ PR creation attempt completed"
+          else
+            echo "✅ PR #$EXISTING_PR already exists - no action needed"
+          fi
+          
+          echo "📋 Final PR list:"
+          gh pr list --base main --state open --json number,title,headRefName
