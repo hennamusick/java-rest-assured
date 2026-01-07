@@ -43,6 +43,7 @@ This repository demonstrates **professional API testing** with detailed logging,
 - [Best Practices Implemented](#-best-practices-implemented)
 - [Annotated Code Walkthroughs (Line-by-Line)](#-annotated-code-walkthroughs-line-by-line)
 - [Data Providers & Parameterized Testing Guide](#-data-providers--parameterized-testing-guide)
+- [Cucumber BDD API Framework Development Course](#-cucumber-bdd-api-framework-development-course)
 - [License](#-license)
 - [Contributing](#-contributing)
 - [Questions or Issues](#-questions-or-issues)
@@ -2604,6 +2605,184 @@ mvn allure:serve
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - Fake REST API
 - [ReqRes](https://reqres.in/) - Practice REST API
 - [Restful-API.dev](https://restful-api.dev/) - Test API for objects
+
+---
+
+## 🥒 Cucumber BDD API Framework Development Course
+
+A comprehensive 21-lecture course on building a professional Cucumber BDD API automation framework from scratch. This course complements the REST Assured framework by introducing Behavior-Driven Development (BDD) principles.
+
+### Course Structure (21 Lectures - 4hr 17min)
+
+#### **Phase 1: Foundation & Setup**
+1. **CheckPoint before starting Framework lectures** (02:05)
+   - Prerequisites verification
+   - Environment validation
+   
+2. **Cucumber BDD overview and its related terminologies** (27:48)
+   - Understanding BDD concepts
+   - Gherkin language fundamentals
+   - Cucumber framework benefits
+
+3. **Creating Maven project with Cucumber Rest Assured Dependencies** (18:40)
+   - Project initialization
+   - Maven POM configuration
+   - Dependency management
+
+#### **Phase 2: Framework Implementation**
+4. **Building Test Runner and Step Definition files for Add Place API Feature Test** (13:33)
+   - Feature file creation
+   - Test runner configuration
+   - Step definitions setup
+
+5. **Implementing Real code in Step Definition files with reusable components** (11:06)
+   - API integration
+   - Reusable utility methods
+   - Service layer implementation
+
+6. **Running the Test in Cucumber Standards with necessary Configuration changes** (15:00)
+   - Test execution
+   - Cucumber configuration
+   - Result validation
+
+#### **Phase 3: Utility & Configuration**
+7. **Building Utility Files and Implement Logging feature in Framework** (11:49)
+   - Helper utilities creation
+   - Logging integration
+   - Framework enhancements
+
+8. **Implement Mechanism to drive Global property values from Properties file** (12:17)
+   - Configuration management
+   - Property file handling
+   - Dynamic value resolution
+
+#### **Phase 4: Data-Driven Testing**
+9. **Data Driven Testing Mechanism for API Tests using Cucumber example feature** (13:41)
+   - Example tables in feature files
+   - Parameterization with Cucumber
+   - Multiple test data scenarios
+
+10. **Be a Mentor or get Guidance** (00:28)
+    - Community support
+    - Learning resources
+
+11. **Parameterize API Test with multiple Data sets using Cucumber Framework features** (09:33)
+    - Advanced parameterization
+    - Data iteration
+    - Scenario outlines
+
+#### **Phase 5: Advanced Concepts**
+12. **What are Enum classes? How Framework can utilize the Enum concepts** (19:33)
+    - Enum fundamentals
+    - Type-safe enumerations
+    - Framework integration
+
+13. **Removing Hardcoded resource details with Enum class Methods** (11:50)
+    - Eliminating magic strings
+    - Enum-based configuration
+    - Code maintainability
+
+#### **Phase 6: End-to-End Testing**
+14. **Build End to End Testcase with Add and Delete Place in Framework Standards -1** (17:04)
+    - Complete workflow testing
+    - CRUD operations
+    - Assertion strategies
+
+15. **Build End to End Testcase in Framework Standards -2** (09:10)
+    - Complex scenario handling
+    - Multi-step workflows
+    - Result validation
+
+#### **Phase 7: Advanced Scenarios**
+16. **Creating Additional Scenarios in Framework to reuse existing Step Definitions -4** (16:40)
+    - Step definition reusability
+    - Scenario composition
+    - DRY principles in BDD
+
+17. **Importance of Cucumber Hooks in setting up Preconditions for API Tests -5** (12:???)
+    - Before/After hooks
+    - Test preconditions
+    - Cleanup procedures
+
+### Key Learnings from This Course
+
+| Topic | Concepts |
+|-------|----------|
+| 🥒 **BDD Principles** | Feature files, Scenarios, Gherkin syntax |
+| 🔧 **Framework Building** | Maven projects, dependencies, configuration |
+| 📝 **Step Definitions** | Reusable steps, parametrization, hooks |
+| 🔄 **Data-Driven Testing** | Example tables, scenario outlines, multiple datasets |
+| 📊 **Logging & Reporting** | Framework logging, test execution reports |
+| 🏗️ **Code Organization** | Utility classes, configuration management |
+| 🔐 **Type Safety** | Enum classes, eliminating hardcoded values |
+| ✅ **End-to-End Testing** | Complete CRUD workflows, complex scenarios |
+| 🪝 **Hooks & Fixtures** | Setup/teardown, preconditions, cleanup |
+| 🔁 **Reusability** | Step definition sharing, framework standardization |
+
+### Comparison: REST Assured vs Cucumber BDD
+
+| Feature | REST Assured Framework | Cucumber BDD Framework |
+|---------|----------------------|----------------------|
+| **Approach** | Code-based testing | Behavior-driven (Gherkin) |
+| **Test Syntax** | Java annotations & fluent API | Feature files (plain English) |
+| **Readability** | Technical, for developers | Business-friendly, for stakeholders |
+| **Data-Driven** | DataProviders, arrays, files | Scenario outlines, example tables |
+| **Best For** | Rapid API automation | Collaborative, story-based testing |
+| **Learning Curve** | Moderate Java knowledge | No coding experience needed |
+| **Maintenance** | Code changes in Java | Changes in feature files |
+| **Reporting** | Allure, TestNG HTML | Cucumber HTML, Allure |
+
+### How to Apply BDD Concepts to This Framework
+
+1. **Convert Test Cases to Feature Files**
+   ```gherkin
+   Feature: User Management API
+     Scenario: Get user by ID
+       When I request GET for user "1"
+       Then status code should be "200"
+       And response should contain user name
+   ```
+
+2. **Create Step Definitions**
+   ```java
+   @When("I request GET for user {string}")
+   public void getUserById(String userId) {
+       response = userService.getUserById(Integer.parseInt(userId));
+   }
+   ```
+
+3. **Use Hooks for Setup/Teardown**
+   ```java
+   @Before
+   public void setUp() {
+       // Initialize services, loggers, configurations
+   }
+   
+   @After
+   public void tearDown() {
+       // Cleanup, report generation
+   }
+   ```
+
+4. **Implement Data-Driven Scenarios**
+   ```gherkin
+   Scenario Outline: Verify user details
+     When I request user "<userId>"
+     Then response should have name "<userName>"
+     
+     Examples:
+       | userId | userName |
+       | 1      | John     |
+       | 2      | Jane     |
+   ```
+
+### Resources for BDD Learning
+
+- 📖 [Cucumber Official Documentation](https://cucumber.io/docs/cucumber/)
+- 📺 [Gherkin Syntax Guide](https://cucumber.io/docs/gherkin/)
+- 🔗 [Cucumber Java Step Definitions](https://cucumber.io/docs/cucumber/step-definitions/java/)
+- 📚 [BDD Best Practices](https://cucumber.io/docs/bdd/)
+- 🛠️ [Cucumber Spring Integration](https://github.com/cucumber/cucumber-jvm/tree/main/spring)
 
 ---
 
