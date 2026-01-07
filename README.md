@@ -29,6 +29,7 @@ This repository demonstrates **professional API testing** with detailed logging,
 - [Understanding the Framework - Beginner's Guide](#-understanding-the-framework---beginners-guide)
 - [Configuration](#-configuration)
 - [Code Examples - Step by Step](#-code-examples---step-by-step)
+- [Comprehensive Classes & Methods Documentation](#-comprehensive-classes--methods-documentation)
 - [Framework Architecture Explained](#️-framework-architecture-explained)
 - [Test Coverage](#-test-coverage)
 - [Key Components](#-key-components)
@@ -1479,6 +1480,774 @@ public void testCreateObject() {
 - ✅ **Comprehensive Reports**: Collects all failures in single test report
 - ✅ **Better Debugging**: Shows all issues at once instead of stopping at first failure
 - ✅ **Descriptive Messages**: Each assertion includes clear failure message for easy diagnosis
+
+## 📚 Comprehensive Classes & Methods Documentation
+
+### Service Layer Classes
+
+#### BaseService.java
+**Purpose:** Abstract base class providing common HTTP operations for all services.
+
+**Key Methods:**
+```java
+// GET requests
+public Response get(String endpoint)
+  └─ Sends GET request to specified endpoint
+  └─ Returns: Response object with status, headers, body
+  └─ Example: get("/users") → GET https://api.example.com/users
+
+// POST requests  
+public Response post(String endpoint, Object body)
+  └─ Sends POST request with JSON body
+  └─ Returns: Response object (usually with 201 status for creation)
+  └─ Example: post("/users", userObject) → Creates new user
+
+// PUT requests (Full update)
+public Response put(String endpoint, Object body)
+  └─ Sends PUT request to replace entire resource
+  └─ Returns: Updated resource in response
+  └─ Example: put("/users/1", updatedUser) → Replaces user #1
+
+// PATCH requests (Partial update)
+public Response patch(String endpoint, Object body)
+  └─ Sends PATCH request to partially update resource
+  └─ Returns: Partially updated resource
+  └─ Example: patch("/users/1", partialData) → Updates user #1 fields
+
+// DELETE requests
+public Response delete(String endpoint)
+  └─ Sends DELETE request to remove resource
+  └─ Returns: Response with 200 or 204 status
+  └─ Example: delete("/users/1") → Removes user #1
+
+// Helper Methods
+private void logRequestDetails(String method, String uri, Object body)
+  └─ Logs HTTP method, URI, and request body
+  └─ Used internally for debugging
+
+private void logResponseDetails(Response response)
+  └─ Logs status code, headers, and response body
+  └─ Used internally for verification
+```
+
+**Usage Example:**
+```java
+public class UserService extends BaseService {
+    public Response getUserById(int userId) {
+        return get("/users/" + userId);  // Uses BaseService.get()
+    }
+    
+    public Response createUser(User user) {
+        return post("/users", user);     // Uses BaseService.post()
+    }
+}
+```
+
+---
+
+#### UserService.java
+**Purpose:** API service for User endpoint operations.
+
+**Key Methods:**
+```java
+// READ Operations
+public Response getAllUsers()
+  └─ Retrieves all users from JSONPlaceholder
+  └─ Returns: Response with array of User objects
+  └─ Endpoint: GET /users
+  └─ Status: 200 OK
+
+public Response getUserById(int userId)
+  └─ Retrieves specific user by ID
+  └─ Parameter: userId (1-10)
+  └─ Returns: Single User object
+  └─ Endpoint: GET /users/{id}
+  └─ Status: 200 OK
+
+public User getUserByIdAsObject(int userId)
+  └─ Retrieves user and converts to POJO
+  └─ Parameter: userId
+  └─ Returns: User object (not Response)
+  └─ Useful for: Direct object manipulation
+
+// CREATE Operation
+public Response createUser(User user)
+  └─ Creates new user
+  └─ Parameter: User object with name, email, address, etc.
+  └─ Returns: Response with created user and new ID
+  └─ Endpoint: POST /users
+  └─ Status: 201 Created
+  └─ Example:
+    User newUser = User.builder()
+        .name("Jane Doe")
+        .email("jane@example.com")
+        .build();
+    Response response = userService.createUser(newUser);
+
+// UPDATE Operations
+public Response updateUser(int userId, User user)
+  └─ Updates entire user record (PUT)
+  └─ Parameters: userId, updated User object
+  └─ Returns: Updated User in response
+  └─ Endpoint: PUT /users/{id}
+  └─ Status: 200 OK
+  └─ Note: PUT replaces entire resource
+
+public Response partialUpdateUser(int userId, User user)
+  └─ Updates specific user fields (PATCH)
+  └─ Parameters: userId, partial User object
+  └─ Returns: Partially updated User
+  └─ Endpoint: PATCH /users/{id}
+  └─ Status: 200 OK
+  └─ Note: PATCH updates only provided fields
+
+// DELETE Operation
+public Response deleteUser(int userId)
+  └─ Deletes user from system
+  └─ Parameter: userId
+  └─ Returns: Empty response body
+  └─ Endpoint: DELETE /users/{id}
+  └─ Status: 200 OK
+  └─ Caution: Cannot undo deletion
+```
+
+---
+
+#### PostService.java
+**Purpose:** API service for Post endpoint operations.
+
+**Key Methods:**
+```java
+// READ Operations
+public Response getAllPosts()
+  └─ Retrieves all posts (100 posts total)
+  └─ Returns: Response with Post array
+  └─ Endpoint: GET /posts
+  └─ Status: 200 OK
+
+public Response getPostById(int postId)
+  └─ Retrieves specific post by ID
+  └─ Parameter: postId (1-100)
+  └─ Returns: Single Post object
+  └─ Endpoint: GET /posts/{id}
+  └─ Status: 200 OK
+
+public Post getPostByIdAsObject(int postId)
+  └─ Retrieves post as POJO object
+  └─ Parameter: postId
+  └─ Returns: Post object (not Response)
+  └─ Usage: Direct object access without Response parsing
+
+public Response getPostsByUserId(int userId)
+  └─ Retrieves all posts by specific user
+  └─ Parameter: userId (1-10)
+  └─ Returns: Array of User's posts
+  └─ Endpoint: GET /posts?userId={userId}
+  └─ Status: 200 OK
+
+// CREATE Operation
+public Response createPost(Post post)
+  └─ Creates new post
+  └─ Parameter: Post object (userId, title, body)
+  └─ Returns: Response with new post and ID
+  └─ Endpoint: POST /posts
+  └─ Status: 201 Created
+
+// UPDATE Operations
+public Response updatePost(int postId, Post post)
+  └─ Full update of post (PUT)
+  └─ Parameters: postId, updated Post object
+  └─ Returns: Updated post
+  └─ Endpoint: PUT /posts/{id}
+  └─ Status: 200 OK
+
+public Response partialUpdatePost(int postId, Post post)
+  └─ Partial update of post (PATCH)
+  └─ Parameters: postId, partial Post object
+  └─ Returns: Partially updated post
+  └─ Endpoint: PATCH /posts/{id}
+  └─ Status: 200 OK
+
+// DELETE Operation
+public Response deletePost(int postId)
+  └─ Deletes post
+  └─ Parameter: postId
+  └─ Returns: Empty response
+  └─ Endpoint: DELETE /posts/{id}
+  └─ Status: 200 OK
+```
+
+---
+
+#### ObjectService.java
+**Purpose:** API service for restful-api.dev Object endpoints.
+
+**Key Methods:**
+```java
+// CREATE Operation
+public Response createObject(ApiObject object)
+  └─ Creates new object resource
+  └─ Parameter: ApiObject with name and data (Map)
+  └─ Returns: Created object with ID
+  └─ Endpoint: POST /objects
+  └─ Status: 201 Created
+  └─ Example:
+    Map<String, Object> data = new HashMap<>();
+    data.put("year", 2023);
+    data.put("price", 2499.99);
+    
+    ApiObject obj = ApiObject.builder()
+        .name("MacBook Pro")
+        .data(data)
+        .build();
+    
+    Response response = objectService.createObject(obj);
+
+// READ Operations
+public Response getObject(String objectId)
+  └─ Retrieves specific object by ID
+  └─ Parameter: objectId (UUID string)
+  └─ Returns: ApiObject with all properties
+  └─ Endpoint: GET /objects/{id}
+  └─ Status: 200 OK
+
+public Response getAllObjects()
+  └─ Retrieves all objects
+  └─ Returns: Array of all objects
+  └─ Endpoint: GET /objects
+  └─ Status: 200 OK
+
+public Response getObjectsByIds(List<String> ids)
+  └─ Retrieves specific objects by ID list
+  └─ Parameter: List of object IDs
+  └─ Returns: Array of matching objects
+  └─ Endpoint: GET /objects?id=id1&id=id2&id=id3
+  └─ Status: 200 OK
+  └─ Usage: Query multiple objects efficiently
+
+// UPDATE Operations
+public Response updateObject(String objectId, ApiObject object)
+  └─ Full update of object (PUT)
+  └─ Parameters: objectId, updated ApiObject
+  └─ Returns: Updated object
+  └─ Endpoint: PUT /objects/{id}
+  └─ Status: 200 OK
+  └─ Note: Replaces entire object
+
+public Response partialUpdateObject(String objectId, ApiObject object)
+  └─ Partial update of object (PATCH)
+  └─ Parameters: objectId, partial ApiObject
+  └─ Returns: Partially updated object
+  └─ Endpoint: PATCH /objects/{id}
+  └─ Status: 200 OK
+
+// DELETE Operation
+public Response deleteObject(String objectId)
+  └─ Deletes object
+  └─ Parameter: objectId
+  └─ Returns: Confirmation message
+  └─ Endpoint: DELETE /objects/{id}
+  └─ Status: 200 OK
+```
+
+---
+
+### Model Layer Classes (POJOs)
+
+#### User.java
+**Purpose:** POJO representing User resource with nested objects.
+
+**Fields:**
+```java
+private int id                          // User ID (auto-generated)
+private String name                     // User's full name
+private String username                 // Login username
+private String email                    // User's email address
+private Address address                 // Nested Address object
+private String phone                    // Phone number
+private String website                  // Website URL
+private Company company                 // Nested Company object
+
+// Nested Classes
+static class Address {
+    String street, suite, city, zipcode
+    Geo geo (latitude, longitude)
+}
+
+static class Company {
+    String name, catchPhrase, bs
+}
+
+// Lombok Annotations
+@Data                                   // Generates getters, setters, toString, equals, hashCode
+@Builder                                // Generates builder pattern
+@NoArgsConstructor                      // Generates no-arg constructor
+@AllArgsConstructor                     // Generates all-arg constructor
+```
+
+**Usage Example:**
+```java
+// Create user with builder
+User user = User.builder()
+    .name("John Doe")
+    .email("john@example.com")
+    .phone("1-770-736-8031")
+    .build();
+
+// Update user
+user.setName("Jane Doe");
+String name = user.getName();
+```
+
+---
+
+#### Post.java
+**Purpose:** POJO representing Post resource.
+
+**Fields:**
+```java
+private int userId                      // ID of post creator (1-10)
+private int id                          // Post ID (auto-generated)
+private String title                    // Post title
+private String body                     // Post content/body
+```
+
+**Usage Example:**
+```java
+// Create post with builder
+Post post = Post.builder()
+    .userId(1)
+    .title("What is REST API?")
+    .body("REST API is an architectural style...")
+    .build();
+
+// Use post object
+int userId = post.getUserId();
+String title = post.getTitle();
+```
+
+---
+
+#### ApiObject.java
+**Purpose:** POJO for dynamic object with flexible data structure.
+
+**Fields:**
+```java
+private String id                       // Object ID (UUID)
+private String name                     // Object name
+private Map<String, Object> data        // Dynamic properties (flexible)
+
+// Lombok Annotations
+@Data                                   // Auto-generates common methods
+@Builder                                // Builder pattern support
+```
+
+**Usage Example:**
+```java
+// Create object with flexible data
+Map<String, Object> specs = new HashMap<>();
+specs.put("year", 2023);
+specs.put("price", 2499.99);
+specs.put("color", "Space Gray");
+
+ApiObject laptop = ApiObject.builder()
+    .name("MacBook Pro")
+    .data(specs)
+    .build();
+
+// Access dynamic properties
+String year = (String) laptop.getData().get("year");
+```
+
+---
+
+### Utility Layer Classes
+
+#### TestDataProvider.java
+**Purpose:** Centralized hub for all test data and data provider methods.
+
+**Core Methods:**
+```java
+@DataProvider(name = "userIds")
+public Object[][] getUserIds()
+  └─ Provides test data for user ID parameterization
+  └─ Returns: {{1}, {2}, {3}, {5}, {10}}
+  └─ Usage: @Test(dataProvider = "userIds") void testUser(int userId)
+  └─ Executes: Test runs 5 times with different user IDs
+
+@DataProvider(name = "postIds")
+public Object[][] getPostIds()
+  └─ Provides test data for post ID parameterization
+  └─ Returns: {{1}, {2}, {5}, {10}, {50}}
+  └─ Usage: Multiple test executions with post data
+
+@DataProvider(name = "paginationParams")
+public Object[][] getPaginationParams()
+  └─ Provides pagination parameter combinations
+  └─ Returns: {{1, 5}, {2, 10}, {3, 20}}
+  └─ Usage: Test pagination with different page/size combos
+
+@DataProvider(name = "userCounts")
+public Object[][] getUserCounts()
+  └─ Provides different user count scenarios
+  └─ Returns: {{5}, {10}, {20}}
+  └─ Usage: Test with various dataset sizes
+
+public Object[][] getTestIdsFromCsv()
+  └─ Loads test data from testdata.csv file
+  └─ Returns: {{email1, password1}, {email2, password2}, ...}
+  └─ File Location: src/test/resources/testdata.csv
+  └─ Usage: CSV-driven parameterization
+
+public Object[][] getTestConfigFromJson()
+  └─ Loads configuration from testdata.json
+  └─ Returns: Test configuration objects
+  └─ File Location: src/test/resources/testdata.json
+
+public static User[] getUsersFromJson()
+  └─ Loads User array from testdata.json
+  └─ Returns: Array of User POJOs
+  └─ Usage: Pre-configured test users
+
+public static String getProperty(String key, String defaultValue)
+  └─ Retrieves property from testdata.properties
+  └─ Parameters: property key, default if not found
+  └─ Returns: Property value or default
+  └─ Example: getProperty("admin.username", "admin")
+```
+
+**Nested Classes:**
+```java
+// TestConstants - Configuration values and constants
+static class TestConstants {
+    static class StatusCodes {
+        int OK = 200;                  // Successful GET/PUT/PATCH/DELETE
+        int CREATED = 201;             // Successful POST
+        int BAD_REQUEST = 400;         // Invalid request
+        int NOT_FOUND = 404;           // Resource not found
+        int SERVER_ERROR = 500;        // Server error
+    }
+    
+    static class ApiConfig {
+        String BASE_URL_JSONPLACEHOLDER;  // JSONPlaceholder base URL
+        String BASE_URL_RESTFUL;          // Restful-api.dev base URL
+        int TIMEOUT = 5000;               // Request timeout (ms)
+    }
+    
+    static class ValidationValues {
+        int MIN_USER_ID = 1;
+        int MAX_USER_ID = 10;
+        int MIN_POST_ID = 1;
+        int MAX_POST_ID = 100;
+    }
+}
+
+// TestIdBuilder - Fluent builder for test data
+class TestIdBuilder {
+    public TestIdBuilder withUserId(int id)
+        └─ Sets user ID
+        └─ Returns: this (for chaining)
+    
+    public TestIdBuilder withPostId(int id)
+        └─ Sets post ID
+        └─ Returns: this
+    
+    public TestIdBuilder withName(String name)
+        └─ Sets name
+        └─ Returns: this
+    
+    public Object[] build()
+        └─ Builds final test data
+        └─ Returns: Object[] for parameterization
+}
+
+// TestScenario - Enum for test scenarios
+enum TestScenario {
+    HAPPY_PATH,          // Normal flow
+    EDGE_CASE,           // Boundary conditions
+    INVALID_DATA,        // Invalid inputs
+    BOUNDARY,            // Edge values
+    PERFORMANCE          // Performance testing
+}
+```
+
+---
+
+#### RestClient.java
+**Purpose:** Configures REST Assured specifications for HTTP requests/responses.
+
+**Key Methods:**
+```java
+public static RequestSpecification getRequestSpec()
+  └─ Returns: Configured RequestSpecification
+  └─ Includes: Base URL, headers, content type
+  └─ Usage: All service classes use this for requests
+  └─ Example:
+    RequestSpecification spec = RestClient.getRequestSpec();
+    Response response = given()
+        .spec(spec)
+        .get("/users/1");
+
+public static ResponseSpecification getResponseSpec()
+  └─ Returns: Configured ResponseSpecification
+  └─ Includes: Default assertions and validations
+  └─ Usage: Validates responses automatically
+
+public static RequestSpecBuilder buildCustomRequest(...)
+  └─ Creates custom request specification
+  └─ Parameters: Headers, params, body
+  └─ Returns: Customized RequestSpecification
+```
+
+---
+
+#### JsonUtils.java
+**Purpose:** Utilities for JSON serialization, deserialization, and formatting.
+
+**Key Methods:**
+```java
+public static String serialize(Object object)
+  └─ Converts Java object to JSON string
+  └─ Parameter: Any Java object
+  └─ Returns: Formatted JSON string
+  └─ Example:
+    User user = new User(...);
+    String json = JsonUtils.serialize(user);
+    // Output: {"id":1,"name":"John","email":"john@example.com"}
+
+public static <T> T deserialize(String json, Class<T> type)
+  └─ Converts JSON string to Java object
+  └─ Parameters: JSON string, target class
+  └─ Returns: Deserialized object
+  └─ Example:
+    String json = "{\"id\":1,\"name\":\"John\"}";
+    User user = JsonUtils.deserialize(json, User.class);
+
+public static String prettyPrint(String json)
+  └─ Formats JSON with indentation and line breaks
+  └─ Parameter: JSON string
+  └─ Returns: Formatted JSON for readability
+  └─ Usage: Logging formatted responses
+
+public static Object getJsonPathValue(String json, String path)
+  └─ Extracts value from JSON using JSONPath
+  └─ Parameters: JSON string, JSONPath expression
+  └─ Returns: Extracted value
+  └─ Example:
+    String value = JsonUtils.getJsonPathValue(json, "$.name");
+```
+
+---
+
+#### TestUtils.java
+**Purpose:** Helper utilities for test execution.
+
+**Key Methods:**
+```java
+public static void printSeparator()
+  └─ Prints separator line for readability
+  └─ Usage: Organize console output
+
+public static void waitFor(long milliseconds)
+  └─ Pauses test execution
+  └─ Parameter: Milliseconds to wait
+  └─ Usage: Handle asynchronous operations
+
+public static void verifyResponseTime(long actualTime, long maxTime)
+  └─ Asserts response time is within limit
+  └─ Parameters: Actual time, max allowed time
+  └─ Usage: Performance validation
+
+public static boolean isValidEmail(String email)
+  └─ Validates email format
+  └─ Parameter: Email string
+  └─ Returns: true if valid, false otherwise
+
+public static List<String> extractEmails(List<User> users)
+  └─ Extracts emails from user list
+  └─ Parameter: User list
+  └─ Returns: List of email addresses
+```
+
+---
+
+#### ConfigManager.java
+**Purpose:** Singleton configuration manager for application settings.
+
+**Key Methods:**
+```java
+public static ConfigManager getInstance()
+  └─ Returns: Single ConfigManager instance (Singleton)
+  └─ Usage: ConfigManager.getInstance().getProperty(...)
+
+public String getProperty(String key)
+  └─ Retrieves property from config.properties
+  └─ Parameter: Property key
+  └─ Returns: Property value
+  └─ Example: getInstance().getProperty("base.url")
+
+public String getBaseUrl()
+  └─ Returns: Base URL for API
+  └─ Usage: Service initialization
+
+public int getTimeout()
+  └─ Returns: Request timeout value
+  └─ Usage: HTTP request configuration
+
+public void loadProperties(String propertiesFile)
+  └─ Loads properties from file
+  └─ Parameter: File path
+  └─ Usage: Initialize with custom properties
+```
+
+---
+
+### Test Layer Classes
+
+#### BaseTest.java
+**Purpose:** Base class with setup/teardown for all tests.
+
+**Key Methods:**
+```java
+@BeforeClass
+public void setUp()
+  └─ Runs once before all tests in class
+  └─ Initializes: Logger, Services, Assertions
+  └─ Usage: Common initialization
+
+@BeforeMethod
+public void testSetup()
+  └─ Runs before each test method
+  └─ Initializes: Test-specific resources
+  └─ Usage: Per-test setup
+
+@AfterMethod
+public void tearDown()
+  └─ Runs after each test method
+  └─ Cleanup: Test-specific resources
+  └─ Usage: Per-test cleanup
+
+@AfterClass
+public void tearDownClass()
+  └─ Runs once after all tests
+  └─ Cleanup: Global resources
+  └─ Usage: Final cleanup
+```
+
+---
+
+#### UserTests.java
+**Purpose:** Test cases for User API endpoints.
+
+**Test Methods with Data Providers:**
+```java
+@DataProvider(name = "userIds")
+public Object[][] provideUserIds()
+  └─ Returns: {{1}, {2}, {3}, {5}, {10}}
+  └─ Parameterizes: 5 different user IDs
+
+@Test(dataProvider = "userIds")
+public void testGetUserById(int userId)
+  └─ Executes 5 times (once per user ID)
+  └─ Validates: User retrieval
+
+@DataProvider(name = "userCounts")
+public Object[][] provideUserCounts()
+  └─ Returns: {{5}, {10}, {20}}
+
+@Test(dataProvider = "userCounts")
+public void testGetUserCount(int count)
+  └─ Tests with different dataset sizes
+```
+
+**Additional Test Methods:**
+```java
+@Test
+public void testCreateUser()
+  └─ Tests POST /users endpoint
+  └─ Validates: New user creation
+
+@Test
+public void testUpdateUser()
+  └─ Tests PUT /users/{id} endpoint
+  └─ Validates: Full user update
+
+@Test
+public void testPartialUpdateUser()
+  └─ Tests PATCH /users/{id} endpoint
+  └─ Validates: Partial user update
+
+@Test
+public void testDeleteUser()
+  └─ Tests DELETE /users/{id} endpoint
+  └─ Validates: User deletion
+```
+
+---
+
+#### PostTests.java
+**Purpose:** Test cases for Post API endpoints.
+
+**Test Methods with Parameterization:**
+```java
+@DataProvider(name = "postIds")
+public Object[][] providePostIds()
+  └─ Parameterizes post IDs for multiple executions
+
+@DataProvider(name = "userIds")
+public Object[][] provideUserIds()
+  └─ Parameterizes user IDs
+
+@Test(dataProvider = "postIds")
+public void testGetPostById(int postId)
+  └─ Tests GET /posts/{id}
+  └─ Executes multiple times with different post IDs
+
+@Test(dataProvider = "userIds")
+public void testGetPostsByUserId(int userId)
+  └─ Tests GET /posts?userId={userId}
+  └─ Retrieves posts filtered by user
+```
+
+---
+
+#### DataProvidersIntegrationTest.java
+**Purpose:** Integration tests demonstrating all 13+ data provider methods.
+
+**Test Coverage:**
+```java
+@Test
+public void testWithSimpleArrayDataProvider()
+  └─ Basic 2D array parameterization
+
+@Test
+public void testWithCsvDataProvider()
+  └─ CSV file-based parameterization
+
+@Test
+public void testWithJsonDataProvider()
+  └─ JSON file-based parameterization
+
+@Test
+public void testWithPropertiesDataProvider()
+  └─ Properties file-based parameterization
+
+@Test
+public void testWithMultipleParameters()
+  └─ Multiple parameter combinations
+
+@Test
+public void testWithBuilderPattern()
+  └─ TestIdBuilder usage
+
+@Test
+public void testWithScenarioEnum()
+  └─ TestScenario enum usage
+
+// ... 20+ more examples
+```
+
+---
 
 ## 🧪 Test Coverage
 
