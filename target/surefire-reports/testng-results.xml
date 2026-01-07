@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="27" passed="27" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-08T00:46:06 IST" name="Surefire suite" finished-at="2026-01-08T00:46:06 IST" duration-ms="172">
+    <groups>
+      <group name="systemProperties">
+        <method signature="DataProvidersIntegrationTest.testWithSystemProperties()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithSystemProperties" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- systemProperties -->
+      <group name="propertiesFile">
+        <method signature="DataProvidersIntegrationTest.testWithPropertiesFile()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithPropertiesFile" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- propertiesFile -->
+      <group name="enums">
+        <method signature="DataProvidersIntegrationTest.testWithEnums()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithEnums" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- enums -->
+      <group name="xmlParameters">
+        <method signature="DataProvidersIntegrationTest.testWithXmlParameters(java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithXmlParameters" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- xmlParameters -->
+      <group name="jsonData">
+        <method signature="DataProvidersIntegrationTest.testWithJsonData(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithJsonData" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- jsonData -->
+      <group name="environmentVars">
+        <method signature="DataProvidersIntegrationTest.testWithEnvironmentVariables()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithEnvironmentVariables" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- environmentVars -->
+      <group name="dependencyInjection">
+        <method signature="DataProvidersIntegrationTest.testWithDependencyInjection(org.testng.ITestContext)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithDependencyInjection" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- dependencyInjection -->
+      <group name="csvData">
+        <method signature="DataProvidersIntegrationTest.testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithCsvData" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- csvData -->
+      <group name="constants">
+        <method signature="DataProvidersIntegrationTest.testWithConstants()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithConstants" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- constants -->
+      <group name="dataProvider">
+        <method signature="DataProvidersIntegrationTest.testWithSimpleDataProvider(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithSimpleDataProvider" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+        <method signature="DataProvidersIntegrationTest.testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithUserObjects" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- dataProvider -->
+      <group name="builderPattern">
+        <method signature="DataProvidersIntegrationTest.testWithBuilderPattern()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testWithBuilderPattern" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- builderPattern -->
+      <group name="testContext">
+        <method signature="DataProvidersIntegrationTest.testContextStoreData(org.testng.ITestContext)[pri:1, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testContextStoreData" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+        <method signature="DataProvidersIntegrationTest.testContextRetrieveData(org.testng.ITestContext)[pri:2, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" name="testContextRetrieveData" class="com.api.automation.dataproviders.DataProvidersIntegrationTest"/>
+      </group> <!-- testContext -->
+    </groups>
+    <test started-at="2026-01-08T00:46:06 IST" name="Surefire test" finished-at="2026-01-08T00:46:06 IST" duration-ms="172">
+      <class name="com.api.automation.dataproviders.DataProvidersIntegrationTest">
+        <test-method signature="testWithDependencyInjection(org.testng.ITestContext)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithDependencyInjection" finished-at="2026-01-08T00:46:06 IST" duration-ms="31" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@1477089c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithDependencyInjection -->
+        <test-method signature="testWithEnums()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithEnums" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithEnums -->
+        <test-method signature="testWithEnvironmentVariables()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithEnvironmentVariables" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithEnvironmentVariables -->
+        <test-method signature="testWithJsonData(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithJsonData" data-provider="jsonData" finished-at="2026-01-08T00:46:06 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[adminPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Admin User]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[ADMIN]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithJsonData -->
+        <test-method signature="testWithJsonData(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithJsonData" data-provider="jsonData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[user@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[userPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[John Doe]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithJsonData -->
+        <test-method signature="testWithJsonData(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithJsonData" data-provider="jsonData" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[moderator@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[modPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Jane Smith]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[MODERATOR]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithJsonData -->
+        <test-method signature="testWithJsonData(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithJsonData" data-provider="jsonData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[guest@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[guestPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Bob Johnson]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[GUEST]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithJsonData -->
+        <test-method signature="testWithSimpleDataProvider(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithSimpleDataProvider" data-provider="simpleCredentials" finished-at="2026-01-08T00:46:06 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[adminPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ADMIN]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithSimpleDataProvider -->
+        <test-method signature="testWithSimpleDataProvider(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithSimpleDataProvider" data-provider="simpleCredentials" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[user@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[userPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithSimpleDataProvider -->
+        <test-method signature="testWithSimpleDataProvider(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithSimpleDataProvider" data-provider="simpleCredentials" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[guest@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[guestPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[GUEST]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithSimpleDataProvider -->
+        <test-method signature="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithUserObjects" data-provider="userObjects" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithUserObjects -->
+        <test-method signature="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithUserObjects" data-provider="userObjects" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithUserObjects -->
+        <test-method signature="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithUserObjects" data-provider="userObjects" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithUserObjects -->
+        <test-method signature="testWithBuilderPattern()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithBuilderPattern" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithBuilderPattern -->
+        <test-method signature="testWithConstants()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithConstants" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithConstants -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[adminPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ADMIN]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[user@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[userPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[moderator@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[modPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[MODERATOR]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[guest@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[guestPassword123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[GUEST]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test1@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[testPass123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test2@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[testPass456]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithCsvData(java.lang.String,java.lang.String,java.lang.String,boolean)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithCsvData" data-provider="csvData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[invalid@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[wrongpass]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[USER]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithCsvData -->
+        <test-method signature="testWithPropertiesFile()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithPropertiesFile" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithPropertiesFile -->
+        <test-method signature="testWithSystemProperties()[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithSystemProperties" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithSystemProperties -->
+        <test-method signature="testWithXmlParameters(java.lang.String,java.lang.String)[pri:0, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testWithXmlParameters" finished-at="2026-01-08T00:46:06 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[default@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[defaultPass]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testWithXmlParameters -->
+        <test-method signature="testContextStoreData(org.testng.ITestContext)[pri:1, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testContextStoreData" finished-at="2026-01-08T00:46:06 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@1477089c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testContextStoreData -->
+        <test-method signature="testContextRetrieveData(org.testng.ITestContext)[pri:2, instance:com.api.automation.dataproviders.DataProvidersIntegrationTest@24ba9639]" started-at="2026-01-08T00:46:06 IST" name="testContextRetrieveData" finished-at="2026-01-08T00:46:06 IST" depends-on-methods="com.api.automation.dataproviders.DataProvidersIntegrationTest.testContextStoreData" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@1477089c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testContextRetrieveData -->
+      </class> <!-- com.api.automation.dataproviders.DataProvidersIntegrationTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

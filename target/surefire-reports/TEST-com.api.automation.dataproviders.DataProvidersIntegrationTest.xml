@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.715" tests="27" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/test-classes:/Users/henna/Documents/Personal/Projects/java-rest-assured/target/classes:/Users/henna/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/henna/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/henna/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/henna/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/henna/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/henna/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/henna/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/henna/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/Users/henna/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/Users/henna/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/Users/henna/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/Users/henna/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/Users/henna/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/Users/henna/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/henna/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/henna/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/Users/henna/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/henna/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/henna/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/henna/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/henna/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/henna/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/Users/henna/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/henna/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/henna/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-testng/2.25.0/allure-testng-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-java-commons/2.25.0/allure-java-commons-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-model/2.25.0/allure-model-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-test-filter/2.25.0/allure-test-filter-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-rest-assured/2.25.0/allure-rest-assured-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-attachments/2.25.0/allure-attachments-2.25.0.jar:/Users/henna/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/henna/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/henna/.m2/repository/org/assertj/assertj-core/3.25.1/assertj-core-3.25.1.jar:/Users/henna/.m2/repository/net/bytebuddy/byte-buddy/1.14.11/byte-buddy-1.14.11.jar:/Users/henna/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/henna/.m2/repository/org/apache/poi/poi/5.0.0/poi-5.0.0.jar:/Users/henna/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/Users/henna/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/henna/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/henna/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/henna/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar:/Users/henna/.m2/repository/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/henna/.m2/repository/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar:/Users/henna/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar:/Users/henna/.m2/repository/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar:/Users/henna/.m2/repository/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar:/Users/henna/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar:/Users/henna/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar:/Users/henna/.m2/repository/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar:/Users/henna/.m2/repository/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar:/Users/henna/.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar:/Users/henna/.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar:/Users/henna/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar:/Users/henna/.m2/repository/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar:/Users/henna/.m2/repository/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar:/Users/henna/.m2/repository/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Asia/Colombo"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire/surefirebooter-20260108004605483_3.jar /Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire 2026-01-08T00-46-05_414-jvmRun1 surefire-20260108004605483_1tmp surefire_0-20260108004605483_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="DataProvidersIntegrationTest"/>
+    <property name="surefire.test.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/test-classes:/Users/henna/Documents/Personal/Projects/java-rest-assured/target/classes:/Users/henna/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/henna/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/henna/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/henna/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/henna/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/henna/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/henna/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/henna/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/Users/henna/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/Users/henna/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/Users/henna/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/Users/henna/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/Users/henna/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/Users/henna/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/henna/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/henna/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/Users/henna/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/henna/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/henna/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/henna/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/henna/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/henna/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/Users/henna/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/henna/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/henna/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-testng/2.25.0/allure-testng-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-java-commons/2.25.0/allure-java-commons-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-model/2.25.0/allure-model-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-test-filter/2.25.0/allure-test-filter-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-rest-assured/2.25.0/allure-rest-assured-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-attachments/2.25.0/allure-attachments-2.25.0.jar:/Users/henna/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/henna/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/henna/.m2/repository/org/assertj/assertj-core/3.25.1/assertj-core-3.25.1.jar:/Users/henna/.m2/repository/net/bytebuddy/byte-buddy/1.14.11/byte-buddy-1.14.11.jar:/Users/henna/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/henna/.m2/repository/org/apache/poi/poi/5.0.0/poi-5.0.0.jar:/Users/henna/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/Users/henna/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/henna/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/henna/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/henna/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar:/Users/henna/.m2/repository/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/henna/.m2/repository/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar:/Users/henna/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar:/Users/henna/.m2/repository/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar:/Users/henna/.m2/repository/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar:/Users/henna/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar:/Users/henna/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar:/Users/henna/.m2/repository/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar:/Users/henna/.m2/repository/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar:/Users/henna/.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar:/Users/henna/.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar:/Users/henna/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar:/Users/henna/.m2/repository/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar:/Users/henna/.m2/repository/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar:/Users/henna/.m2/repository/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/henna"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/henna/Documents/Personal/Projects/java-rest-assured"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire/surefirebooter-20260108004605483_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.8"/>
+    <property name="user.name" value="henna"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.6.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/henna/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/wg/z_wd1xn51ys4g490xvnq4cxr0000gn/T/"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="user.dir" value="/Users/henna/Documents/Personal/Projects/java-rest-assured"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/henna/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testWithDependencyInjection[org.testng.TestRunner@1477089c](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.067">
+    <system-out><![CDATA[00:46:06.274 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Dependency Injection
+00:46:06.277 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Stored and retrieved from context: injected@example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testWithEnums" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.004">
+    <system-out><![CDATA[00:46:06.317 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Enum - Role: ADMIN, Email: admin@example.com
+00:46:06.317 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Enum - Role: MODERATOR, Email: moderator@example.com
+00:46:06.317 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Enum - Role: USER, Email: user@example.com
+00:46:06.317 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Enum - Role: GUEST, Email: guest@example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testWithEnvironmentVariables" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.320 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Environment Variables - API Key: [MASKED], Base URL: https://api.example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testWithJsonData[admin@example.com, adminPassword123, Admin User, ADMIN](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.005">
+    <system-out><![CDATA[00:46:06.322 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loading JSON data provider
+00:46:06.338 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loaded 4 records from JSON file
+00:46:06.343 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with JSON Data - Email: admin@example.com, Name: Admin User, Role: ADMIN
+]]></system-out>
+  </testcase>
+  <testcase name="testWithJsonData[user@example.com, userPassword123, John Doe, USER](2)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.346 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with JSON Data - Email: user@example.com, Name: John Doe, Role: USER
+]]></system-out>
+  </testcase>
+  <testcase name="testWithJsonData[moderator@example.com, modPassword123, Jane Smith, MODERATOR](3)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.349 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with JSON Data - Email: moderator@example.com, Name: Jane Smith, Role: MODERATOR
+]]></system-out>
+  </testcase>
+  <testcase name="testWithJsonData[guest@example.com, guestPassword123, Bob Johnson, GUEST](4)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.351 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with JSON Data - Email: guest@example.com, Name: Bob Johnson, Role: GUEST
+]]></system-out>
+  </testcase>
+  <testcase name="testWithSimpleDataProvider[admin@example.com, adminPassword123, ADMIN](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.352 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loading simpleCredentials data provider
+00:46:06.354 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Data Provider - Email: admin@example.com, Role: ADMIN
+]]></system-out>
+  </testcase>
+  <testcase name="testWithSimpleDataProvider[user@example.com, userPassword123, USER](2)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.356 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Data Provider - Email: user@example.com, Role: USER
+]]></system-out>
+  </testcase>
+  <testcase name="testWithSimpleDataProvider[guest@example.com, guestPassword123, GUEST](3)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.358 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Data Provider - Email: guest@example.com, Role: GUEST
+]]></system-out>
+  </testcase>
+  <testcase name="testWithUserObjects[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.359 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loading userObjects data provider
+00:46:06.360 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with User Object - Email: admin@example.com, Name: Admin User
+]]></system-out>
+  </testcase>
+  <testcase name="testWithUserObjects[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41](2)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.362 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with User Object - Email: user@example.com, Name: John Doe
+]]></system-out>
+  </testcase>
+  <testcase name="testWithUserObjects[com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f](3)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.364 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with User Object - Email: moderator@example.com, Name: Jane Smith
+]]></system-out>
+  </testcase>
+  <testcase name="testWithBuilderPattern" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.366 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Builder Pattern
+00:46:06.366 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Built user with Builder - Admin: admin@example.com, Regular User: user@example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testWithConstants" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.368 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Constants - Admin: admin@example.com, Endpoint: /users
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[admin@example.com, adminPassword123, ADMIN, true](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.369 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loading CSV data provider
+00:46:06.370 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Loaded 7 records from CSV file
+00:46:06.372 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: admin@example.com, Role: ADMIN, Enabled: true
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[user@example.com, userPassword123, USER, true](2)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.375 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: user@example.com, Role: USER, Enabled: true
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[moderator@example.com, modPassword123, MODERATOR, true](3)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.377 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: moderator@example.com, Role: MODERATOR, Enabled: true
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[guest@example.com, guestPassword123, GUEST, false](4)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.379 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: guest@example.com, Role: GUEST, Enabled: false
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[test1@example.com, testPass123, USER, true](5)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.380 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: test1@example.com, Role: USER, Enabled: true
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[test2@example.com, testPass456, USER, true](6)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.382 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: test2@example.com, Role: USER, Enabled: true
+]]></system-out>
+  </testcase>
+  <testcase name="testWithCsvData[invalid@example.com, wrongpass, USER, false](7)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.001">
+    <system-out><![CDATA[00:46:06.384 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with CSV Data - Email: invalid@example.com, Role: USER, Enabled: false
+]]></system-out>
+  </testcase>
+  <testcase name="testWithPropertiesFile" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.386 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with Properties File - Username: admin@example.com, API URL: https://api.example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testWithSystemProperties" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.388 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with System Properties - Email: test@example.com, Environment: dev
+]]></system-out>
+  </testcase>
+  <testcase name="testWithXmlParameters[default@example.com, defaultPass](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.003">
+    <system-out><![CDATA[00:46:06.393 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Testing with XML Parameters - Email: default@example.com
+]]></system-out>
+  </testcase>
+  <testcase name="testContextStoreData[org.testng.TestRunner@1477089c](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.395 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Test 1: Storing data in test context
+]]></system-out>
+  </testcase>
+  <testcase name="testContextRetrieveData[org.testng.TestRunner@1477089c](1)" classname="com.api.automation.dataproviders.DataProvidersIntegrationTest" time="0.002">
+    <system-out><![CDATA[00:46:06.398 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Test 2: Retrieving data from test context
+00:46:06.398 [main] INFO  c.a.a.d.DataProvidersIntegrationTest - Retrieved from context - User: sharedUser@example.com, Password: [MASKED]
+]]></system-out>
+  </testcase>
+</testsuite>
