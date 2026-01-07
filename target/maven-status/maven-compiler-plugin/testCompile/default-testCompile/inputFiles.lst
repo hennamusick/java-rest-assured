@@ -10,5 +10,6 @@
 /Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/tests/jsonplaceholder/UserTests.java
 /Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/tests/utils/AssertionHelper.java
 /Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/tests/utils/BaseTest.java
+/Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/tests/utils/TestDataProvider.java
 /Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/tests/utils/TestUtils.java
 /Users/henna/Documents/Personal/Projects/java-rest-assured/src/test/java/com/api/automation/workflow/WorkflowManagerTest.java

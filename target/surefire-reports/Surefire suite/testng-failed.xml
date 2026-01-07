@@ -3,11 +3,15 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="com.api.automation.dataproviders.DataProvidersIntegrationTest">
+      <class name="com.api.automation.tests.jsonplaceholder.PostTests">
         <methods>
-          <include name="testWithPropertiesFile"/>
+          <include name="setUp"/>
+          <include name="setUpSoftAssert"/>
+          <include name="testPatchPost"/>
+          <include name="tearDown"/>
+          <include name="setUpPostTests"/>
         </methods>
-      </class> <!-- com.api.automation.dataproviders.DataProvidersIntegrationTest -->
+      </class> <!-- com.api.automation.tests.jsonplaceholder.PostTests -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->

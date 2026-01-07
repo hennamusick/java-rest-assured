@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Surefire_suite" class="navigator-link">
-              <span class="suite-name border-passed">Surefire suite</span>
+              <span class="suite-name border-failed">Surefire suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -60,7 +60,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-Surefire_suite" class="navigator-link ">
-                    <span>12 groups</span>
+                    <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">27 methods,   27 passed</span>
+                    <span class="method-stats">21 methods, 1 failed,   20 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Surefire_suite" class="hide-methods failed suite-Surefire_suite"> (hide)</a> <!-- hide-methods failed suite-Surefire_suite -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="show-methods failed suite-Surefire_suite"> (show)</a> <!-- show-methods failed suite-Surefire_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Surefire_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testPatchPost">testPatchPost</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Surefire_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,137 +117,102 @@
                     <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testContextRetrieveData(org.testng.TestRunner@1477089c)">testContextRetrieveData(org.testng.TestRunner@1477089c)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testCreatePost">testCreatePost</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testContextStoreData(org.testng.TestRunner@1477089c)">testContextStoreData(org.testng.TestRunner@1477089c)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testDeletePost">testDeletePost</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithBuilderPattern">testWithBuilderPattern</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetAllPosts">testGetAllPosts</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithConstants">testWithConstants</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetAllPostsAsArray">testGetAllPostsAsArray</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(guest@example.com, guestPassword123, GUEST, false)">testWithCsvData(guest@example.com, guestPassword123, GUEST, false)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostAsObject(10)">testGetPostAsObject(10)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(admin@example.com, adminPassword123, ADMIN, true)">testWithCsvData(admin@example.com, adminPassword123, ADMIN, true)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostAsObject(1)">testGetPostAsObject(1)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(test2@example.com, testPass456, USER, true)">testWithCsvData(test2@example.com, testPass456, USER, true)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostAsObject(2)">testGetPostAsObject(2)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(invalid@example.com, wrongpass, USER, false)">testWithCsvData(invalid@example.com, wrongpass, USER, false)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostAsObject(50)">testGetPostAsObject(50)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(user@example.com, userPassword123, USER, true)">testWithCsvData(user@example.com, userPassword123, USER, true)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostAsObject(5)">testGetPostAsObject(5)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(moderator@example.com, modPassword123, MODERATOR, true)">testWithCsvData(moderator@example.com, modPassword123, MODERATOR, true)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostById(1)">testGetPostById(1)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithCsvData(test1@example.com, testPass123, USER, true)">testWithCsvData(test1@example.com, testPass123, USER, true)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostById(10)">testGetPostById(10)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithDependencyInjection(org.testng.TestRunner@1477089c)">testWithDependencyInjection(org.testng.TestRunner@1477089c)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostById(5)">testGetPostById(5)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithEnums">testWithEnums</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostById(50)">testGetPostById(50)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithEnvironmentVariables">testWithEnvironmentVariables</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostById(2)">testGetPostById(2)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithJsonData(guest@example.com, guestPassword123, Bob Johnson, GUEST)">testWithJsonData(guest@example.com, guestPassword123, Bob Johnson, GUEST)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostsByUserId(10)">testGetPostsByUserId(10)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithJsonData(admin@example.com, adminPassword123, Admin User, ADMIN)">testWithJsonData(admin@example.com, adminPassword123, Admin User, ADMIN)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostsByUserId(1)">testGetPostsByUserId(1)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithJsonData(moderator@example.com, modPassword123, Jane Smith, MODERATOR)">testWithJsonData(moderator@example.com, modPassword123, Jane Smith, MODERATOR)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostsByUserId(2)">testGetPostsByUserId(2)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithJsonData(user@example.com, userPassword123, John Doe, USER)">testWithJsonData(user@example.com, userPassword123, John Doe, USER)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostsByUserId(3)">testGetPostsByUserId(3)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithPropertiesFile">testWithPropertiesFile</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testGetPostsByUserId(5)">testGetPostsByUserId(5)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithSimpleDataProvider(user@example.com, userPassword123, USER)">testWithSimpleDataProvider(user@example.com, userPassword123, USER)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithSimpleDataProvider(guest@example.com, guestPassword123, GUEST)">testWithSimpleDataProvider(guest@example.com, guestPassword123, GUEST)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithSimpleDataProvider(admin@example.com, adminPassword123, ADMIN)">testWithSimpleDataProvider(admin@example.com, adminPassword123, ADMIN)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithSystemProperties">testWithSystemProperties</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41)">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f)">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19)">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.dataproviders.DataProvidersIntegrationTest" class="method navigator-link" hash-for-method="testWithXmlParameters(default@example.com, defaultPass)">testWithXmlParameters(default@example.com, defaultPass)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="com.api.automation.tests.jsonplaceholder.PostTests" class="method navigator-link" hash-for-method="testUpdatePost">testUpdatePost</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
@@ -248,220 +227,247 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Surefire_suite" class="panel Surefire_suite">
-          <div class="suite-Surefire_suite-class-passed">
+          <div class="suite-Surefire_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.api.automation.dataproviders.DataProvidersIntegrationTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">com.api.automation.tests.jsonplaceholder.PostTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testContextRetrieveData(org.testng.TestRunner@1477089c)">
-                  </a> <!-- testContextRetrieveData(org.testng.TestRunner@1477089c) -->
-                  <span class="method-name">testContextRetrieveData</span>
-                  <span class="parameters">(org.testng.TestRunner@1477089c)</span>
+                  <a name="testPatchPost">
+                  </a> <!-- testPatchPost -->
+                  <span class="method-name">testPatchPost</span>
+                  <div class="stack-trace">java.lang.AssertionError: 1 expectation failed.
+JSON path id doesn&apos;t match.
+Expected: &lt;1&gt;
+  Actual: null
+
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:270)
+	at io.restassured.specification.ResponseSpecification$body$1.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:117)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.body(ValidatableResponseOptionsImpl.java:244)
+	at com.api.automation.tests.jsonplaceholder.PostTests.testPatchPost(PostTests.java:195)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 36 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Verify partially updating a post)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-failed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.api.automation.tests.jsonplaceholder.PostTests</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testCreatePost">
+                  </a> <!-- testCreatePost -->
+                  <span class="method-name">testCreatePost</span>
+                  <em>
+(Verify creating a new post)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testContextStoreData(org.testng.TestRunner@1477089c)">
-                  </a> <!-- testContextStoreData(org.testng.TestRunner@1477089c) -->
-                  <span class="method-name">testContextStoreData</span>
-                  <span class="parameters">(org.testng.TestRunner@1477089c)</span>
+                  <a name="testDeletePost">
+                  </a> <!-- testDeletePost -->
+                  <span class="method-name">testDeletePost</span>
+                  <em>
+(Verify deleting a post)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithBuilderPattern">
-                  </a> <!-- testWithBuilderPattern -->
-                  <span class="method-name">testWithBuilderPattern</span>
+                  <a name="testGetAllPosts">
+                  </a> <!-- testGetAllPosts -->
+                  <span class="method-name">testGetAllPosts</span>
+                  <em>
+(Verify getting all posts)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithConstants">
-                  </a> <!-- testWithConstants -->
-                  <span class="method-name">testWithConstants</span>
+                  <a name="testGetAllPostsAsArray">
+                  </a> <!-- testGetAllPostsAsArray -->
+                  <span class="method-name">testGetAllPostsAsArray</span>
+                  <em>
+(Verify getting all posts as array)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(guest@example.com, guestPassword123, GUEST, false)">
-                  </a> <!-- testWithCsvData(guest@example.com, guestPassword123, GUEST, false) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(guest@example.com,guestPassword123,GUEST,false)</span>
+                  <a name="testGetPostAsObject(10)">
+                  </a> <!-- testGetPostAsObject(10) -->
+                  <span class="method-name">testGetPostAsObject</span>
+                  <span class="parameters">(10)</span>
+                  <em>
+(Verify getting post as object)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(admin@example.com, adminPassword123, ADMIN, true)">
-                  </a> <!-- testWithCsvData(admin@example.com, adminPassword123, ADMIN, true) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(admin@example.com,adminPassword123,ADMIN,true)</span>
+                  <a name="testGetPostAsObject(1)">
+                  </a> <!-- testGetPostAsObject(1) -->
+                  <span class="method-name">testGetPostAsObject</span>
+                  <span class="parameters">(1)</span>
+                  <em>
+(Verify getting post as object)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(test2@example.com, testPass456, USER, true)">
-                  </a> <!-- testWithCsvData(test2@example.com, testPass456, USER, true) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(test2@example.com,testPass456,USER,true)</span>
+                  <a name="testGetPostAsObject(2)">
+                  </a> <!-- testGetPostAsObject(2) -->
+                  <span class="method-name">testGetPostAsObject</span>
+                  <span class="parameters">(2)</span>
+                  <em>
+(Verify getting post as object)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(invalid@example.com, wrongpass, USER, false)">
-                  </a> <!-- testWithCsvData(invalid@example.com, wrongpass, USER, false) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(invalid@example.com,wrongpass,USER,false)</span>
+                  <a name="testGetPostAsObject(50)">
+                  </a> <!-- testGetPostAsObject(50) -->
+                  <span class="method-name">testGetPostAsObject</span>
+                  <span class="parameters">(50)</span>
+                  <em>
+(Verify getting post as object)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(user@example.com, userPassword123, USER, true)">
-                  </a> <!-- testWithCsvData(user@example.com, userPassword123, USER, true) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(user@example.com,userPassword123,USER,true)</span>
+                  <a name="testGetPostAsObject(5)">
+                  </a> <!-- testGetPostAsObject(5) -->
+                  <span class="method-name">testGetPostAsObject</span>
+                  <span class="parameters">(5)</span>
+                  <em>
+(Verify getting post as object)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(moderator@example.com, modPassword123, MODERATOR, true)">
-                  </a> <!-- testWithCsvData(moderator@example.com, modPassword123, MODERATOR, true) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(moderator@example.com,modPassword123,MODERATOR,true)</span>
+                  <a name="testGetPostById(1)">
+                  </a> <!-- testGetPostById(1) -->
+                  <span class="method-name">testGetPostById</span>
+                  <span class="parameters">(1)</span>
+                  <em>
+(Verify getting a specific post by ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithCsvData(test1@example.com, testPass123, USER, true)">
-                  </a> <!-- testWithCsvData(test1@example.com, testPass123, USER, true) -->
-                  <span class="method-name">testWithCsvData</span>
-                  <span class="parameters">(test1@example.com,testPass123,USER,true)</span>
+                  <a name="testGetPostById(10)">
+                  </a> <!-- testGetPostById(10) -->
+                  <span class="method-name">testGetPostById</span>
+                  <span class="parameters">(10)</span>
+                  <em>
+(Verify getting a specific post by ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithDependencyInjection(org.testng.TestRunner@1477089c)">
-                  </a> <!-- testWithDependencyInjection(org.testng.TestRunner@1477089c) -->
-                  <span class="method-name">testWithDependencyInjection</span>
-                  <span class="parameters">(org.testng.TestRunner@1477089c)</span>
+                  <a name="testGetPostById(5)">
+                  </a> <!-- testGetPostById(5) -->
+                  <span class="method-name">testGetPostById</span>
+                  <span class="parameters">(5)</span>
+                  <em>
+(Verify getting a specific post by ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithEnums">
-                  </a> <!-- testWithEnums -->
-                  <span class="method-name">testWithEnums</span>
+                  <a name="testGetPostById(50)">
+                  </a> <!-- testGetPostById(50) -->
+                  <span class="method-name">testGetPostById</span>
+                  <span class="parameters">(50)</span>
+                  <em>
+(Verify getting a specific post by ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithEnvironmentVariables">
-                  </a> <!-- testWithEnvironmentVariables -->
-                  <span class="method-name">testWithEnvironmentVariables</span>
+                  <a name="testGetPostById(2)">
+                  </a> <!-- testGetPostById(2) -->
+                  <span class="method-name">testGetPostById</span>
+                  <span class="parameters">(2)</span>
+                  <em>
+(Verify getting a specific post by ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithJsonData(guest@example.com, guestPassword123, Bob Johnson, GUEST)">
-                  </a> <!-- testWithJsonData(guest@example.com, guestPassword123, Bob Johnson, GUEST) -->
-                  <span class="method-name">testWithJsonData</span>
-                  <span class="parameters">(guest@example.com,guestPassword123,Bob Johnson,GUEST)</span>
+                  <a name="testGetPostsByUserId(10)">
+                  </a> <!-- testGetPostsByUserId(10) -->
+                  <span class="method-name">testGetPostsByUserId</span>
+                  <span class="parameters">(10)</span>
+                  <em>
+(Verify getting posts by user ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithJsonData(admin@example.com, adminPassword123, Admin User, ADMIN)">
-                  </a> <!-- testWithJsonData(admin@example.com, adminPassword123, Admin User, ADMIN) -->
-                  <span class="method-name">testWithJsonData</span>
-                  <span class="parameters">(admin@example.com,adminPassword123,Admin User,ADMIN)</span>
+                  <a name="testGetPostsByUserId(1)">
+                  </a> <!-- testGetPostsByUserId(1) -->
+                  <span class="method-name">testGetPostsByUserId</span>
+                  <span class="parameters">(1)</span>
+                  <em>
+(Verify getting posts by user ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithJsonData(moderator@example.com, modPassword123, Jane Smith, MODERATOR)">
-                  </a> <!-- testWithJsonData(moderator@example.com, modPassword123, Jane Smith, MODERATOR) -->
-                  <span class="method-name">testWithJsonData</span>
-                  <span class="parameters">(moderator@example.com,modPassword123,Jane Smith,MODERATOR)</span>
+                  <a name="testGetPostsByUserId(2)">
+                  </a> <!-- testGetPostsByUserId(2) -->
+                  <span class="method-name">testGetPostsByUserId</span>
+                  <span class="parameters">(2)</span>
+                  <em>
+(Verify getting posts by user ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithJsonData(user@example.com, userPassword123, John Doe, USER)">
-                  </a> <!-- testWithJsonData(user@example.com, userPassword123, John Doe, USER) -->
-                  <span class="method-name">testWithJsonData</span>
-                  <span class="parameters">(user@example.com,userPassword123,John Doe,USER)</span>
+                  <a name="testGetPostsByUserId(3)">
+                  </a> <!-- testGetPostsByUserId(3) -->
+                  <span class="method-name">testGetPostsByUserId</span>
+                  <span class="parameters">(3)</span>
+                  <em>
+(Verify getting posts by user ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithPropertiesFile">
-                  </a> <!-- testWithPropertiesFile -->
-                  <span class="method-name">testWithPropertiesFile</span>
+                  <a name="testGetPostsByUserId(5)">
+                  </a> <!-- testGetPostsByUserId(5) -->
+                  <span class="method-name">testGetPostsByUserId</span>
+                  <span class="parameters">(5)</span>
+                  <em>
+(Verify getting posts by user ID)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="testWithSimpleDataProvider(user@example.com, userPassword123, USER)">
-                  </a> <!-- testWithSimpleDataProvider(user@example.com, userPassword123, USER) -->
-                  <span class="method-name">testWithSimpleDataProvider</span>
-                  <span class="parameters">(user@example.com,userPassword123,USER)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithSimpleDataProvider(guest@example.com, guestPassword123, GUEST)">
-                  </a> <!-- testWithSimpleDataProvider(guest@example.com, guestPassword123, GUEST) -->
-                  <span class="method-name">testWithSimpleDataProvider</span>
-                  <span class="parameters">(guest@example.com,guestPassword123,GUEST)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithSimpleDataProvider(admin@example.com, adminPassword123, ADMIN)">
-                  </a> <!-- testWithSimpleDataProvider(admin@example.com, adminPassword123, ADMIN) -->
-                  <span class="method-name">testWithSimpleDataProvider</span>
-                  <span class="parameters">(admin@example.com,adminPassword123,ADMIN)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithSystemProperties">
-                  </a> <!-- testWithSystemProperties -->
-                  <span class="method-name">testWithSystemProperties</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41)">
-                  </a> <!-- testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41) -->
-                  <span class="method-name">testWithUserObjects</span>
-                  <span class="parameters">(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f)">
-                  </a> <!-- testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f) -->
-                  <span class="method-name">testWithUserObjects</span>
-                  <span class="parameters">(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19)">
-                  </a> <!-- testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19) -->
-                  <span class="method-name">testWithUserObjects</span>
-                  <span class="parameters">(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testWithXmlParameters(default@example.com, defaultPass)">
-                  </a> <!-- testWithXmlParameters(default@example.com, defaultPass) -->
-                  <span class="method-name">testWithXmlParameters</span>
-                  <span class="parameters">(default@example.com,defaultPass)</span>
+                  <a name="testUpdatePost">
+                  </a> <!-- testUpdatePost -->
+                  <span class="method-name">testUpdatePost</span>
+                  <em>
+(Verify updating a post)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -477,7 +483,7 @@
 &lt;suite name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.api.automation.dataproviders.DataProvidersIntegrationTest&quot;/&gt;
+      &lt;class name=&quot;com.api.automation.tests.jsonplaceholder.PostTests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
 &lt;/suite&gt; &lt;!-- Surefire suite --&gt;
@@ -501,110 +507,6 @@
             <span class="header-content">Groups for Surefire suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="test-group">
-              <span class="test-group-name">builderPattern</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithBuilderPattern</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">constants</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithConstants</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">csvData</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithCsvData</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">dataProvider</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithSimpleDataProvider</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithUserObjects</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">dependencyInjection</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithDependencyInjection</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">enums</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithEnums</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">environmentVars</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithEnvironmentVariables</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">jsonData</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithJsonData</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">propertiesFile</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithPropertiesFile</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">systemProperties</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithSystemProperties</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">testContext</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testContextRetrieveData</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">testContextStoreData</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
-              <span class="test-group-name">xmlParameters</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">testWithXmlParameters</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Surefire_suite" class="panel">
@@ -621,120 +523,96 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(27);
+data.addRows(21);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testWithDependencyInjection')
-data.setCell(0, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(0, 3, 31);
+data.setCell(0, 1, 'testGetAllPosts')
+data.setCell(0, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(0, 3, 1213);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testWithJsonData')
-data.setCell(1, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(1, 3, 4);
+data.setCell(1, 1, 'testGetPostsByUserId')
+data.setCell(1, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(1, 3, 944);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testWithSimpleDataProvider')
-data.setCell(2, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(2, 3, 3);
+data.setCell(2, 1, 'testGetPostsByUserId')
+data.setCell(2, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(2, 3, 935);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testWithXmlParameters')
-data.setCell(3, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(3, 3, 2);
+data.setCell(3, 1, 'testGetPostsByUserId')
+data.setCell(3, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(3, 3, 923);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testWithSimpleDataProvider')
-data.setCell(4, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(4, 3, 2);
+data.setCell(4, 1, 'testUpdatePost')
+data.setCell(4, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(4, 3, 911);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testWithCsvData')
-data.setCell(5, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(5, 3, 2);
+data.setCell(5, 1, 'testGetPostsByUserId')
+data.setCell(5, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(5, 3, 888);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'testWithEnums')
-data.setCell(6, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(6, 3, 2);
+data.setCell(6, 1, 'testGetPostsByUserId')
+data.setCell(6, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(6, 3, 881);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'testWithEnvironmentVariables')
-data.setCell(7, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(7, 3, 2);
+data.setCell(7, 1, 'testDeletePost')
+data.setCell(7, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(7, 3, 458);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'testWithCsvData')
-data.setCell(8, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(8, 3, 2);
+data.setCell(8, 1, 'testCreatePost')
+data.setCell(8, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(8, 3, 430);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'testWithJsonData')
-data.setCell(9, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(9, 3, 2);
+data.setCell(9, 1, 'testPatchPost')
+data.setCell(9, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(9, 3, 424);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'testWithBuilderPattern')
-data.setCell(10, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(10, 3, 2);
+data.setCell(10, 1, 'testGetPostAsObject')
+data.setCell(10, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(10, 3, 302);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'testWithJsonData')
-data.setCell(11, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(11, 3, 1);
+data.setCell(11, 1, 'testGetAllPostsAsArray')
+data.setCell(11, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(11, 3, 219);
 data.setCell(12, 0, 12)
-data.setCell(12, 1, 'testContextStoreData')
-data.setCell(12, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(12, 3, 1);
+data.setCell(12, 1, 'testGetPostById')
+data.setCell(12, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(12, 3, 216);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'testWithUserObjects')
-data.setCell(13, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(13, 3, 1);
+data.setCell(13, 1, 'testGetPostById')
+data.setCell(13, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(13, 3, 215);
 data.setCell(14, 0, 14)
-data.setCell(14, 1, 'testWithCsvData')
-data.setCell(14, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(14, 3, 1);
+data.setCell(14, 1, 'testGetPostById')
+data.setCell(14, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(14, 3, 205);
 data.setCell(15, 0, 15)
-data.setCell(15, 1, 'testContextRetrieveData')
-data.setCell(15, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(15, 3, 1);
+data.setCell(15, 1, 'testGetPostAsObject')
+data.setCell(15, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(15, 3, 195);
 data.setCell(16, 0, 16)
-data.setCell(16, 1, 'testWithConstants')
-data.setCell(16, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(16, 3, 1);
+data.setCell(16, 1, 'testGetPostById')
+data.setCell(16, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(16, 3, 194);
 data.setCell(17, 0, 17)
-data.setCell(17, 1, 'testWithCsvData')
-data.setCell(17, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(17, 3, 1);
+data.setCell(17, 1, 'testGetPostById')
+data.setCell(17, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(17, 3, 192);
 data.setCell(18, 0, 18)
-data.setCell(18, 1, 'testWithCsvData')
-data.setCell(18, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(18, 3, 1);
+data.setCell(18, 1, 'testGetPostAsObject')
+data.setCell(18, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(18, 3, 189);
 data.setCell(19, 0, 19)
-data.setCell(19, 1, 'testWithPropertiesFile')
-data.setCell(19, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(19, 3, 1);
+data.setCell(19, 1, 'testGetPostAsObject')
+data.setCell(19, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(19, 3, 165);
 data.setCell(20, 0, 20)
-data.setCell(20, 1, 'testWithSimpleDataProvider')
-data.setCell(20, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(20, 3, 1);
-data.setCell(21, 0, 21)
-data.setCell(21, 1, 'testWithUserObjects')
-data.setCell(21, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(21, 3, 1);
-data.setCell(22, 0, 22)
-data.setCell(22, 1, 'testWithSystemProperties')
-data.setCell(22, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(22, 3, 1);
-data.setCell(23, 0, 23)
-data.setCell(23, 1, 'testWithCsvData')
-data.setCell(23, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(23, 3, 1);
-data.setCell(24, 0, 24)
-data.setCell(24, 1, 'testWithCsvData')
-data.setCell(24, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(24, 3, 1);
-data.setCell(25, 0, 25)
-data.setCell(25, 1, 'testWithUserObjects')
-data.setCell(25, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(25, 3, 1);
-data.setCell(26, 0, 26)
-data.setCell(26, 1, 'testWithJsonData')
-data.setCell(26, 2, 'com.api.automation.dataproviders.DataProvidersIntegrationTest')
-data.setCell(26, 3, 1);
+data.setCell(20, 1, 'testGetPostAsObject')
+data.setCell(20, 2, 'com.api.automation.tests.jsonplaceholder.PostTests')
+data.setCell(20, 3, 164);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 70 ms</span>
+              <span class="suite-total-time">Total running time: 10 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -760,115 +638,189 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.api.automation.dataproviders.DataProvidersIntegrationTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">testWithDependencyInjection(org.testng.TestRunner@1477089c)</span>
+              <div class="chronological-class-name">com.api.automation.tests.jsonplaceholder.PostTests</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">setUpPostTests</span>
+                <span class="method-start">313 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">321 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetAllPosts</span>
+                <span class="method-start">353 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">1576 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostById(1)</span>
+                <span class="method-start">1577 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">1795 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostById(2)</span>
+                <span class="method-start">1796 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">2013 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostById(5)</span>
+                <span class="method-start">2013 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">2208 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostById(10)</span>
+                <span class="method-start">2209 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">2415 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostById(50)</span>
+                <span class="method-start">2415 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">testWithEnums</span>
-                <span class="method-start">69 ms</span>
+                <span class="method-name">testGetPostAsObject(1)</span>
+                <span class="method-start">2609 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">2609 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">2912 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostAsObject(2)</span>
+                <span class="method-start">2913 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">3109 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testGetPostAsObject(5)</span>
+                <span class="method-start">3109 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">testWithEnvironmentVariables</span>
-                <span class="method-start">73 ms</span>
+                <span class="method-name">testGetPostAsObject(10)</span>
+                <span class="method-start">3275 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">3275 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">3465 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithJsonData(admin@example.com, adminPassword123, Admin User, ADMIN)</span>
-                <span class="method-start">93 ms</span>
+                <span class="method-name">testGetPostAsObject(50)</span>
+                <span class="method-start">3466 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">3632 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithJsonData(user@example.com, userPassword123, John Doe, USER)</span>
-                <span class="method-start">99 ms</span>
+                <span class="method-name">testGetPostsByUserId(1)</span>
+                <span class="method-start">3632 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">4568 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithJsonData(moderator@example.com, modPassword123, Jane Smith, MODERATOR)</span>
-                <span class="method-start">101 ms</span>
+                <span class="method-name">testGetPostsByUserId(2)</span>
+                <span class="method-start">4569 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">5459 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithJsonData(guest@example.com, guestPassword123, Bob Johnson, GUEST)</span>
-                <span class="method-start">104 ms</span>
+                <span class="method-name">testGetPostsByUserId(3)</span>
+                <span class="method-start">5460 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">6342 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithSimpleDataProvider(admin@example.com, adminPassword123, ADMIN)</span>
-                <span class="method-start">106 ms</span>
+                <span class="method-name">testGetPostsByUserId(5)</span>
+                <span class="method-start">6343 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">7288 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithSimpleDataProvider(user@example.com, userPassword123, USER)</span>
-                <span class="method-start">109 ms</span>
+                <span class="method-name">testGetPostsByUserId(10)</span>
+                <span class="method-start">7289 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">8213 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithSimpleDataProvider(guest@example.com, guestPassword123, GUEST)</span>
-                <span class="method-start">111 ms</span>
+                <span class="method-name">testCreatePost</span>
+                <span class="method-start">8214 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">8645 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@62fad19)</span>
-                <span class="method-start">114 ms</span>
+                <span class="method-name">testUpdatePost</span>
+                <span class="method-start">8646 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">9559 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@74cadd41)</span>
-                <span class="method-start">115 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testPatchPost</span>
+                <span class="method-start">9560 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">9989 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithUserObjects(com.api.automation.dataproviders.DataProvidersIntegrationTest$TestUser@55e8ec2f)</span>
-                <span class="method-start">117 ms</span>
+                <span class="method-name">testDeletePost</span>
+                <span class="method-start">9990 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpSoftAssert</span>
+                <span class="method-start">10451 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testWithBuilderPattern</span>
-                <span class="method-start">119 ms</span>
+                <span class="method-name">testGetAllPostsAsArray</span>
+                <span class="method-start">10452 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithConstants</span>
-                <span class="method-start">121 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(admin@example.com, adminPassword123, ADMIN, true)</span>
-                <span class="method-start">124 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(user@example.com, userPassword123, USER, true)</span>
-                <span class="method-start">127 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(moderator@example.com, modPassword123, MODERATOR, true)</span>
-                <span class="method-start">130 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(guest@example.com, guestPassword123, GUEST, false)</span>
-                <span class="method-start">132 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(test1@example.com, testPass123, USER, true)</span>
-                <span class="method-start">133 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(test2@example.com, testPass456, USER, true)</span>
-                <span class="method-start">135 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithCsvData(invalid@example.com, wrongpass, USER, false)</span>
-                <span class="method-start">137 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithPropertiesFile</span>
-                <span class="method-start">139 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithSystemProperties</span>
-                <span class="method-start">141 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testWithXmlParameters(default@example.com, defaultPass)</span>
-                <span class="method-start">145 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testContextStoreData(org.testng.TestRunner@1477089c)</span>
-                <span class="method-start">148 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testContextRetrieveData(org.testng.TestRunner@1477089c)</span>
-                <span class="method-start">151 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">10672 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

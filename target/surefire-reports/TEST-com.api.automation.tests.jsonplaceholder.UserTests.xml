@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.api.automation.tests.jsonplaceholder.UserTests" time="7.713" tests="16" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/test-classes:/Users/henna/Documents/Personal/Projects/java-rest-assured/target/classes:/Users/henna/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/henna/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/henna/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/henna/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/henna/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/henna/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/henna/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/henna/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/Users/henna/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/Users/henna/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/Users/henna/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/Users/henna/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/Users/henna/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/Users/henna/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/henna/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/henna/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/Users/henna/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/henna/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/henna/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/henna/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/henna/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/henna/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/Users/henna/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/henna/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/henna/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-testng/2.25.0/allure-testng-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-java-commons/2.25.0/allure-java-commons-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-model/2.25.0/allure-model-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-test-filter/2.25.0/allure-test-filter-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-rest-assured/2.25.0/allure-rest-assured-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-attachments/2.25.0/allure-attachments-2.25.0.jar:/Users/henna/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/henna/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/henna/.m2/repository/org/assertj/assertj-core/3.25.1/assertj-core-3.25.1.jar:/Users/henna/.m2/repository/net/bytebuddy/byte-buddy/1.14.11/byte-buddy-1.14.11.jar:/Users/henna/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/henna/.m2/repository/org/apache/poi/poi/5.0.0/poi-5.0.0.jar:/Users/henna/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/Users/henna/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/henna/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/henna/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/henna/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar:/Users/henna/.m2/repository/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/henna/.m2/repository/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar:/Users/henna/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar:/Users/henna/.m2/repository/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar:/Users/henna/.m2/repository/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar:/Users/henna/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar:/Users/henna/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar:/Users/henna/.m2/repository/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar:/Users/henna/.m2/repository/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar:/Users/henna/.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar:/Users/henna/.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar:/Users/henna/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar:/Users/henna/.m2/repository/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar:/Users/henna/.m2/repository/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar:/Users/henna/.m2/repository/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="user.timezone" value="Asia/Colombo"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire/surefirebooter-20260108005301738_3.jar /Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire 2026-01-08T00-53-01_673-jvmRun1 surefire-20260108005301738_1tmp surefire_0-20260108005301738_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="UserTests"/>
+    <property name="surefire.test.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/test-classes:/Users/henna/Documents/Personal/Projects/java-rest-assured/target/classes:/Users/henna/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/henna/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/henna/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/henna/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/henna/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/henna/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/henna/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/henna/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/henna/.m2/repository/io/rest-assured/json-schema-validator/5.4.0/json-schema-validator-5.4.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/Users/henna/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/Users/henna/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/Users/henna/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/Users/henna/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/Users/henna/.m2/repository/org/mozilla/rhino/1.7.7.2/rhino-1.7.7.2.jar:/Users/henna/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/Users/henna/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/Users/henna/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/Users/henna/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/henna/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/henna/.m2/repository/com/google/guava/guava/32.0.1-jre/guava-32.0.1-jre.jar:/Users/henna/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/henna/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/henna/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/henna/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/henna/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/henna/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/Users/henna/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/henna/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/henna/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/henna/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-testng/2.25.0/allure-testng-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-java-commons/2.25.0/allure-java-commons-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-model/2.25.0/allure-model-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-test-filter/2.25.0/allure-test-filter-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-rest-assured/2.25.0/allure-rest-assured-2.25.0.jar:/Users/henna/.m2/repository/io/qameta/allure/allure-attachments/2.25.0/allure-attachments-2.25.0.jar:/Users/henna/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/henna/.m2/repository/org/slf4j/slf4j-api/2.0.11/slf4j-api-2.0.11.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/henna/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/henna/.m2/repository/org/assertj/assertj-core/3.25.1/assertj-core-3.25.1.jar:/Users/henna/.m2/repository/net/bytebuddy/byte-buddy/1.14.11/byte-buddy-1.14.11.jar:/Users/henna/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/henna/.m2/repository/org/apache/poi/poi/5.0.0/poi-5.0.0.jar:/Users/henna/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/Users/henna/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/henna/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/henna/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/henna/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar:/Users/henna/.m2/repository/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar:/Users/henna/.m2/repository/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar:/Users/henna/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/henna/.m2/repository/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar:/Users/henna/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar:/Users/henna/.m2/repository/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar:/Users/henna/.m2/repository/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar:/Users/henna/.m2/repository/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar:/Users/henna/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar:/Users/henna/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar:/Users/henna/.m2/repository/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar:/Users/henna/.m2/repository/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar:/Users/henna/.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar:/Users/henna/.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar:/Users/henna/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar:/Users/henna/.m2/repository/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar:/Users/henna/.m2/repository/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar:/Users/henna/.m2/repository/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar:/Users/henna/.m2/repository/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/henna"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/henna/Documents/Personal/Projects/java-rest-assured"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/henna/Documents/Personal/Projects/java-rest-assured/target/surefire/surefirebooter-20260108005301738_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.8"/>
+    <property name="user.name" value="henna"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.6.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/henna/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/wg/z_wd1xn51ys4g490xvnq4cxr0000gn/T/"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="user.dir" value="/Users/henna/Documents/Personal/Projects/java-rest-assured"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/henna/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testGetAllUsers" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="1.293">
+    <system-out><![CDATA[00:53:02.996 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Setting up UserTests - initializing UserService
+00:53:02.998 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - UserService initialized successfully
+00:53:03.073 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetAllUsers
+00:53:03.073 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching all users from API
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:03.935 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:03.936 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:03 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1847
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+Content-Encoding: gzip
+etag: W/"160d-1eMSsxeJRfnVLRBmYJSbCiJZ1qQ"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=nZhVoyypA48y5%2FAbO7Xs3zB0bF7iL4sfOiMaa6sQUvA%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1763569631"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=nZhVoyypA48y5%2FAbO7Xs3zB0bF7iL4sfOiMaa6sQUvA%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1763569631"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1763569633
+Age: 19471
+Accept-Ranges: bytes
+cf-cache-status: HIT
+CF-RAY: 9ba5d3d5cd295fdb-SIN
+alt-svc: h3=":443"; ma=86400
+
+[
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874",
+            "geo": {
+                "lat": "-37.3159",
+                "lng": "81.1496"
+            }
+        },
+        "phone": "1-770-736-8031 x56442",
+        "website": "hildegard.org",
+        "company": {
+            "name": "Romaguera-Crona",
+            "catchPhrase": "Multi-layered client-server neural-net",
+            "bs": "harness real-time e-markets"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+        "email": "Shanna@melissa.tv",
+        "address": {
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "city": "Wisokyburgh",
+            "zipcode": "90566-7771",
+            "geo": {
+                "lat": "-43.9509",
+                "lng": "-34.4618"
+            }
+        },
+        "phone": "010-692-6593 x09125",
+        "website": "anastasia.net",
+        "company": {
+            "name": "Deckow-Crist",
+            "catchPhrase": "Proactive didactic contingency",
+            "bs": "synergize scalable supply-chains"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "Nathan@yesenia.net",
+        "address": {
+            "street": "Douglas Extension",
+            "suite": "Suite 847",
+            "city": "McKenziehaven",
+            "zipcode": "59590-4157",
+            "geo": {
+                "lat": "-68.6102",
+                "lng": "-47.0653"
+            }
+        },
+        "phone": "1-463-123-4447",
+        "website": "ramiro.info",
+        "company": {
+            "name": "Romaguera-Jacobson",
+            "catchPhrase": "Face to face bifurcated interface",
+            "bs": "e-enable strategic applications"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+        "email": "Julianne.OConner@kory.org",
+        "address": {
+            "street": "Hoeger Mall",
+            "suite": "Apt. 692",
+            "city": "South Elvis",
+            "zipcode": "53919-4257",
+            "geo": {
+                "lat": "29.4572",
+                "lng": "-164.2990"
+            }
+        },
+        "phone": "493-170-9623 x156",
+        "website": "kale.biz",
+        "company": {
+            "name": "Robel-Corkery",
+            "catchPhrase": "Multi-tiered zero tolerance productivity",
+            "bs": "transition cutting-edge web services"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "Lucio_Hettinger@annie.ca",
+        "address": {
+            "street": "Skiles Walks",
+            "suite": "Suite 351",
+            "city": "Roscoeview",
+            "zipcode": "33263",
+            "geo": {
+                "lat": "-31.8129",
+                "lng": "62.5342"
+            }
+        },
+        "phone": "(254)954-1289",
+        "website": "demarco.info",
+        "company": {
+            "name": "Keebler LLC",
+            "catchPhrase": "User-centric fault-tolerant solution",
+            "bs": "revolutionize end-to-end systems"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "Leopoldo_Corkery",
+        "email": "Karley_Dach@jasper.info",
+        "address": {
+            "street": "Norberto Crossing",
+            "suite": "Apt. 950",
+            "city": "South Christy",
+            "zipcode": "23505-1337",
+            "geo": {
+                "lat": "-71.4197",
+                "lng": "71.7478"
+            }
+        },
+        "phone": "1-477-935-8478 x6430",
+        "website": "ola.org",
+        "company": {
+            "name": "Considine-Lockman",
+            "catchPhrase": "Synchronised bottom-line interface",
+            "bs": "e-enable innovative applications"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "Elwyn.Skiles",
+        "email": "Telly.Hoeger@billy.biz",
+        "address": {
+            "street": "Rex Trail",
+            "suite": "Suite 280",
+            "city": "Howemouth",
+            "zipcode": "58804-1099",
+            "geo": {
+                "lat": "24.8918",
+                "lng": "21.8984"
+            }
+        },
+        "phone": "210.067.6132",
+        "website": "elvis.io",
+        "company": {
+            "name": "Johns Group",
+            "catchPhrase": "Configurable multimedia task-force",
+            "bs": "generate enterprise e-tailers"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "username": "Maxime_Nienow",
+        "email": "Sherwood@rosamond.me",
+        "address": {
+            "street": "Ellsworth Summit",
+            "suite": "Suite 729",
+            "city": "Aliyaview",
+            "zipcode": "45169",
+            "geo": {
+                "lat": "-14.3990",
+                "lng": "-120.7677"
+            }
+        },
+        "phone": "586.493.6943 x140",
+        "website": "jacynthe.com",
+        "company": {
+            "name": "Abernathy Group",
+            "catchPhrase": "Implemented secondary concept",
+            "bs": "e-enable extensible e-tailers"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "Delphine",
+        "email": "Chaim_McDermott@dana.io",
+        "address": {
+            "street": "Dayna Park",
+            "suite": "Suite 449",
+            "city": "Bartholomebury",
+            "zipcode": "76495-3109",
+            "geo": {
+                "lat": "24.6463",
+                "lng": "-168.8889"
+            }
+        },
+        "phone": "(775)976-6794 x41206",
+        "website": "conrad.com",
+        "company": {
+            "name": "Yost and Sons",
+            "catchPhrase": "Switchable contextually-based project",
+            "bs": "aggregate real-time technologies"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "Moriah.Stanton",
+        "email": "Rey.Padberg@karina.biz",
+        "address": {
+            "street": "Kattie Turnpike",
+            "suite": "Suite 198",
+            "city": "Lebsackbury",
+            "zipcode": "31428-2261",
+            "geo": {
+                "lat": "-38.2386",
+                "lng": "57.2232"
+            }
+        },
+        "phone": "024-648-3804",
+        "website": "ambrose.net",
+        "company": {
+            "name": "Hoeger LLC",
+            "catchPhrase": "Centralized empowering task-force",
+            "bs": "target end-to-end models"
+        }
+    }
+]
+00:53:03.979 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:03.980 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating response contains multiple users
+HTTP/1.1 200 OK
+00:53:04.328 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetAllUsers completed successfully
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserById[1](1)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.212">
+    <system-out><![CDATA[00:53:04.336 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Loading userIds data provider
+00:53:04.340 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserById with userId: 1
+00:53:04.341 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 1
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:04.529 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:04.529 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:04 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fd-+2Y3G3w049iSZtw5t1mzSnunngE"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=x4Rjvmss7HZiVQTqy3WVX%2FDfz59gvMaVxov4IiQ7b40%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767785421"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=x4Rjvmss7HZiVQTqy3WVX%2FDfz59gvMaVxov4IiQ7b40%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767785421"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1767785427
+Age: 28362
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3d97e61895e-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+            "lat": "-37.3159",
+            "lng": "81.1496"
+        }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+    }
+}
+00:53:04.531 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:04.531 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating user data for userId: 1
+HTTP/1.1 200 OK
+00:53:04.550 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserById completed successfully for userId: 1
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserById[2](2)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.257">
+    <system-out><![CDATA[00:53:04.553 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserById with userId: 2
+00:53:04.553 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 2
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/2
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/2
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:04.778 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:04.779 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:04 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fd-XTG63SYhaP/Uo6/vgmARnL3rpBk"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=asXSBCDtEEHFN344KhAqVInbgnM4zbUQ3EurGh8xe9Y%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767806359"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=asXSBCDtEEHFN344KhAqVInbgnM4zbUQ3EurGh8xe9Y%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767806359"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 990
+x-ratelimit-reset: 1767806367
+Age: 7424
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3daba210dbe-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {
+            "lat": "-43.9509",
+            "lng": "-34.4618"
+        }
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": {
+        "name": "Deckow-Crist",
+        "catchPhrase": "Proactive didactic contingency",
+        "bs": "synergize scalable supply-chains"
+    }
+}
+00:53:04.782 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:04.782 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating user data for userId: 2
+HTTP/1.1 200 OK
+00:53:04.808 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserById completed successfully for userId: 2
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserById[3](3)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.19">
+    <system-out><![CDATA[00:53:04.812 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserById with userId: 3
+00:53:04.812 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 3
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/3
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/3
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:04.980 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:04.980 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:05 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"208-uuwhfwQMzFzbJr9Pg6DKXae0SXA"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=K6t5F8GJjJn3kcBQOMzzji1rPa4GElJ%2BnRqgWc%2BAc2U%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767444864"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=K6t5F8GJjJn3kcBQOMzzji1rPa4GElJ%2BnRqgWc%2BAc2U%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767444864"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1767444889
+Age: 434
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3dc5b3af914-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "address": {
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157",
+        "geo": {
+            "lat": "-68.6102",
+            "lng": "-47.0653"
+        }
+    },
+    "phone": "1-463-123-4447",
+    "website": "ramiro.info",
+    "company": {
+        "name": "Romaguera-Jacobson",
+        "catchPhrase": "Face to face bifurcated interface",
+        "bs": "e-enable strategic applications"
+    }
+}
+00:53:04.982 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:04.982 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating user data for userId: 3
+HTTP/1.1 200 OK
+00:53:04.999 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserById completed successfully for userId: 3
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserById[5](4)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.23">
+    <system-out><![CDATA[00:53:05.002 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserById with userId: 5
+00:53:05.002 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 5
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/5
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/5
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:05.211 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:05.211 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:05 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fb-gmS8Go1GsKpTWscwm+5AFpuro+k"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=MBY1%2F%2FQuFXna%2FDc8HVANxI%2FzaKZs4VEPnR19j8VJAqY%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1765882022"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=MBY1%2F%2FQuFXna%2FDc8HVANxI%2FzaKZs4VEPnR19j8VJAqY%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1765882022"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1765882074
+Age: 434
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3ddbd027e08-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "address": {
+        "street": "Skiles Walks",
+        "suite": "Suite 351",
+        "city": "Roscoeview",
+        "zipcode": "33263",
+        "geo": {
+            "lat": "-31.8129",
+            "lng": "62.5342"
+        }
+    },
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": {
+        "name": "Keebler LLC",
+        "catchPhrase": "User-centric fault-tolerant solution",
+        "bs": "revolutionize end-to-end systems"
+    }
+}
+00:53:05.212 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:05.213 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating user data for userId: 5
+HTTP/1.1 200 OK
+00:53:05.229 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserById completed successfully for userId: 5
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserById[10](5)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.285">
+    <system-out><![CDATA[00:53:05.232 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserById with userId: 10
+00:53:05.232 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 10
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/10
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/10
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:05.495 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:05.496 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:05 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1ff-2iureAUIawGXrTsK9ruBm43T5to"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=BwpcXR63lfLq74J1Ejv3zqAIyQHM3%2F97Pg0PjQmuxcI%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1766827622"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=BwpcXR63lfLq74J1Ejv3zqAIyQHM3%2F97Pg0PjQmuxcI%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1766827622"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 996
+x-ratelimit-reset: 1766827674
+Age: 15
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3df09f7bc78-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 10,
+    "name": "Clementina DuBuque",
+    "username": "Moriah.Stanton",
+    "email": "Rey.Padberg@karina.biz",
+    "address": {
+        "street": "Kattie Turnpike",
+        "suite": "Suite 198",
+        "city": "Lebsackbury",
+        "zipcode": "31428-2261",
+        "geo": {
+            "lat": "-38.2386",
+            "lng": "57.2232"
+        }
+    },
+    "phone": "024-648-3804",
+    "website": "ambrose.net",
+    "company": {
+        "name": "Hoeger LLC",
+        "catchPhrase": "Centralized empowering task-force",
+        "bs": "target end-to-end models"
+    }
+}
+00:53:05.497 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:05.497 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating user data for userId: 10
+HTTP/1.1 200 OK
+00:53:05.515 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserById completed successfully for userId: 10
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserAsObject[1](1)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.363">
+    <system-out><![CDATA[00:53:05.517 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Loading userIds data provider
+00:53:05.519 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserAsObject with userId: 1
+00:53:05.519 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 1 and deserializing to User object
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:05.686 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:05.687 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:05 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fd-+2Y3G3w049iSZtw5t1mzSnunngE"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=x4Rjvmss7HZiVQTqy3WVX%2FDfz59gvMaVxov4IiQ7b40%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767785421"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=x4Rjvmss7HZiVQTqy3WVX%2FDfz59gvMaVxov4IiQ7b40%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767785421"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1767785427
+Age: 28363
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3e0cdb6fe00-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+            "lat": "-37.3159",
+            "lng": "81.1496"
+        }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+    }
+}
+00:53:05.858 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User object received: Leanne Graham
+00:53:05.861 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User object fields for userId: 1
+00:53:05.880 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserAsObject completed successfully for userId: 1
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserAsObject[2](2)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.184">
+    <system-out><![CDATA[00:53:05.884 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserAsObject with userId: 2
+00:53:05.884 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 2 and deserializing to User object
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/2
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/2
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:06.062 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:06.063 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:06 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fd-XTG63SYhaP/Uo6/vgmARnL3rpBk"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=asXSBCDtEEHFN344KhAqVInbgnM4zbUQ3EurGh8xe9Y%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767806359"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=asXSBCDtEEHFN344KhAqVInbgnM4zbUQ3EurGh8xe9Y%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767806359"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 990
+x-ratelimit-reset: 1767806367
+Age: 7426
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3e31e72411d-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {
+            "lat": "-43.9509",
+            "lng": "-34.4618"
+        }
+    },
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": {
+        "name": "Deckow-Crist",
+        "catchPhrase": "Proactive didactic contingency",
+        "bs": "synergize scalable supply-chains"
+    }
+}
+00:53:06.066 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User object received: Ervin Howell
+00:53:06.067 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User object fields for userId: 2
+00:53:06.067 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserAsObject completed successfully for userId: 2
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserAsObject[3](3)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.182">
+    <system-out><![CDATA[00:53:06.069 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserAsObject with userId: 3
+00:53:06.069 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 3 and deserializing to User object
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/3
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/3
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:06.245 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:06.246 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:06 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"208-uuwhfwQMzFzbJr9Pg6DKXae0SXA"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=K6t5F8GJjJn3kcBQOMzzji1rPa4GElJ%2BnRqgWc%2BAc2U%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767444864"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=K6t5F8GJjJn3kcBQOMzzji1rPa4GElJ%2BnRqgWc%2BAc2U%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767444864"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1767444889
+Age: 435
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3e43ccb402f-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 3,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "address": {
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157",
+        "geo": {
+            "lat": "-68.6102",
+            "lng": "-47.0653"
+        }
+    },
+    "phone": "1-463-123-4447",
+    "website": "ramiro.info",
+    "company": {
+        "name": "Romaguera-Jacobson",
+        "catchPhrase": "Face to face bifurcated interface",
+        "bs": "e-enable strategic applications"
+    }
+}
+00:53:06.249 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User object received: Clementine Bauch
+00:53:06.249 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User object fields for userId: 3
+00:53:06.249 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserAsObject completed successfully for userId: 3
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserAsObject[5](4)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.203">
+    <system-out><![CDATA[00:53:06.252 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserAsObject with userId: 5
+00:53:06.252 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 5 and deserializing to User object
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/5
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/5
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:06.441 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:06.441 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:06 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1fb-gmS8Go1GsKpTWscwm+5AFpuro+k"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=MBY1%2F%2FQuFXna%2FDc8HVANxI%2FzaKZs4VEPnR19j8VJAqY%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1765882022"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=MBY1%2F%2FQuFXna%2FDc8HVANxI%2FzaKZs4VEPnR19j8VJAqY%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1765882022"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1765882074
+Age: 435
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3e56b3962f7-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "address": {
+        "street": "Skiles Walks",
+        "suite": "Suite 351",
+        "city": "Roscoeview",
+        "zipcode": "33263",
+        "geo": {
+            "lat": "-31.8129",
+            "lng": "62.5342"
+        }
+    },
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": {
+        "name": "Keebler LLC",
+        "catchPhrase": "User-centric fault-tolerant solution",
+        "bs": "revolutionize end-to-end systems"
+    }
+}
+00:53:06.453 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User object received: Chelsey Dietrich
+00:53:06.454 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User object fields for userId: 5
+00:53:06.454 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserAsObject completed successfully for userId: 5
+]]></system-out>
+  </testcase>
+  <testcase name="testGetUserAsObject[10](5)" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.239">
+    <system-out><![CDATA[00:53:06.457 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetUserAsObject with userId: 10
+00:53:06.457 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching user with ID: 10 and deserializing to User object
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/10
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users/10
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:06.685 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:06.686 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:06 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+etag: W/"1ff-2iureAUIawGXrTsK9ruBm43T5to"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=BwpcXR63lfLq74J1Ejv3zqAIyQHM3%2F97Pg0PjQmuxcI%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1766827622"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=BwpcXR63lfLq74J1Ejv3zqAIyQHM3%2F97Pg0PjQmuxcI%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1766827622"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 996
+x-ratelimit-reset: 1766827674
+Age: 16
+cf-cache-status: HIT
+Content-Encoding: gzip
+CF-RAY: 9ba5d3e6fb0ecdee-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 10,
+    "name": "Clementina DuBuque",
+    "username": "Moriah.Stanton",
+    "email": "Rey.Padberg@karina.biz",
+    "address": {
+        "street": "Kattie Turnpike",
+        "suite": "Suite 198",
+        "city": "Lebsackbury",
+        "zipcode": "31428-2261",
+        "geo": {
+            "lat": "-38.2386",
+            "lng": "57.2232"
+        }
+    },
+    "phone": "024-648-3804",
+    "website": "ambrose.net",
+    "company": {
+        "name": "Hoeger LLC",
+        "catchPhrase": "Centralized empowering task-force",
+        "bs": "target end-to-end models"
+    }
+}
+00:53:06.693 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User object received: Clementina DuBuque
+00:53:06.693 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User object fields for userId: 10
+00:53:06.693 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetUserAsObject completed successfully for userId: 10
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateUser" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.999">
+    <system-out><![CDATA[00:53:06.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testCreateUser
+00:53:06.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Preparing test data for new user creation
+00:53:06.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Creating new user: John Doe
+Request method:	POST
+Request URI:	https://jsonplaceholder.typicode.com/users
+Request method:	POST
+Request URI:	https://jsonplaceholder.typicode.com/users
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": null,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "john.doe@example.com",
+    "address": null,
+    "phone": "1-555-123-4567",
+    "website": "johndoe.com",
+    "company": null
+}
+00:53:07.672 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:07.672 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 201 Created
+Date: Wed, 07 Jan 2026 19:23:07 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 191
+Connection: keep-alive
+access-control-allow-credentials: true
+access-control-expose-headers: Location
+Cache-Control: no-cache
+etag: W/"bf-r+lqcmPhtpJlWcpB3rfcCsjH0K0"
+expires: -1
+location: https://jsonplaceholder.typicode.com/users/11
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=ZYUlFY5XrKkkeXc2TCi%2BZsqLpRTUsEIycWWmA6lb4ok%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767813787"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=ZYUlFY5XrKkkeXc2TCi%2BZsqLpRTUsEIycWWmA6lb4ok%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767813787"
+Server: cloudflare
+vary: Origin, X-HTTP-Method-Override, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 995
+x-ratelimit-reset: 1767813831
+cf-cache-status: DYNAMIC
+CF-RAY: 9ba5d3e8aa81ce6e-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 11,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "john.doe@example.com",
+    "address": null,
+    "phone": "1-555-123-4567",
+    "website": "johndoe.com",
+    "company": null
+}
+00:53:07.675 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 201
+00:53:07.676 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating created user data
+HTTP/1.1 201 Created
+{
+    "id": 11,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "john.doe@example.com",
+    "address": null,
+    "phone": "1-555-123-4567",
+    "website": "johndoe.com",
+    "company": null
+}
+00:53:07.694 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testCreateUser completed successfully - user created
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateUser" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.421">
+    <system-out><![CDATA[00:53:07.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testUpdateUser
+00:53:07.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Preparing updated data for user ID: 1
+00:53:07.698 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Updating user ID: 1 with new data
+Request method:	PUT
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Request method:	PUT
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 1,
+    "name": "Jane Doe Updated",
+    "username": "janedoe",
+    "email": "jane.updated@example.com",
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+00:53:08.105 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:08.106 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:08 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: no-cache
+etag: W/"b5-h4AUkDXQgthjsRe2ilcp1hA8oVI"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=GJTWZTDKwaDBKXcgX7u3qR3znNO2lmhZJyOnvFN2LyA%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767813788"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=GJTWZTDKwaDBKXcgX7u3qR3znNO2lmhZJyOnvFN2LyA%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767813788"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 994
+x-ratelimit-reset: 1767813831
+cf-cache-status: DYNAMIC
+Content-Encoding: gzip
+CF-RAY: 9ba5d3ee7a41fe22-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": 1,
+    "name": "Jane Doe Updated",
+    "username": "janedoe",
+    "email": "jane.updated@example.com",
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+00:53:08.107 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:08.107 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating updated user data
+HTTP/1.1 200 OK
+{
+    "id": 1,
+    "name": "Jane Doe Updated",
+    "username": "janedoe",
+    "email": "jane.updated@example.com",
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+00:53:08.117 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testUpdateUser completed successfully - user updated
+]]></system-out>
+  </testcase>
+  <testcase name="testPatchUser" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.904">
+    <failure message="1 expectation failed.&#10;JSON path id doesn&apos;t match.&#10;Expected: &lt;1&gt;&#10;  Actual: null&#10;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
+1 expectation failed.
+JSON path id doesn't match.
+Expected: <1>
+  Actual: null
+
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:270)
+	at io.restassured.specification.ResponseSpecification$body$1.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:117)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.body(ValidatableResponseOptionsImpl.java:244)
+	at com.api.automation.tests.jsonplaceholder.UserTests.testPatchUser(UserTests.java:178)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></failure>
+    <system-out><![CDATA[00:53:08.120 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testPatchUser
+00:53:08.120 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Preparing partial update for user ID: 1
+00:53:08.120 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Partially updating user ID: 1
+Request method:	PATCH
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Request method:	PATCH
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": null,
+    "name": "Partially Updated Name",
+    "username": null,
+    "email": null,
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+00:53:08.987 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:08.988 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:09 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: no-cache
+etag: W/"a3-U91V/nVPqiWeyRkjABJTKnwvIZI"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=GJTWZTDKwaDBKXcgX7u3qR3znNO2lmhZJyOnvFN2LyA%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767813788"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=GJTWZTDKwaDBKXcgX7u3qR3znNO2lmhZJyOnvFN2LyA%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767813788"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 993
+x-ratelimit-reset: 1767813831
+cf-cache-status: DYNAMIC
+Content-Encoding: gzip
+CF-RAY: 9ba5d3f12c7d4d96-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    "id": null,
+    "name": "Partially Updated Name",
+    "username": null,
+    "email": null,
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+00:53:08.990 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:08.990 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating partial update
+HTTP/1.1 200 OK
+{
+    "id": null,
+    "name": "Partially Updated Name",
+    "username": null,
+    "email": null,
+    "address": null,
+    "phone": null,
+    "website": null,
+    "company": null
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testDeleteUser" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.38">
+    <system-out><![CDATA[00:53:09.024 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testDeleteUser
+00:53:09.025 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Deleting user with ID: 1
+Request method:	DELETE
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Request method:	DELETE
+Request URI:	https://jsonplaceholder.typicode.com/users/1
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:09.399 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:09.400 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:09 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: no-cache
+etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AN%2F7Mo150WEAsHAv1CCfJGTc6S4Kx%2FmIRNQIqpyoU2A%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1767813789"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=AN%2F7Mo150WEAsHAv1CCfJGTc6S4Kx%2FmIRNQIqpyoU2A%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1767813789"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 992
+x-ratelimit-reset: 1767813831
+cf-cache-status: DYNAMIC
+Content-Encoding: gzip
+CF-RAY: 9ba5d3f6980bca12-SIN
+alt-svc: h3=":443"; ma=86400
+
+{
+    
+}
+00:53:09.401 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Response received with status code: 200
+00:53:09.401 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating delete operation
+HTTP/1.1 200 OK
+00:53:09.402 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testDeleteUser completed successfully - user deleted
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllUsersAsArray" classname="com.api.automation.tests.jsonplaceholder.UserTests" time="0.183">
+    <system-out><![CDATA[00:53:09.410 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Starting test: testGetAllUsersAsArray
+00:53:09.410 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Fetching all users and deserializing to User array
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users
+Request method:	GET
+Request URI:	https://jsonplaceholder.typicode.com/users
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+00:53:09.579 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsing response as: application/json; charset=utf-8
+00:53:09.580 [main] DEBUG i.r.internal.RestAssuredHttpBuilder - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+HTTP/1.1 200 OK
+Date: Wed, 07 Jan 2026 19:23:09 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1847
+Connection: keep-alive
+access-control-allow-credentials: true
+Cache-Control: max-age=43200
+Content-Encoding: gzip
+etag: W/"160d-1eMSsxeJRfnVLRBmYJSbCiJZ1qQ"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=nZhVoyypA48y5%2FAbO7Xs3zB0bF7iL4sfOiMaa6sQUvA%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1763569631"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=nZhVoyypA48y5%2FAbO7Xs3zB0bF7iL4sfOiMaa6sQUvA%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1763569631"
+Server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1763569633
+Age: 19477
+Accept-Ranges: bytes
+cf-cache-status: HIT
+CF-RAY: 9ba5d3f91c580b95-SIN
+alt-svc: h3=":443"; ma=86400
+
+[
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874",
+            "geo": {
+                "lat": "-37.3159",
+                "lng": "81.1496"
+            }
+        },
+        "phone": "1-770-736-8031 x56442",
+        "website": "hildegard.org",
+        "company": {
+            "name": "Romaguera-Crona",
+            "catchPhrase": "Multi-layered client-server neural-net",
+            "bs": "harness real-time e-markets"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+        "email": "Shanna@melissa.tv",
+        "address": {
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "city": "Wisokyburgh",
+            "zipcode": "90566-7771",
+            "geo": {
+                "lat": "-43.9509",
+                "lng": "-34.4618"
+            }
+        },
+        "phone": "010-692-6593 x09125",
+        "website": "anastasia.net",
+        "company": {
+            "name": "Deckow-Crist",
+            "catchPhrase": "Proactive didactic contingency",
+            "bs": "synergize scalable supply-chains"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+        "email": "Nathan@yesenia.net",
+        "address": {
+            "street": "Douglas Extension",
+            "suite": "Suite 847",
+            "city": "McKenziehaven",
+            "zipcode": "59590-4157",
+            "geo": {
+                "lat": "-68.6102",
+                "lng": "-47.0653"
+            }
+        },
+        "phone": "1-463-123-4447",
+        "website": "ramiro.info",
+        "company": {
+            "name": "Romaguera-Jacobson",
+            "catchPhrase": "Face to face bifurcated interface",
+            "bs": "e-enable strategic applications"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+        "email": "Julianne.OConner@kory.org",
+        "address": {
+            "street": "Hoeger Mall",
+            "suite": "Apt. 692",
+            "city": "South Elvis",
+            "zipcode": "53919-4257",
+            "geo": {
+                "lat": "29.4572",
+                "lng": "-164.2990"
+            }
+        },
+        "phone": "493-170-9623 x156",
+        "website": "kale.biz",
+        "company": {
+            "name": "Robel-Corkery",
+            "catchPhrase": "Multi-tiered zero tolerance productivity",
+            "bs": "transition cutting-edge web services"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "Lucio_Hettinger@annie.ca",
+        "address": {
+            "street": "Skiles Walks",
+            "suite": "Suite 351",
+            "city": "Roscoeview",
+            "zipcode": "33263",
+            "geo": {
+                "lat": "-31.8129",
+                "lng": "62.5342"
+            }
+        },
+        "phone": "(254)954-1289",
+        "website": "demarco.info",
+        "company": {
+            "name": "Keebler LLC",
+            "catchPhrase": "User-centric fault-tolerant solution",
+            "bs": "revolutionize end-to-end systems"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "Leopoldo_Corkery",
+        "email": "Karley_Dach@jasper.info",
+        "address": {
+            "street": "Norberto Crossing",
+            "suite": "Apt. 950",
+            "city": "South Christy",
+            "zipcode": "23505-1337",
+            "geo": {
+                "lat": "-71.4197",
+                "lng": "71.7478"
+            }
+        },
+        "phone": "1-477-935-8478 x6430",
+        "website": "ola.org",
+        "company": {
+            "name": "Considine-Lockman",
+            "catchPhrase": "Synchronised bottom-line interface",
+            "bs": "e-enable innovative applications"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "Elwyn.Skiles",
+        "email": "Telly.Hoeger@billy.biz",
+        "address": {
+            "street": "Rex Trail",
+            "suite": "Suite 280",
+            "city": "Howemouth",
+            "zipcode": "58804-1099",
+            "geo": {
+                "lat": "24.8918",
+                "lng": "21.8984"
+            }
+        },
+        "phone": "210.067.6132",
+        "website": "elvis.io",
+        "company": {
+            "name": "Johns Group",
+            "catchPhrase": "Configurable multimedia task-force",
+            "bs": "generate enterprise e-tailers"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "username": "Maxime_Nienow",
+        "email": "Sherwood@rosamond.me",
+        "address": {
+            "street": "Ellsworth Summit",
+            "suite": "Suite 729",
+            "city": "Aliyaview",
+            "zipcode": "45169",
+            "geo": {
+                "lat": "-14.3990",
+                "lng": "-120.7677"
+            }
+        },
+        "phone": "586.493.6943 x140",
+        "website": "jacynthe.com",
+        "company": {
+            "name": "Abernathy Group",
+            "catchPhrase": "Implemented secondary concept",
+            "bs": "e-enable extensible e-tailers"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "Delphine",
+        "email": "Chaim_McDermott@dana.io",
+        "address": {
+            "street": "Dayna Park",
+            "suite": "Suite 449",
+            "city": "Bartholomebury",
+            "zipcode": "76495-3109",
+            "geo": {
+                "lat": "24.6463",
+                "lng": "-168.8889"
+            }
+        },
+        "phone": "(775)976-6794 x41206",
+        "website": "conrad.com",
+        "company": {
+            "name": "Yost and Sons",
+            "catchPhrase": "Switchable contextually-based project",
+            "bs": "aggregate real-time technologies"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "Moriah.Stanton",
+        "email": "Rey.Padberg@karina.biz",
+        "address": {
+            "street": "Kattie Turnpike",
+            "suite": "Suite 198",
+            "city": "Lebsackbury",
+            "zipcode": "31428-2261",
+            "geo": {
+                "lat": "-38.2386",
+                "lng": "57.2232"
+            }
+        },
+        "phone": "024-648-3804",
+        "website": "ambrose.net",
+        "company": {
+            "name": "Hoeger LLC",
+            "catchPhrase": "Centralized empowering task-force",
+            "bs": "target end-to-end models"
+        }
+    }
+]
+00:53:09.589 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - User array received with 10 users
+00:53:09.589 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Validating User array
+00:53:09.589 [main] INFO  c.a.a.t.jsonplaceholder.UserTests - Test testGetAllUsersAsArray completed successfully
+]]></system-out>
+  </testcase>
+</testsuite>
