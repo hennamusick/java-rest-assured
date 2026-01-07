@@ -117,30 +117,59 @@ java-rest-assured/
 │   │           │   └── ObjectService.java      # Object API endpoints (restful-api.dev)
 │   │           └── utils/
 │   │               ├── RestClient.java         # REST Assured specifications
-│   │               └── JsonUtils.java          # JSON utilities with formatting
+│   │               ├── JsonUtils.java          # JSON utilities with formatting
+│   │               └── TestDataProvider.java   # Data providers for parameterization
 │   └── test/
 │       ├── java/
 │       │   └── com/api/automation/
 │       │       └── tests/
 │       │           ├── BaseTest.java           # Base test setup
-│       │           ├── UserTests.java          # 8 User API tests
-│       │           ├── PostTests.java          # 9 Post API tests
+│       │           ├── UserTests.java          # 16 parameterized User tests
+│       │           ├── PostTests.java          # 21 parameterized Post tests
 │       │           ├── ObjectTests.java        # 16 Object API tests
+│       │           ├── DataProvidersIntegrationTest.java # 27 data provider examples
 │       │           └── utils/
 │       │               └── TestUtils.java      # Test utility methods
 │       └── resources/
 │           ├── config.properties               # Application configuration
+│           ├── testdata.csv                    # CSV test data (7 users)
+│           ├── testdata.json                   # JSON test data (4 users + config)
+│           ├── testdata.properties             # Properties test data
 │           └── logback.xml                     # Logging configuration
 ├── pom.xml                                     # Maven dependencies
 ├── testng.xml                                  # TestNG suite configuration
 └── README.md
 ```
 
+### Data Providers Integration
+
+The project structure now includes **centralized data provider utilities**:
+
+```
+Test Data Sources:
+├── CSV Data: src/test/resources/testdata.csv
+│   └── Contains: User email, password, roles, and metadata
+├── JSON Data: src/test/resources/testdata.json  
+│   └── Contains: User objects, API config, endpoints
+└── Properties: src/test/resources/testdata.properties
+    └── Contains: Credentials, URLs, timeouts
+
+Data Provider Utility:
+├── TestDataProvider.java (300+ lines)
+│   ├── Core Methods: getUserIds(), getPostIds(), getPaginationParams()
+│   ├── File Loaders: getTestIdsFromCsv(), getTestConfigFromJson()
+│   ├── Helper Classes:
+│   │   ├── TestConstants (API config, status codes)
+│   │   ├── TestIdBuilder (fluent builder pattern)
+│   │   └── TestScenario enum (5 test scenarios)
+│   └── Property Loader: getProperty(key, default)
+```
+
 ## 🏗️ Architecture
 
-### Page Object Model (POM) Pattern
+### Page Object Model (POM) Pattern with Data Providers
 
-This framework implements POM pattern for API testing:
+This framework implements **POM pattern integrated with TestNG Data Providers** for API testing:
 
 1. **Service Layer** (`services/`): Contains service classes representing different API endpoints
    - `BaseService.java`: Abstract base class with common HTTP methods and request logging
@@ -153,23 +182,36 @@ This framework implements POM pattern for API testing:
    - `Post.java`: Post entity
    - `ApiObject.java`: ApiObject entity with dynamic data map
 
-3. **Test Layer** (`tests/`): Test classes with comprehensive soft assertions
+3. **Test Layer** (`tests/`): Test classes with data providers and comprehensive soft assertions
    - `BaseTest.java`: Base test setup and teardown
-   - `UserTests.java`: 8 comprehensive User API tests with soft assertions
-   - `PostTests.java`: 9 comprehensive Post API tests with soft assertions
-   - `ObjectDeleteTests.java`: DELETE endpoint tests with 6 test methods using soft assertions
-   - `ObjectGetTests.java`: GET single object tests with 5 test methods using soft assertions
-   - `ObjectGetAllTests.java`: GET all objects tests with 3 test methods using soft assertions
-   - `ObjectGetByIdsTests.java`: GET by IDs query param tests with 4 test methods using soft assertions
-   - `ObjectPostTests.java`: POST create tests with 2 test methods using soft assertions
-   - `ObjectPutTests.java`: PUT update tests with 2 test methods using soft assertions
-   - `ObjectPatchTests.java`: PATCH partial update tests with 1 test method using soft assertions
+   - `UserTests.java`: **16 parameterized User API tests** (8 methods × 2 data sets) with soft assertions
+   - `PostTests.java`: **21 parameterized Post API tests** (8 methods × 2-3 data sets) with soft assertions
+   - `DataProvidersIntegrationTest.java`: **27 comprehensive data provider examples**
+   - `ObjectDeleteTests.java`: DELETE endpoint tests with 6 test methods
+   - `ObjectGetTests.java`: GET single object tests with 5 test methods
+   - `ObjectGetAllTests.java`: GET all objects tests with 3 test methods
+   - `ObjectGetByIdsTests.java`: GET by IDs query param tests with 4 test methods
+   - `ObjectPostTests.java`: POST create tests with 2 test methods
+   - `ObjectPutTests.java`: PUT update tests with 2 test methods
+   - `ObjectPatchTests.java`: PATCH partial update tests with 1 test method
    - `TestUtils.java`: Test utility helper methods
 
-4. **Configuration Layer** (`config/` & `utils/`):
+4. **Data Provider Layer** (NEW - `utils/`):
+   - `TestDataProvider.java`: Centralized hub for all test data and parameterization
+     - **7 Core Methods**: getUserIds(), getPostIds(), getPaginationParams(), etc.
+     - **File Loaders**: CSV, JSON, Properties file readers
+     - **TestConstants**: API config, status codes, validation values, timeouts
+     - **TestIdBuilder**: Fluent builder for flexible test data
+     - **TestScenario**: Enum for 5 test scenarios (HAPPY_PATH, EDGE_CASE, etc.)
+
+5. **Configuration Layer** (`config/` & `utils/`):
    - `ConfigManager.java`: Singleton configuration manager
    - `RestClient.java`: REST Assured request/response specifications
    - `JsonUtils.java`: JSON serialization/deserialization with formatted output
+   - **Data Source Files**:
+     - `testdata.csv`: 7 user records with email, password, role, enabled status
+     - `testdata.json`: 4 user objects + testConfig + API endpoints
+     - `testdata.properties`: Admin credentials, URLs, timeouts
 
 ## 🎯 Perfect For Beginners Because...
 
@@ -180,27 +222,58 @@ This framework implements POM pattern for API testing:
 - 🎨 **Beautiful reports** - Visual test execution results with Allure
 - 🧩 **Modular design** - Easy to understand and extend
 - ✨ **Modern Java** - Uses latest features (Java 17+, Lombok, Lambda)
+- 🎯 **Data-Driven Testing** - Built-in data providers with 13+ parameterization methods
+- 📊 **Multiple Data Sources** - CSV, JSON, Properties files with examples
+- 🔄 **Parameterized Tests** - Run 37 test executions from 15 test methods
+- 🛠️ **Utility Classes** - TestDataProvider, TestIdBuilder, TestConstants for easy test data management
 
 ---
 
 ## 🎨 Framework Architecture - End-to-End Flow
 
-### High-Level Architecture Diagram
+### High-Level Architecture Diagram with Data Providers
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                          TEST EXECUTION LAYER                                │
+│                      DATA PROVIDER LAYER (NEW)                               │
 │  ┌────────────────────────────────────────────────────────────────────┐    │
-│  │  TestNG Test Classes (tests/)                                       │    │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐             │    │
-│  │  │ UserTests    │  │ PostTests    │  │ ObjectTests  │  ... more    │    │
-│  │  │ - 8 tests    │  │ - 9 tests    │  │ - 23 tests   │             │    │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘             │    │
-│  │         │                  │                  │                     │    │
-│  │         └──────────────────┴──────────────────┘                     │    │
+│  │  TestDataProvider.java (Centralized Hub)                            │    │
+│  │  ┌──────────────────────────┐  ┌──────────────────────────┐        │    │
+│  │  │ Data Sources             │  │ Core Methods             │        │    │
+│  │  ├──────────────────────────┤  ├──────────────────────────┤        │    │
+│  │  │ • testdata.csv           │  │ • getUserIds()           │        │    │
+│  │  │ • testdata.json          │  │ • getPostIds()           │        │    │
+│  │  │ • testdata.properties    │  │ • getPaginationParams()  │        │    │
+│  │  └──────────────────────────┘  └──────────────────────────┘        │    │
+│  │  ┌──────────────────────────────────────────────────────────────┐  │    │
+│  │  │ Helper Classes: TestConstants, TestIdBuilder, TestScenario   │  │    │
+│  │  └──────────────────────────────────────────────────────────────┘  │    │
 │  └─────────────────────────────┬──────────────────────────────────────┘    │
 └────────────────────────────────┼─────────────────────────────────────────────┘
-                                 │ Uses
+                                 │ Provides Test Data
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    TEST EXECUTION LAYER (PARAMETERIZED)                      │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │  TestNG Test Classes with @DataProvider (tests/)                   │    │
+│  │  ┌──────────────────────────┐  ┌──────────────────────────┐       │    │
+│  │  │ UserTests                │  │ PostTests                │       │    │
+│  │  ├──────────────────────────┤  ├──────────────────────────┤       │    │
+│  │  │ • 8 test methods         │  │ • 8 test methods         │       │    │
+│  │  │ • 16 executions          │  │ • 21 executions          │       │    │
+│  │  │   (@DataProvider)        │  │   (@DataProvider)        │       │    │
+│  │  │ • provideUserIds()       │  │ • providePostIds()       │       │    │
+│  │  │ • provideUserCounts()    │  │ • provideUserIds()       │       │    │
+│  │  └──────────────────────────┘  └──────────────────────────┘       │    │
+│  │                                                                     │    │
+│  │  ┌──────────────────────────────────────────────────────────────┐ │    │
+│  │  │ DataProvidersIntegrationTest (27 examples)                   │ │    │
+│  │  │ • CSV data provider examples • JSON data provider examples   │ │    │
+│  │  │ • Properties file examples   • Multiple parameterization     │ │    │
+│  │  └──────────────────────────────────────────────────────────────┘ │    │
+│  └─────────────────────────────┬──────────────────────────────────────┘    │
+└────────────────────────────────┼─────────────────────────────────────────────┘
+                                 │ Uses Data to Execute Tests
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                       SERVICE LAYER (POM Pattern)                            │
