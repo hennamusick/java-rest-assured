@@ -2603,12 +2603,354 @@ mvn test -Dtest=UserTests#testGetUserById
 - Allure reports show separate results per iteration
 - TestNG XML reports include all iterations
 
+### Advanced Parameterization Patterns
+
+#### Pattern 1: Multiple Parameters per Test
+
+```java
+@DataProvider(name = "userAndPostIds")
+public Object[][] provideUserAndPostIds() {
+    return new Object[][] {
+        {1, 1},   // userId, postId
+        {1, 2},
+        {2, 3},
+        {5, 10},
+        {10, 50}
+    };
+}
+
+@Test(dataProvider = "userAndPostIds")
+public void testGetUserPost(int userId, int postId) {
+    logger.info("Fetching post {} from user {}", postId, userId);
+    
+    Response userResponse = userService.getUserById(userId);
+    Response postResponse = postService.getPostById(postId);
+    
+    softAssert.assertEquals(userResponse.getStatusCode(), 200);
+    softAssert.assertEquals(postResponse.getStatusCode(), 200);
+    softAssert.assertAll();
+}
+```
+
+#### Pattern 2: Data Provider with Complex Objects
+
+```java
+@DataProvider(name = "objectsWithMetadata")
+public Object[][] provideObjectsWithMetadata() {
+    Map<String, Object> data1 = new HashMap<>();
+    data1.put("year", 2023);
+    data1.put("price", 2499.99);
+    
+    Map<String, Object> data2 = new HashMap<>();
+    data2.put("year", 2024);
+    data2.put("price", 2999.99);
+    
+    return new Object[][] {
+        {
+            ApiObject.builder().name("MacBook Pro").data(data1).build(),
+            "MacBook Pro"
+        },
+        {
+            ApiObject.builder().name("MacBook Air").data(data2).build(),
+            "MacBook Air"
+        }
+    };
+}
+
+@Test(dataProvider = "objectsWithMetadata")
+public void testCreateObjectWithMetadata(ApiObject object, String expectedName) {
+    logger.info("Creating object: {}", expectedName);
+    Response response = objectService.createObject(object);
+    
+    softAssert.assertEquals(response.getStatusCode(), 200);
+    softAssert.assertEquals(response.jsonPath().getString("name"), expectedName);
+    softAssert.assertAll();
+}
+```
+
+#### Pattern 3: Combining CSV with Custom Logic
+
+```java
+@DataProvider(name = "csvDataWithValidation")
+public Object[][] provideCsvDataWithValidation() throws Exception {
+    Object[][] csvData = TestDataProvider.getTestIdsFromCsv();
+    
+    // Enhance CSV data with computed values
+    Object[][] enhancedData = new Object[csvData.length][3];
+    for (int i = 0; i < csvData.length; i++) {
+        String[] row = (String[]) csvData[i];
+        enhancedData[i][0] = row[0]; // email
+        enhancedData[i][1] = row[1]; // password
+        enhancedData[i][2] = row[0].split("@")[0]; // username extracted from email
+    }
+    return enhancedData;
+}
+
+@Test(dataProvider = "csvDataWithValidation")
+public void testUserWithEmailDerivedUsername(String email, String password, String username) {
+    logger.info("Testing user: {} with derived username: {}", email, username);
+    
+    User user = User.builder()
+        .email(email)
+        .username(username)
+        .password(password)
+        .build();
+    
+    Response response = userService.createUser(user);
+    softAssert.assertEquals(response.getStatusCode(), 201);
+    softAssert.assertEquals(response.jsonPath().getString("username"), username);
+    softAssert.assertAll();
+}
+```
+
+#### Pattern 4: JSON File with Filtering
+
+```java
+@DataProvider(name = "activeUsersFromJson")
+public Object[][] provideActiveUsersFromJson() throws Exception {
+    Object[][] allUsers = TestDataProvider.getUsersFromJson();
+    
+    // Filter only active users
+    List<Object[]> activeUsers = new ArrayList<>();
+    for (Object[] user : allUsers) {
+        // Custom logic to check if user is active
+        // This example assumes additional data in TestDataProvider
+        activeUsers.add(user);
+    }
+    
+    return activeUsers.toArray(new Object[0][0]);
+}
+
+@Test(dataProvider = "activeUsersFromJson")
+public void testActiveUserOperations(Object userData) {
+    logger.info("Testing active user: {}", userData);
+    
+    // Test implementation
+    Response response = userService.performOperation(userData);
+    softAssert.assertEquals(response.getStatusCode(), 200);
+    softAssert.assertAll();
+}
+```
+
+#### Pattern 5: Dynamically Generated Data
+
+```java
+@DataProvider(name = "dynamicUserIds")
+public Object[][] provideDynamicUserIds() {
+    // Generate data dynamically based on test environment
+    int maxUserId = Integer.parseInt(TestDataProvider.getProperty("max.user.id", "10"));
+    
+    List<Object[]> data = new ArrayList<>();
+    for (int i = 1; i <= maxUserId; i++) {
+        if (i % 2 == 0) { // Only even IDs for this example
+            data.add(new Object[]{i});
+        }
+    }
+    
+    return data.toArray(new Object[0][0]);
+}
+
+@Test(dataProvider = "dynamicUserIds")
+public void testDynamicallyGeneratedUserIds(int userId) {
+    logger.info("Testing dynamically generated user ID: {}", userId);
+    Response response = userService.getUserById(userId);
+    softAssert.assertEquals(response.getStatusCode(), 200);
+    softAssert.assertAll();
+}
+```
+
+### Performance Optimization for Data Providers
+
+#### 1. Lazy Loading Data
+
+```java
+@DataProvider(name = "lazyLoadedData")
+public Iterator<Object[]> provideLazyLoadedData() {
+    return new Iterator<Object[]>() {
+        private int current = 0;
+        private final int max = 100; // Large dataset
+        
+        @Override
+        public boolean hasNext() {
+            return current < max;
+        }
+        
+        @Override
+        public Object[] next() {
+            // Load data on-demand, not all at once
+            return new Object[]{++current};
+        }
+    };
+}
+
+@Test(dataProvider = "lazyLoadedData")
+public void testWithLazyLoadedData(int value) {
+    logger.info("Testing with lazy-loaded value: {}", value);
+    // Test implementation
+}
+```
+
+#### 2. Caching Data Provider Results
+
+```java
+public class CachedDataProvider {
+    private static final Map<String, Object[][]> cache = new HashMap<>();
+    
+    public static Object[][] getCachedData(String key) {
+        if (!cache.containsKey(key)) {
+            // Load data only once
+            cache.put(key, loadDataFromSource(key));
+        }
+        return cache.get(key);
+    }
+    
+    private static Object[][] loadDataFromSource(String key) {
+        // Expensive operation (file I/O, API call, etc.)
+        logger.info("Loading data for key: {} (first time)", key);
+        return TestDataProvider.getUserIds();
+    }
+}
+
+@DataProvider(name = "cachedUserIds")
+public Object[][] provideCachedUserIds() {
+    return CachedDataProvider.getCachedData("userIds");
+}
+
+@Test(dataProvider = "cachedUserIds")
+public void testWithCachedData(int userId) {
+    logger.info("Testing with cached user ID: {}", userId);
+    Response response = userService.getUserById(userId);
+    softAssert.assertEquals(response.getStatusCode(), 200);
+    softAssert.assertAll();
+}
+```
+
+### Handling Data Provider Failures
+
+#### Pattern: Data Provider Error Handling
+
+```java
+@DataProvider(name = "robustDataProvider")
+public Object[][] provideRobustData() {
+    try {
+        return TestDataProvider.getTestIdsFromCsv();
+    } catch (Exception e) {
+        logger.error("Failed to load CSV data, using fallback", e);
+        // Return fallback data if primary source fails
+        return new Object[][] {
+            {1}, {2}, {3}, {5}, {10}
+        };
+    }
+}
+
+@Test(dataProvider = "robustDataProvider")
+public void testWithFallbackData(int value) {
+    logger.info("Testing with data (CSV or fallback): {}", value);
+    Response response = userService.getUserById(value);
+    softAssert.assertEquals(response.getStatusCode(), 200);
+    softAssert.assertAll();
+}
+```
+
+### Data Provider Best Practices Checklist
+
+✅ **Data Organization**
+- Keep data files in `src/test/resources/`
+- Use meaningful file names (testdata.csv, testdata.json, etc.)
+- Document data format and values
+
+✅ **Performance**
+- Cache data that's expensive to load
+- Use lazy loading for large datasets
+- Consider Iterator pattern for streaming data
+
+✅ **Maintainability**
+- Centralize all providers in TestDataProvider utility
+- Document what each provider returns
+- Use meaningful provider names
+
+✅ **Error Handling**
+- Provide sensible fallback data
+- Log errors clearly for debugging
+- Validate data integrity before use
+
+✅ **Testing Strategy**
+- Use different data sets for different test types
+- Include edge cases in data
+- Separate happy path from error scenarios
+
+### Troubleshooting Data Providers
+
+**Issue: Data Provider returning null**
+```java
+// ❌ Wrong
+@DataProvider(name = "myData")
+public Object[][] provideData() {
+    return null; // This will cause issues
+}
+
+// ✅ Correct
+@DataProvider(name = "myData")
+public Object[][] provideData() {
+    return new Object[][] {
+        {1}, {2}, {3}
+    };
+}
+```
+
+**Issue: Data Provider data not found**
+```java
+// ❌ Wrong
+public Object[][] provideData() {
+    // File not in classpath
+    FileReader fr = new FileReader("testdata.csv");
+}
+
+// ✅ Correct
+public Object[][] provideData() {
+    // Use ClassLoader to access resources
+    InputStream is = this.getClass()
+        .getClassLoader()
+        .getResourceAsStream("testdata.csv");
+}
+```
+
+**Issue: Data type mismatch**
+```java
+// ❌ Wrong
+@DataProvider(name = "ids")
+public Object[][] provideIds() {
+    return new Object[][] {
+        {"1"}, {"2"}, {"3"} // Strings instead of Integers
+    };
+}
+
+@Test(dataProvider = "ids")
+public void testWithIds(int id) { // Expects int
+    // Type mismatch error
+}
+
+// ✅ Correct
+@DataProvider(name = "ids")
+public Object[][] provideIds() {
+    return new Object[][] {
+        {1}, {2}, {3} // Integers
+    };
+}
+
+@Test(dataProvider = "ids")
+public void testWithIds(int id) {
+    // Works correctly
+}
+```
+
 ### Additional Documentation
 
 For comprehensive examples of all 13 data passing methods:
 - **DATA_PASSING_GUIDE.md** - Complete guide with all 13 methods explained
 - **INTEGRATION_SUMMARY.md** - Summary of integration work completed
 - **DataProvidersIntegrationTest.java** - Working examples of all 13 methods
+- **README_UPDATE_SUMMARY.md** - Detailed breakdown of README changes
 
 ---
 
