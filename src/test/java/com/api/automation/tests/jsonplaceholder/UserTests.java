@@ -3,11 +3,13 @@ package com.api.automation.tests.jsonplaceholder;
 import com.api.automation.models.User;
 import com.api.automation.services.UserService;
 import com.api.automation.tests.utils.BaseTest;
+import com.api.automation.tests.utils.TestDataProvider;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -34,6 +36,22 @@ public class UserTests extends BaseTest {
         softAssert = new SoftAssert();
     }
 
+    // ============================================================
+    // DATA PROVIDERS
+    // ============================================================
+    
+    @DataProvider(name = "userIds")
+    public Object[][] provideUserIds() {
+        logger.info("Loading userIds data provider");
+        return TestDataProvider.getUserIds();
+    }
+    
+    @DataProvider(name = "userCounts")
+    public Object[][] provideUserCounts() {
+        logger.info("Loading userCounts data provider");
+        return TestDataProvider.getUserCounts();
+    }
+
     @Test(priority = 1, description = "Verify getting all users")
     public void testGetAllUsers() {
         logger.info("Starting test: testGetAllUsers");
@@ -52,42 +70,40 @@ public class UserTests extends BaseTest {
         logger.info("Test testGetAllUsers completed successfully");
     }
 
-    @Test(priority = 2, description = "Verify getting a specific user by ID")
-    public void testGetUserById() {
-        logger.info("Starting test: testGetUserById");
-        int userId = 1;
+    @Test(priority = 2, description = "Verify getting a specific user by ID", dataProvider = "userIds")
+    public void testGetUserById(int userId) {
+        logger.info("Starting test: testGetUserById with userId: {}", userId);
         logger.info("Fetching user with ID: {}", userId);
         
         Response response = userService.getUserById(userId);
         logger.info("Response received with status code: {}", response.getStatusCode());
         
-        logger.info("Validating user data");
-        response.then().log().status().log().body()
-                .statusCode(200)
+        logger.info("Validating user data for userId: {}", userId);
+        response.then().log().status()
+                .statusCode(TestDataProvider.TestConstants.StatusCodes.OK)
                 .body("id", equalTo(userId))
                 .body("name", notNullValue())
                 .body("email", notNullValue());
         
-        logger.info("Test testGetUserById completed successfully");
+        logger.info("Test testGetUserById completed successfully for userId: {}", userId);
     }
 
-    @Test(priority = 3, description = "Verify getting user as object")
-    public void testGetUserAsObject() {
-        logger.info("Starting test: testGetUserAsObject");
-        int userId = 1;
+    @Test(priority = 3, description = "Verify getting user as object", dataProvider = "userIds")
+    public void testGetUserAsObject(int userId) {
+        logger.info("Starting test: testGetUserAsObject with userId: {}", userId);
         logger.info("Fetching user with ID: {} and deserializing to User object", userId);
         
         User user = userService.getUserByIdAsObject(userId);
         logger.info("User object received: {}", user.getName());
         
-        logger.info("Validating User object fields");
+        logger.info("Validating User object fields for userId: {}", userId);
         softAssert.assertNotNull(user, "User should not be null");
         softAssert.assertEquals((int)user.getId(), (int)userId, "User ID should match");
         softAssert.assertFalse(user.getName().isEmpty(), "User name should not be empty");
         softAssert.assertTrue(user.getEmail().contains("@"), "Email should contain @");
         
         softAssert.assertAll();
-        logger.info("Test testGetUserAsObject completed successfully");
+        logger.info("Test testGetUserAsObject completed successfully for userId: {}", userId);
     }
 
     @Test(priority = 4, description = "Verify creating a new user")

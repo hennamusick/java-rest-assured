@@ -3,11 +3,13 @@ package com.api.automation.tests.jsonplaceholder;
 import com.api.automation.models.Post;
 import com.api.automation.services.PostService;
 import com.api.automation.tests.utils.BaseTest;
+import com.api.automation.tests.utils.TestDataProvider;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -34,6 +36,22 @@ public class PostTests extends BaseTest {
         softAssert = new SoftAssert();
     }
 
+    // ============================================================
+    // DATA PROVIDERS
+    // ============================================================
+    
+    @DataProvider(name = "postIds")
+    public Object[][] providePostIds() {
+        logger.info("Loading postIds data provider");
+        return TestDataProvider.getPostIds();
+    }
+
+    @DataProvider(name = "userIds")
+    public Object[][] provideUserIds() {
+        logger.info("Loading userIds data provider");
+        return TestDataProvider.getUserIds();
+    }
+
     @Test(priority = 1, description = "Verify getting all posts")
     public void testGetAllPosts() {
         logger.info("Starting test: testGetAllPosts");
@@ -44,7 +62,7 @@ public class PostTests extends BaseTest {
         
         logger.info("Validating response contains multiple posts");
         response.then().log().status()
-                .statusCode(200)
+                .statusCode(TestDataProvider.TestConstants.StatusCodes.OK)
                 .body("size()", greaterThan(0))
                 .body("id", everyItem(notNullValue()))
                 .body("title", everyItem(notNullValue()));
@@ -52,49 +70,46 @@ public class PostTests extends BaseTest {
         logger.info("Test testGetAllPosts completed successfully");
     }
 
-    @Test(priority = 2, description = "Verify getting a specific post by ID")
-    public void testGetPostById() {
-        logger.info("Starting test: testGetPostById");
-        int postId = 1;
+    @Test(priority = 2, description = "Verify getting a specific post by ID", dataProvider = "postIds")
+    public void testGetPostById(int postId) {
+        logger.info("Starting test: testGetPostById with postId: {}", postId);
         logger.info("Fetching post with ID: {}", postId);
         
         Response response = postService.getPostById(postId);
         logger.info("Response received with status code: {}", response.getStatusCode());
         
-        logger.info("Validating post data");
-        response.then().log().status().log().body()
-                .statusCode(200)
+        logger.info("Validating post data for postId: {}", postId);
+        response.then().log().status()
+                .statusCode(TestDataProvider.TestConstants.StatusCodes.OK)
                 .body("id", equalTo(postId))
                 .body("title", notNullValue())
                 .body("body", notNullValue())
                 .body("userId", notNullValue());
         
-        logger.info("Test testGetPostById completed successfully");
+        logger.info("Test testGetPostById completed successfully for postId: {}", postId);
     }
 
-    @Test(priority = 3, description = "Verify getting post as object")
-    public void testGetPostAsObject() {
-        logger.info("Starting test: testGetPostAsObject");
-        int postId = 1;
+    @Test(priority = 3, description = "Verify getting post as object", dataProvider = "postIds")
+    public void testGetPostAsObject(int postId) {
+        logger.info("Starting test: testGetPostAsObject with postId: {}", postId);
         logger.info("Fetching post with ID: {} and deserializing to Post object", postId);
         
         Post post = postService.getPostByIdAsObject(postId);
         logger.info("Post object received: {}", post.getTitle());
         
-        logger.info("Validating Post object fields");
+        logger.info("Validating Post object fields for postId: {}", postId);
         softAssert.assertNotNull(post, "Post should not be null");
         softAssert.assertEquals((int)post.getId(), (int)postId, "Post ID should match");
         softAssert.assertFalse(post.getTitle().isEmpty(), "Post title should not be empty");
         softAssert.assertTrue(post.getUserId() > 0, "User ID should be positive");
         
         softAssert.assertAll();
-        logger.info("Test testGetPostAsObject completed successfully");
+        logger.info("Test testGetPostAsObject completed successfully for postId: {}", postId);
     }
 
-    @Test(priority = 4, description = "Verify getting posts by user ID")
-    public void testGetPostsByUserId() {
-        logger.info("Starting test: testGetPostsByUserId");
-        int userId = 1;
+    @Test(priority = 4, description = "Verify getting posts by user ID", dataProvider = "userIds")
+    public void testGetPostsByUserId(int userId) {
+        logger.info("Starting test: testGetPostsByUserId with userId: {}", userId);
         logger.info("Fetching posts for user ID: {}", userId);
         
         Response response = postService.getPostsByUserId(userId);

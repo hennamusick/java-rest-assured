@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Data Passing Methods Suite" verbose="2">
+
+    <!-- Example 1: Using Parameters -->
+    <test name="Test with Parameters">
+        <parameter name="username" value="john@example.com"/>
+        <parameter name="password" value="password123"/>
+        <parameter name="environment" value="staging"/>
+        <parameter name="timeout" value="30"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <!-- Example 2: Multiple Parameters -->
+    <test name="Test with Multiple Parameters">
+        <parameter name="baseUrl" value="https://api.example.com"/>
+        <parameter name="apiKey" value="your-api-key-here"/>
+        <parameter name="userId" value="12345"/>
+        <parameter name="dataFormat" value="json"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <!-- Example 3: Test with Different Environments -->
+    <test name="Test Development Environment">
+        <parameter name="env" value="dev"/>
+        <parameter name="baseUrl" value="http://localhost:8080"/>
+        <parameter name="debugMode" value="true"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <test name="Test Staging Environment">
+        <parameter name="env" value="staging"/>
+        <parameter name="baseUrl" value="https://staging-api.example.com"/>
+        <parameter name="debugMode" value="false"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <test name="Test Production Environment">
+        <parameter name="env" value="production"/>
+        <parameter name="baseUrl" value="https://api.example.com"/>
+        <parameter name="debugMode" value="false"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <!-- Example 4: Test with Different User Roles -->
+    <test name="Test Admin User">
+        <parameter name="userRole" value="ADMIN"/>
+        <parameter name="username" value="admin@example.com"/>
+        <parameter name="permissions" value="ALL"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <test name="Test Regular User">
+        <parameter name="userRole" value="USER"/>
+        <parameter name="username" value="user@example.com"/>
+        <parameter name="permissions" value="READ,WRITE"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+    <!-- Example 5: Test with Complex Configuration -->
+    <test name="Test with Complex Config">
+        <parameter name="apiTimeout" value="30"/>
+        <parameter name="retryCount" value="3"/>
+        <parameter name="retryDelay" value="2000"/>
+        <parameter name="maxConnections" value="100"/>
+        <parameter name="sslEnabled" value="true"/>
+        <parameter name="logLevel" value="DEBUG"/>
+        <classes>
+            <class name="com.api.automation.dataproviders.DataPassingMethods"/>
+        </classes>
+    </test>
+
+</suite>

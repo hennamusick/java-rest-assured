@@ -1,0 +1,8 @@
+email,password,role,enabled,firstName,lastName
+admin@example.com,adminPassword123,ADMIN,true,Admin,User
+user@example.com,userPassword123,USER,true,John,Doe
+moderator@example.com,modPassword123,MODERATOR,true,Jane,Smith
+guest@example.com,guestPassword123,GUEST,false,Bob,Johnson
+test1@example.com,testPass123,USER,true,Test,One
+test2@example.com,testPass456,USER,true,Test,Two
+invalid@example.com,wrongpass,USER,false,Invalid,Account
