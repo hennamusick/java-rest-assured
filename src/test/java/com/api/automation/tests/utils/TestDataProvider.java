@@ -3,7 +3,6 @@ package com.api.automation.tests.utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.testng.annotations.DataProvider;
 
 import java.io.*;
 import java.util.ArrayList;

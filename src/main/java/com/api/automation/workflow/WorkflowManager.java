@@ -19,13 +19,11 @@ public class WorkflowManager {
     private final List<WorkflowExecutionResult> executionHistory;
     @Getter
     private final List<WorkflowListener> listeners;
-    private volatile boolean running;
     
     private WorkflowManager() {
         this.workflows = new LinkedHashMap<>();
         this.executionHistory = new CopyOnWriteArrayList<>();
         this.listeners = new CopyOnWriteArrayList<>();
-        this.running = false;
     }
     
     /**

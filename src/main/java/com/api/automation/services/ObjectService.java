@@ -7,7 +7,8 @@ import static io.restassured.RestAssured.given;
 
 /**
  * Service class for Object API endpoints (Page Object Model)
- * Handles all object-related API operations for restful-api.dev
+ * Note: restful-api.dev may not support PUT/PATCH/DELETE operations
+ * Tests can be skipped or mocked for these operations
  */
 public class ObjectService {
     private static final String BASE_URI = "https://api.restful-api.dev";
@@ -42,6 +43,7 @@ public class ObjectService {
 
     /**
      * Create a new object
+     * Note: This may not be supported by restful-api.dev
      * @param apiObject ApiObject object
      * @return Response object
      */
@@ -58,6 +60,7 @@ public class ObjectService {
 
     /**
      * Update object
+     * Note: This may not be supported by restful-api.dev (returns 405 Method Not Allowed)
      * @param objectId Object ID
      * @param apiObject ApiObject object
      * @return Response object
@@ -75,6 +78,7 @@ public class ObjectService {
 
     /**
      * Partially update object
+     * Note: This may not be supported by restful-api.dev (returns 405 Method Not Allowed)
      * @param objectId Object ID
      * @param apiObject ApiObject object
      * @return Response object
@@ -92,6 +96,7 @@ public class ObjectService {
 
     /**
      * Delete object
+     * Note: This may not be supported by restful-api.dev (returns 405 Method Not Allowed)
      * @param objectId Object ID
      * @return Response object
      */

@@ -1,15 +1,8 @@
 package com.api.automation.dataproviders;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -248,7 +241,7 @@ public class DataProvidersIntegrationTest {
         String userEmail = TestDataConstants.Users.USER_EMAIL;
         String apiEndpoint = TestDataConstants.Endpoints.USERS;
         
-        logger.info("Testing with Constants - Admin: {}, Endpoint: {}", adminEmail, apiEndpoint);
+        logger.info("Testing with Constants - Admin: {}, User: {}, Endpoint: {}", adminEmail, userEmail, apiEndpoint);
         assert adminEmail.equals("admin@example.com") : "Admin email constant should match";
         assert apiEndpoint.equals("/users") : "Users endpoint constant should match";
     }
@@ -303,6 +296,8 @@ public class DataProvidersIntegrationTest {
         logger.info("Retrieved from context - User: {}, Password: [MASKED]", user);
         assert user != null && user.equals("sharedUser@example.com") : 
             "Should retrieve stored user from context";
+        assert password != null && password.equals("sharedPass123") : 
+            "Should retrieve stored password from context";
     }
     
     // ========================================

@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.Map;
 
 /**
- * POJO for Object entity from restful-api.dev
+ * POJO for Object entity from REST API
+ * Supports standard fields like id, name, data, and createdAt timestamp
  */
 @Data
 @Builder
@@ -18,4 +19,6 @@ public class ApiObject {
     private String id;
     private String name;
     private Map<String, Object> data;
+    private String createdAt;
+    private String updatedAt;
 }
