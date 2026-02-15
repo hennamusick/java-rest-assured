@@ -1,6 +1,11 @@
 pipeline {
     agent any
     
+    environment {
+        PATH = "/opt/homebrew/bin:/usr/local/bin:${env.PATH}"
+        JAVA_HOME = "/opt/homebrew/opt/openjdk"
+    }
+    
     options {
         timeout(time: 1, unit: 'HOURS')
         buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -22,9 +27,6 @@ pipeline {
         
         stage('Clean') {
             steps {
-                cleanWs(deleteDirs: true, patterns: [
-                [pattern: 'target/surefire-reports', type: 'INCLUDE']
-            ])
                 echo 'Cleaning previous build artifacts...'
                 sh 'mvn clean'
             }
@@ -64,7 +66,9 @@ pipeline {
             echo '========================================='
             echo 'Test Run Complete'
             echo '========================================='
-        
+            cleanWs(deleteDirs: true, patterns: [
+                [pattern: 'target/surefire-reports', type: 'INCLUDE']
+            ])
         }
         
         success {
