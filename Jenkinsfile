@@ -22,6 +22,9 @@ pipeline {
         
         stage('Clean') {
             steps {
+                cleanWs(deleteDirs: true, patterns: [
+                [pattern: 'target/surefire-reports', type: 'INCLUDE']
+            ])
                 echo 'Cleaning previous build artifacts...'
                 sh 'mvn clean'
             }
@@ -61,9 +64,7 @@ pipeline {
             echo '========================================='
             echo 'Test Run Complete'
             echo '========================================='
-            cleanWs(deleteDirs: true, patterns: [
-                [pattern: 'target/surefire-reports', type: 'INCLUDE']
-            ])
+        
         }
         
         success {

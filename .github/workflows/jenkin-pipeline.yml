@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+
+    stages {
+    
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'mkdir -p Build'
+            
+            }
+        }      
+    }
+}
+
